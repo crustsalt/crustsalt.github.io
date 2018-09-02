@@ -155,6 +155,99 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="pages-记一道做了一晚上的流量审计" class="article article-type-pages  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/02/记一道做了一晚上的流量审计/">记一道做了一晚上的流量审计</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/02/记一道做了一晚上的流量审计/" class="archive-article-date">
+  	<time datetime="2018-09-02T01:27:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>照着博雯dalao给的思路，辣鸡如我还是做了一晚上，决定细数一下自己踩的坑（往事不堪回首）</p>
+<p>首先会有一个secret.pcapng的文件，这就是题目了。</p>
+<p>让我们用wireshark打开它，然后发现为毛这么多啊！！！（菜鸡之前做的流量审计流量比较少，一般都是一个个看的，摔桌！)</p>
+<p>尝试一个个看寻找线索，发现一个html，复制下来打开发现标题是本机C盘的索引，其它能点的地方都点不了，审计了一下源码，发现一个input的属性是hidden，其中的value有值，把hidden改成text，这个值是</p>
+<blockquote>
+<p>0a5890168093d9eb9a6810fb3d122c307b28d3c5525f7f2ce73f2b24967ba11adeaa4ff7a8a9248f6624a46509668c313c1fe6d225ced3bc49fa3f8c54cd1475</p>
+</blockquote>
+<p><del>尝试十六进制解码，发现是一串乱码，卒</del>~</p>
+<p><img src="https://s1.ax2x.com/2018/09/02/5BKAEu.png" alt="image"></p>
+<p>然后咸鱼就不会了，博雯dalao告诉我要导出http对象（本菜鸡还真不知道有这个功能，喵！）</p>
+<p><img src="https://s1.ax2x.com/2018/09/02/5BKt79.png" alt="image"></p>
+<p>发现中间有一大片空白很可疑啊 381发现有PK开头的一大堆字符，追踪一下，发现一大堆</p>
+<p>然后就是这里！！！我刚开始是直接把这个复制，作为ascii复制进winhex里，发现连文件头都不对，很难受，这时候博雯dalao又出场了，告诉我应该先把ascii码转换为元数据再复制进去，果然好了！</p>
+<p>复制进去用zip打开，发现里面是个bug.jpeg，咱们用winhex打开一下，发现PK开头（所以他喵的还是一个压缩包是吧！摔桌！！！）</p>
+<p>再用zip打开解压，发现了一个名叫s4cr4t.jpg的文件（<del>尝试打开未果</del>）</p>
+<p>然后又不会了，突然想起博雯dalao说要把小写的png改成大写，十六进制打开，发现IHDR前面的png果然是小写……</p>
+<p>改成大写后，flag就出来了！！！</p>
+<p><img src="https://s1.ax2x.com/2018/09/02/5BKiwr.png" alt="image"></p>
+<p>最后我只想说 </p>
+<h1 id="博雯dalao牛逼！"><a href="#博雯dalao牛逼！" class="headerlink" title="博雯dalao牛逼！"></a><strong>博雯dalao牛逼！</strong></h1><p>（破音）</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/02/记一道做了一晚上的流量审计/">more~ >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-XDSEC招新题的php弱类型的复仇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -283,99 +376,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/08/01/我总算搭完了/">more~ >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="pages-记一道做了一晚上的流量审计" class="article article-type-pages  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/01/记一道做了一晚上的流量审计/">记一道做了一晚上的流量审计</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/01/记一道做了一晚上的流量审计/" class="archive-article-date">
-  	<time datetime="2018-08-01T12:30:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>照着博雯dalao给的思路，辣鸡如我还是做了一晚上，决定细数一下自己踩的坑（往事不堪回首）</p>
-<p>首先会有一个secret.pcapng的文件，这就是题目了。</p>
-<p>让我们用wireshark打开它，然后发现为毛这么多啊！！！（菜鸡之前做的流量审计流量比较少，一般都是一个个看的，摔桌！)</p>
-<p>尝试一个个看寻找线索，发现一个html，复制下来打开发现标题是本机C盘的索引，其它能点的地方都点不了，审计了一下源码，发现一个input的属性是hidden，其中的value有值，把hidden改成text，这个值是</p>
-<blockquote>
-<p>0a5890168093d9eb9a6810fb3d122c307b28d3c5525f7f2ce73f2b24967ba11adeaa4ff7a8a9248f6624a46509668c313c1fe6d225ced3bc49fa3f8c54cd1475</p>
-</blockquote>
-<p><del>尝试十六进制解码，发现是一串乱码，卒</del>~</p>
-<p><img src="https://s1.ax2x.com/2018/09/02/5BKAEu.png" alt="image"></p>
-<p>然后咸鱼就不会了，博雯dalao告诉我要导出http对象（本菜鸡还真不知道有这个功能，喵！）</p>
-<p><img src="https://s1.ax2x.com/2018/09/02/5BKt79.png" alt="image"></p>
-<p>发现中间有一大片空白很可疑啊 381发现有PK开头的一大堆字符，追踪一下，发现一大堆</p>
-<p>然后就是这里！！！我刚开始是直接把这个复制，作为ascii复制进winhex里，发现连文件头都不对，很难受，这时候博雯dalao又出场了，告诉我应该先把ascii码转换为元数据再复制进去，果然好了！</p>
-<p>复制进去用zip打开，发现里面是个bug.jpeg，咱们用winhex打开一下，发现PK开头（所以他喵的还是一个压缩包是吧！摔桌！！！）</p>
-<p>再用zip打开解压，发现了一个名叫s4cr4t.jpg的文件（<del>尝试打开未果</del>）</p>
-<p>然后又不会了，突然想起博雯dalao说要把小写的png改成大写，十六进制打开，发现IHDR前面的png果然是小写……</p>
-<p>改成大写后，flag就出来了！！！</p>
-<p><img src="https://s1.ax2x.com/2018/09/02/5BKiwr.png" alt="image"></p>
-<p>最后我只想说 </p>
-<h1 id="博雯dalao牛逼！"><a href="#博雯dalao牛逼！" class="headerlink" title="博雯dalao牛逼！"></a><strong>博雯dalao牛逼！</strong></h1><p>（破音）</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/01/记一道做了一晚上的流量审计/">more~ >></a>
         </p>
       
 
