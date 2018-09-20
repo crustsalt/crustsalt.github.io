@@ -9,7 +9,7 @@
   <title>记一道做了一晚上的流量审计 | 一只小咸鱼努力变成大咸鱼ing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="照着博雯dalao给的思路，辣鸡如我还是做了一晚上，决定细数一下自己踩的坑（往事不堪回首） 首先会有一个secret.pcapng的文件，这就是题目了。 让我们用wireshark打开它，然后发现为毛这么多啊！！！（菜鸡之前做的流量审计流量比较少，一般都是一个个看的，摔桌！) 尝试一个个看寻找线索，发现一个html，复制下来打开发现标题是本机C盘的索引，其它能点的地方都点不了，审计了一下源码，发现">
-<meta name="keywords" content="ctf">
+<meta name="keywords" content="ctf-misc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记一道做了一晚上的流量审计">
 <meta property="og:url" content="http://yoursite.com/2018/09/02/记一道做了一晚上的流量审计/index.html">
@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://s1.ax2x.com/2018/09/02/5BKAEu.png">
 <meta property="og:image" content="https://s1.ax2x.com/2018/09/02/5BKt79.png">
 <meta property="og:image" content="https://s1.ax2x.com/2018/09/02/5BKiwr.png">
-<meta property="og:updated_time" content="2018-09-02T01:33:22.066Z">
+<meta property="og:updated_time" content="2018-09-20T15:29:50.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记一道做了一晚上的流量审计">
 <meta name="twitter:description" content="照着博雯dalao给的思路，辣鸡如我还是做了一晚上，决定细数一下自己踩的坑（往事不堪回首） 首先会有一个secret.pcapng的文件，这就是题目了。 让我们用wireshark打开它，然后发现为毛这么多啊！！！（菜鸡之前做的流量审计流量比较少，一般都是一个个看的，摔桌！) 尝试一个个看寻找线索，发现一个html，复制下来打开发现标题是本机C盘的索引，其它能点的地方都点不了，审计了一下源码，发现">
@@ -66,7 +66,9 @@
 	        
 				<li><a href="/tags/杂言/">杂言</a></li>
 	        
-				<li><a href="/tags/ctf/">ctf</a></li>
+				<li><a href="/tags/ctf-web/">ctf-web</a></li>
+	        
+				<li><a href="/tags/ctf-misc/">ctf-misc</a></li>
 	        
 			</ul>
 		</nav>
@@ -123,6 +125,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -143,11 +147,13 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/杂言/">杂言</a></li>
+					<li style="width: 25%"><a href="/tags/杂言/">杂言</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/ctf/">ctf</a></li>
+					<li style="width: 25%"><a href="/tags/ctf-web/">ctf-web</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/ctf-misc/">ctf-misc</a></li>
 		        
 				</ul>
 			</nav>
@@ -236,7 +242,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf-misc</a>
         		</li>
       		
 		</ul>
@@ -310,7 +316,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          关于bugku的一道源码泄露题
         
       </div>
     </a>
@@ -439,7 +445,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ctf-web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ctf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ctf-misc</a>
               </li>
              
               <li class="article-tag-list-item">

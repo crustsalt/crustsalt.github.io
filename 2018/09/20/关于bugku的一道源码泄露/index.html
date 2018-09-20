@@ -6,22 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>一只小咸鱼努力变成大咸鱼ing</title>
+  <title>关于bugku的一道源码泄露题 | 一只小咸鱼努力变成大咸鱼ing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="今天做了个bugku的题，我只觉得说好的sql注入呢？？？  sql注入2 http://120.24.86.145:8007/web2/ 全都tm过滤了绝望吗？ 提示 !,!=,=,+,-,^,%  我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。先看一下这个题的解法，用nikto扫一下">
+<meta name="keywords" content="ctf-web">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一只小咸鱼努力变成大咸鱼ing">
+<meta property="og:title" content="关于bugku的一道源码泄露题">
 <meta property="og:url" content="http://yoursite.com/2018/09/20/关于bugku的一道源码泄露/index.html">
 <meta property="og:site_name" content="一只小咸鱼努力变成大咸鱼ing">
 <meta property="og:description" content="今天做了个bugku的题，我只觉得说好的sql注入呢？？？  sql注入2 http://120.24.86.145:8007/web2/ 全都tm过滤了绝望吗？ 提示 !,!=,=,+,-,^,%  我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。先看一下这个题的解法，用nikto扫一下">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.postimg.cc/gjV3g6jw/TIM_20180920211827.pngo">
-<meta property="og:image" content="https://i.postimg.cc/6ptxbsjT/TIM_20180920212713.png">
-<meta property="og:updated_time" content="2018-09-20T13:45:56.318Z">
+<meta property="og:image" content="https://s1.ax2x.com/2018/09/20/5HmVyR.jpg">
+<meta property="og:image" content="https://s1.ax2x.com/2018/09/20/5HmzYd.jpg">
+<meta property="og:updated_time" content="2018-09-20T15:32:57.243Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一只小咸鱼努力变成大咸鱼ing">
+<meta name="twitter:title" content="关于bugku的一道源码泄露题">
 <meta name="twitter:description" content="今天做了个bugku的题，我只觉得说好的sql注入呢？？？  sql注入2 http://120.24.86.145:8007/web2/ 全都tm过滤了绝望吗？ 提示 !,!=,=,+,-,^,%  我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。先看一下这个题的解法，用nikto扫一下">
-<meta name="twitter:image" content="https://i.postimg.cc/gjV3g6jw/TIM_20180920211827.pngo">
+<meta name="twitter:image" content="https://s1.ax2x.com/2018/09/20/5HmVyR.jpg">
   
     <link rel="alternative" href="/atom.xml" title="一只小咸鱼努力变成大咸鱼ing" type="application/atom+xml">
   
@@ -64,7 +65,9 @@
 	        
 				<li><a href="/tags/杂言/">杂言</a></li>
 	        
-				<li><a href="/tags/ctf/">ctf</a></li>
+				<li><a href="/tags/ctf-web/">ctf-web</a></li>
+	        
+				<li><a href="/tags/ctf-misc/">ctf-misc</a></li>
 	        
 			</ul>
 		</nav>
@@ -121,6 +124,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -141,11 +146,13 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/杂言/">杂言</a></li>
+					<li style="width: 25%"><a href="/tags/杂言/">杂言</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/ctf/">ctf</a></li>
+					<li style="width: 25%"><a href="/tags/ctf-web/">ctf-web</a></li>
+		        
+					<li style="width: 25%"><a href="/tags/ctf-misc/">ctf-misc</a></li>
 		        
 				</ul>
 			</nav>
@@ -160,8 +167,23 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-关于bugku的一道源码泄露" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="pages-关于bugku的一道源码泄露" class="article article-type-pages " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于bugku的一道源码泄露题
+    </h1>
+  
+
+        
+        <a href="/2018/09/20/关于bugku的一道源码泄露/" class="archive-article-date">
+  	<time datetime="2018-09-20T12:30:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -173,9 +195,9 @@
 <p>提示 !,!=,=,+,-,^,%</p>
 </blockquote>
 <p>我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。<br>先看一下这个题的解法，用nikto扫一下：</p>
-<p><img src="https://i.postimg.cc/gjV3g6jw/TIM_20180920211827.pngo" alt="image"></p>
+<p><img src="https://s1.ax2x.com/2018/09/20/5HmVyR.jpg" alt="image"></p>
 <p>扫之后发现，漏洞名字就在那里摆着，.DS_Store,用github上的脚本扫一下，发现成功扫描了：</p>
-<p><img src="https://i.postimg.cc/6ptxbsjT/TIM_20180920212713.png" alt="image"></p>
+<p><img src="https://s1.ax2x.com/2018/09/20/5HmzYd.jpg" alt="image"></p>
 <p>然后访问flag，就得到了flag。</p>
 <p>现在总结一下，这个其实就算一个源码泄露：</p>
 <p>常见的源码泄露有:.git .hg .DS_Store .svn .bzr等等</p>
@@ -210,6 +232,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ctf-web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -398,7 +431,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ctf-web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ctf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ctf-misc</a>
               </li>
              
               <li class="article-tag-list-item">
