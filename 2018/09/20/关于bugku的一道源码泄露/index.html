@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | 一只小咸鱼努力变成大咸鱼ing</title>
+  <title>一只小咸鱼努力变成大咸鱼ing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="今天做了个bugku的题，我只觉得说好的sql注入呢？？？  sql注入2 http://120.24.86.145:8007/web2/ 全都tm过滤了绝望吗？ 提示 !,!=,=,+,-,^,%  我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。先看一下这个题的解法，用nikto扫一下">
+<meta property="og:type" content="article">
 <meta property="og:title" content="一只小咸鱼努力变成大咸鱼ing">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/09/20/关于bugku的一道源码泄露/index.html">
 <meta property="og:site_name" content="一只小咸鱼努力变成大咸鱼ing">
+<meta property="og:description" content="今天做了个bugku的题，我只觉得说好的sql注入呢？？？  sql注入2 http://120.24.86.145:8007/web2/ 全都tm过滤了绝望吗？ 提示 !,!=,=,+,-,^,%  我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。先看一下这个题的解法，用nikto扫一下">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.postimg.cc/gjV3g6jw/TIM_20180920211827.pngo">
+<meta property="og:image" content="https://i.postimg.cc/6ptxbsjT/TIM_20180920212713.png">
+<meta property="og:updated_time" content="2018-09-20T13:45:56.318Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一只小咸鱼努力变成大咸鱼ing">
+<meta name="twitter:description" content="今天做了个bugku的题，我只觉得说好的sql注入呢？？？  sql注入2 http://120.24.86.145:8007/web2/ 全都tm过滤了绝望吗？ 提示 !,!=,=,+,-,^,%  我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。先看一下这个题的解法，用nikto扫一下">
+<meta name="twitter:image" content="https://i.postimg.cc/gjV3g6jw/TIM_20180920211827.pngo">
   
     <link rel="alternative" href="/atom.xml" title="一只小咸鱼努力变成大咸鱼ing" type="application/atom+xml">
   
@@ -153,157 +160,156 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-关于bugku的一道源码泄露" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天做了个bugku的题，我只觉得说好的sql注入呢？？？</p>
+<blockquote>
+<p>sql注入2</p>
+<p><a href="http://120.24.86.145:8007/web2/" target="_blank" rel="noopener">http://120.24.86.145:8007/web2/</a></p>
+<p>全都tm过滤了绝望吗？</p>
+<p>提示 !,!=,=,+,-,^,%</p>
+</blockquote>
+<p>我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。<br>先看一下这个题的解法，用nikto扫一下：</p>
+<p><img src="https://i.postimg.cc/gjV3g6jw/TIM_20180920211827.pngo" alt="image"></p>
+<p>扫之后发现，漏洞名字就在那里摆着，.DS_Store,用github上的脚本扫一下，发现成功扫描了：</p>
+<p><img src="https://i.postimg.cc/6ptxbsjT/TIM_20180920212713.png" alt="image"></p>
+<p>然后访问flag，就得到了flag。</p>
+<p>现在总结一下，这个其实就算一个源码泄露：</p>
+<p>常见的源码泄露有:.git .hg .DS_Store .svn .bzr等等</p>
+<p>漏洞成因：配置文件或者备份文件在上传代码时没有删除，比如.git就是git在init初始化代码库的时候，会生出.git的隐藏文件，用来记录代码的变更记录,如果这个隐藏文件没有删除，便会泄露敏感文件或者敏感目录(所以一定要记得删除鸭)</p>
+<p>教训是以后做web先拿nikto扫一扫，说不定就有泄露问题呢？</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/关于bugku的一道源码泄露/" class="archive-article-date">
-  	<time datetime="2018-09-20T13:46:02.162Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/20/关于bugku的一道源码泄露/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-pages">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/02/记一道做了一晚上的流量审计/" class="archive-article-date">
-  	<time datetime="2018-09-02T01:27:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/02/记一道做了一晚上的流量审计/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记一道做了一晚上的流量审计</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/02/记一道做了一晚上的流量审计/">记一道做了一晚上的流量审计</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/08/XDSEC招新题的php弱类型的复仇/" class="archive-article-date">
-  	<time datetime="2018-08-08T02:54:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/08/XDSEC招新题的php弱类型的复仇/">XDSEC招新题的php弱类型的复仇</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ctf</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-pages">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/01/我总算搭完了/" class="archive-article-date">
-  	<time datetime="2018-08-01T12:30:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/01/我总算搭完了/">我总算搭完了~</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -326,8 +332,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

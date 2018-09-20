@@ -155,6 +155,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-关于bugku的一道源码泄露" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天做了个bugku的题，我只觉得说好的sql注入呢？？？</p>
+<blockquote>
+<p>sql注入2</p>
+<p><a href="http://120.24.86.145:8007/web2/" target="_blank" rel="noopener">http://120.24.86.145:8007/web2/</a></p>
+<p>全都tm过滤了绝望吗？</p>
+<p>提示 !,!=,=,+,-,^,%</p>
+</blockquote>
+<p>我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。<br>先看一下这个题的解法，用nikto扫一下：</p>
+<p><img src="https://i.postimg.cc/gjV3g6jw/TIM_20180920211827.pngo" alt="image"></p>
+<p>扫之后发现，漏洞名字就在那里摆着，.DS_Store,用github上的脚本扫一下，发现成功扫描了：</p>
+<p><img src="https://i.postimg.cc/6ptxbsjT/TIM_20180920212713.png" alt="image"></p>
+<p>然后访问flag，就得到了flag。</p>
+<p>现在总结一下，这个其实就算一个源码泄露：</p>
+<p>常见的源码泄露有:.git .hg .DS_Store .svn .bzr等等</p>
+<p>漏洞成因：配置文件或者备份文件在上传代码时没有删除，比如.git就是git在init初始化代码库的时候，会生出.git的隐藏文件，用来记录代码的变更记录,如果这个隐藏文件没有删除，便会泄露敏感文件或者敏感目录(所以一定要记得删除鸭)</p>
+<p>教训是以后做web先拿nikto扫一扫，说不定就有泄露问题呢？</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/20/关于bugku的一道源码泄露/">more~ >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="pages-记一道做了一晚上的流量审计" class="article article-type-pages  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
