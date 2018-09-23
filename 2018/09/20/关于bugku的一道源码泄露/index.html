@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s1.ax2x.com/2018/09/20/5HmVyR.jpg">
 <meta property="og:image" content="https://s1.ax2x.com/2018/09/20/5HmzYd.jpg">
-<meta property="og:updated_time" content="2018-09-20T15:32:57.243Z">
+<meta property="og:updated_time" content="2018-09-23T13:52:44.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于bugku的一道源码泄露题">
 <meta name="twitter:description" content="今天做了个bugku的题，我只觉得说好的sql注入呢？？？  sql注入2 http://120.24.86.145:8007/web2/ 全都tm过滤了绝望吗？ 提示 !,!=,=,+,-,^,%  我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。先看一下这个题的解法，用nikto扫一下">
@@ -195,7 +195,7 @@
 <p>提示 !,!=,=,+,-,^,%</p>
 </blockquote>
 <p>我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。<br>先看一下这个题的解法，用nikto扫一下：</p>
-<p><img src="https://s1.ax2x.com/2018/09/20/5HmVyR.jpg" alt="image"></p>
+<p><img src="https://s1.ax2x.com/2018/09/20/5HmVyR.jpg" alt="image"><br><a id="more"></a></p>
 <p>扫之后发现，漏洞名字就在那里摆着，.DS_Store,用github上的脚本扫一下，发现成功扫描了：</p>
 <p><img src="https://s1.ax2x.com/2018/09/20/5HmzYd.jpg" alt="image"></p>
 <p>然后访问flag，就得到了flag。</p>
@@ -444,11 +444,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ctf-misc</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂言</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂言</a>
+                <a href="javascript:void(0)" class="js-tag color4">ctf-misc</a>
               </li>
             
             <div class="clearfix"></div>

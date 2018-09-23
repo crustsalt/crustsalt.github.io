@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://s1.ax2x.com/2018/09/02/5BKAEu.png">
 <meta property="og:image" content="https://s1.ax2x.com/2018/09/02/5BKt79.png">
 <meta property="og:image" content="https://s1.ax2x.com/2018/09/02/5BKiwr.png">
-<meta property="og:updated_time" content="2018-09-20T15:29:50.174Z">
+<meta property="og:updated_time" content="2018-09-23T13:52:20.722Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记一道做了一晚上的流量审计">
 <meta name="twitter:description" content="照着博雯dalao给的思路，辣鸡如我还是做了一晚上，决定细数一下自己踩的坑（往事不堪回首） 首先会有一个secret.pcapng的文件，这就是题目了。 让我们用wireshark打开它，然后发现为毛这么多啊！！！（菜鸡之前做的流量审计流量比较少，一般都是一个个看的，摔桌！) 尝试一个个看寻找线索，发现一个html，复制下来打开发现标题是本机C盘的索引，其它能点的地方都点不了，审计了一下源码，发现">
@@ -196,8 +196,7 @@
 <p>0a5890168093d9eb9a6810fb3d122c307b28d3c5525f7f2ce73f2b24967ba11adeaa4ff7a8a9248f6624a46509668c313c1fe6d225ced3bc49fa3f8c54cd1475</p>
 </blockquote>
 <p><del>尝试十六进制解码，发现是一串乱码，卒</del>~</p>
-<p><img src="https://s1.ax2x.com/2018/09/02/5BKAEu.png" alt="image"></p>
-<p>然后咸鱼就不会了，博雯dalao告诉我要导出http对象（本菜鸡还真不知道有这个功能，喵！）</p>
+<p><img src="https://s1.ax2x.com/2018/09/02/5BKAEu.png" alt="image"><br><a id="more"></a><br>然后咸鱼就不会了，博雯dalao告诉我要导出http对象（本菜鸡还真不知道有这个功能，喵！）</p>
 <p><img src="https://s1.ax2x.com/2018/09/02/5BKt79.png" alt="image"></p>
 <p>发现中间有一大片空白很可疑啊 381发现有PK开头的一大堆字符，追踪一下，发现一大堆</p>
 <p>然后就是这里！！！我刚开始是直接把这个复制，作为ascii复制进winhex里，发现连文件头都不对，很难受，这时候博雯dalao又出场了，告诉我应该先把ascii码转换为元数据再复制进去，果然好了！</p>
@@ -449,11 +448,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ctf-misc</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂言</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂言</a>
+                <a href="javascript:void(0)" class="js-tag color4">ctf-misc</a>
               </li>
             
             <div class="clearfix"></div>
