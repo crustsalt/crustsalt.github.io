@@ -7,14 +7,14 @@
   
   
   
-  <title>关于bugku的一道源码泄露题 | 一只小咸鱼努力变成大咸鱼ing</title>
+  <title>关于bugku的一道源码泄露题 | Crustsalt&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="今天做了个bugku的题，我只觉得说好的sql注入呢？？？  sql注入2 http://120.24.86.145:8007/web2/ 全都tm过滤了绝望吗？ 提示 !,!=,=,+,-,^,%  我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。先看一下这个题的解法，用nikto扫一下">
 <meta name="keywords" content="ctf-web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于bugku的一道源码泄露题">
 <meta property="og:url" content="http://yoursite.com/2018/09/20/关于bugku的一道源码泄露/index.html">
-<meta property="og:site_name" content="一只小咸鱼努力变成大咸鱼ing">
+<meta property="og:site_name" content="Crustsalt&#39;s Blog">
 <meta property="og:description" content="今天做了个bugku的题，我只觉得说好的sql注入呢？？？  sql注入2 http://120.24.86.145:8007/web2/ 全都tm过滤了绝望吗？ 提示 !,!=,=,+,-,^,%  我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。先看一下这个题的解法，用nikto扫一下">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s1.ax2x.com/2018/09/20/5HmVyR.jpg">
@@ -25,7 +25,7 @@
 <meta name="twitter:description" content="今天做了个bugku的题，我只觉得说好的sql注入呢？？？  sql注入2 http://120.24.86.145:8007/web2/ 全都tm过滤了绝望吗？ 提示 !,!=,=,+,-,^,%  我尝试注入的时候发现，n多关键字符都被过滤了,但sql注入不能不用关键字的啊，查阅wp发现，这题其实是源码泄露，之前碰到过这种题，没有仔细总结，现在总结一下。先看一下这个题的解法，用nikto扫一下">
 <meta name="twitter:image" content="https://s1.ax2x.com/2018/09/20/5HmVyR.jpg">
   
-    <link rel="alternative" href="/atom.xml" title="一只小咸鱼努力变成大咸鱼ing" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Crustsalt&#39;s Blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/img/favicon.png">
