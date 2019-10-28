@@ -273,10 +273,10 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="pages-123" class="article article-type-pages" itemscope itemprop="blogPost">
+    <article id="pages-Java-容器学习" class="article article-type-pages" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2019/10/28/123/" class="article-date">
+      <a  href="/2019/10/28/Java-容器学习/" class="article-date">
       <time datetime="2019-10-28T03:39:15.000Z" itemprop="datePublished">2019-10-28</time>
 </a>
 
@@ -291,7 +291,7 @@
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2019/10/28/123/">Java-容器学习</a>
+      <a  class="article-title" href="/2019/10/28/Java-容器学习/">Java-容器学习</a>
     </h1>
   
 
@@ -302,54 +302,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Java-容器学习"><a href="#Java-容器学习" class="headerlink" title="Java 容器学习"></a>Java 容器学习</h2><blockquote>
-<p>容器，就是一种Java中的可以容纳各种对象的数据结构，容器可以储存各种对象：例如String、int都可以，如果不确定要让容器接受哪一种对象，可以使用泛型来替代。但是如果使用泛型，如果往容器里存Integer、String两种甚至更多种不同的对象，虽然编译器不会报错，但是会报出有安全问题警告，所以尽量还是直接指定存储哪一种对象，而非使用泛型。</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>使用容器需要先import,容器都在java.uti中。<br>容器种类：<br>可以大概分为四种类型：List、Set、Map、迭代器等等。</p>
-</blockquote>
-<ul>
-<li>列表（List）：</li>
-</ul>
-<p>定义：List<e>mylist = new ArrayList<e>();</e></e></p>
-<ul>
-<li>集合（Set）:</li>
-</ul>
-<p>定义：Set<integer>myset = new HashSet<integer>();<br>集合中不能有重复的元素</integer></integer></p>
-<ul>
-<li>映射（Map）</li>
-</ul>
-<p>定义：Map &lt;String,Integer&gt;keywords  = new HashMap&lt;String,Integer&gt;();<br>类似Python里面的字典，有键值对。</p>
-<ul>
-<li>迭代器</li>
-</ul>
-<p>定义：Iterator<string> it = actionSet.iterator();<br>使用迭代器可以方便的对容器里的内容进行遍历，因为容器不能通过下标等进行操作。</string></p>
-<hr>
-<blockquote>
-<p>在JDK文档中查阅Stack接口，尝试用封装LinkedList的方式实现一个Stack容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import java.util.LinkedList;</span><br><span class="line">public class homework5_3&lt;E&gt; extends LinkedList&lt;E&gt;&#123;</span><br><span class="line">	private LinkedList&lt;E&gt; LinkedListstack = new LinkedList&lt;E&gt;();</span><br><span class="line">	public E pop()&#123;</span><br><span class="line">		if(LinkedListstack.isEmpty())</span><br><span class="line">			return null;</span><br><span class="line">		else</span><br><span class="line">			return LinkedListstack.removeLast();</span><br><span class="line">	&#125;</span><br><span class="line">	public void push(E e)&#123;</span><br><span class="line">		LinkedListstack.addLast(e);</span><br><span class="line">	&#125;</span><br><span class="line">	public boolean isEmpty()&#123;</span><br><span class="line">		return LinkedListstack.isEmpty();</span><br><span class="line">	&#125;</span><br><span class="line">	public E peek()&#123;</span><br><span class="line">		if(isEmpty())&#123;</span><br><span class="line">			return null;</span><br><span class="line">		&#125;</span><br><span class="line">		return LinkedListstack.getLast();</span><br><span class="line">	&#125;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">	homework5_3 stack = new homework5_3();</span><br><span class="line">	System.out.println(&quot;Push string \&quot;test1\&quot; \&quot;test2\&quot; to the Stack! &quot;);</span><br><span class="line">	stack.push(&quot;test1&quot;);</span><br><span class="line">	stack.push(&quot;test2&quot;);</span><br><span class="line">	System.out.println(&quot;Start function Peek:&quot; + stack.peek());</span><br><span class="line">	System.out.println(&quot;Start function Pop&quot;);</span><br><span class="line">	stack.pop();</span><br><span class="line">	System.out.println(&quot;Start function Peek:&quot; + stack.peek());</span><br><span class="line">	System.out.println(&quot;Start function Pop&quot;);</span><br><span class="line">	stack.pop();</span><br><span class="line">	System.out.println(&quot;Start function Peek:&quot; + stack.peek());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>运行结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Push string &quot;test1&quot; &quot;test2&quot; to the Stack!</span><br><span class="line">Start function Peek:test2</span><br><span class="line">Start function Pop</span><br><span class="line">Start function Peek:test1</span><br><span class="line">Start function Pop</span><br><span class="line">Start function Peek:null</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<hr>
-<blockquote>
-<p>使用LinkedList实现一个类，该类有一个方法，该方法接受一个字符串作为参数，依次读取字符串中的字符，每次遇到“+”号就将“+”后面的一个字符压入栈中，每次遇到“-”时就将当前栈顶的字符弹出并在控制台打印，直到字符串遍历完，最后输出栈上剩余内容。实现main（）方法调用这个方法，并输入字符串”+U+n+c—+e+r+t—+a=+i-+n+t+y—+-+r+u–+1+e+s—“，观察输出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import java.util.LinkedList;</span><br><span class="line">import java.lang.String;</span><br><span class="line">public class homework5_4&lt;E&gt; extends LinkedList&lt;E&gt;&#123;</span><br><span class="line">	LinkedList&lt;String&gt; stack = new LinkedList&lt;String&gt;();	</span><br><span class="line">	public void check(String s)&#123;</span><br><span class="line">			char str1 = &apos;+&apos;;</span><br><span class="line">			char str2 = &apos;-&apos;;</span><br><span class="line">			char tmp;</span><br><span class="line">			for(int i = 0;i&lt;s.length();i++)&#123;</span><br><span class="line">					char item = s.charAt(i);</span><br><span class="line">					if(item == str1)&#123;</span><br><span class="line">						int p = i+1;</span><br><span class="line">						tmp = s.charAt(p);</span><br><span class="line">						String str = String.valueOf(tmp);</span><br><span class="line">						stack.addLast(str);</span><br><span class="line">					&#125;</span><br><span class="line">					if(item == str2)&#123;</span><br><span class="line">						System.out.print(stack.removeLast()+&quot; &quot;);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println(&quot;\nStack:&quot;);</span><br><span class="line">				while(!stack.isEmpty())&#123;</span><br><span class="line">					System.out.print(stack.removeLast()+&quot; &quot;);</span><br><span class="line">				&#125;</span><br><span class="line">			</span><br><span class="line">	&#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		String str = &quot;+U+n+c---+e+r+t---+a=+i-+n+t+y---+-+r+u--+1+e+s---&quot;;</span><br><span class="line">		homework5_4 homework = new homework5_4();</span><br><span class="line">		homework.check(str);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>运行结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c n U t r e i y t n - u r s e 1</span><br><span class="line">Stack:</span><br><span class="line">a</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<hr>
-<blockquote>
-<p>学习第八章中的文件输入/输出方法，从例5-6的TestMap.java中读入语句，并进行词频统计。进一步改写程序，统计TestMap.java中的Java关键字出现频率，在统计时，创建一个Set存储所有的Java关键字，在判断一个字符串记号是否为关键字时访问该Set。<br>遇到的问题：<br>TestMap.java部分关键字识别不出来<br>解决：在某些关键字周围加上分隔符空格<br>TestMap.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line"> public class TestMap&#123;</span><br><span class="line">	static String[] s=new String[4];</span><br><span class="line">	static &#123;</span><br><span class="line">		s[0]=&quot;I have a dream that one day this nation will rise up, &quot;</span><br><span class="line">				+ &quot;live up to the true meaning of its creed: &quot;</span><br><span class="line">				+ &quot;\&quot;We hold these truths to be self-evident; &quot;</span><br><span class="line">				+ &quot;that all men are created equal.\&quot;&quot;;</span><br><span class="line">		s[1]=&quot;I have a dream that one day on the red hills of Georgia &quot;</span><br><span class="line">				+ &quot;the sons of former slaves and the sons of former slave-owners &quot;</span><br><span class="line">				+ &quot;will be able to sit down together at the table of brotherhood.&quot;;</span><br><span class="line">		s[2]=&quot;I have a dream that one day even the state of Mississippi, &quot;</span><br><span class="line">				+ &quot;a state sweltering with the heat of injustice, &quot;</span><br><span class="line">				+ &quot;sweltering with the heat of oppression, &quot;</span><br><span class="line">				+ &quot;will be transformed into an oasis of freedom and justice&quot;;</span><br><span class="line">		s[3]=&quot;I have a dream that my four children will one day live in a nation &quot;</span><br><span class="line">				+ &quot;where they will not be judged by the color if their skin &quot;</span><br><span class="line">				+ &quot;but by the content of their character.&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	 public static void main(String[] args)&#123;</span><br><span class="line">		Map&lt;String,Integer&gt; statistics = new HashMap&lt;String,Integer&gt;();</span><br><span class="line">		</span><br><span class="line">		for(int i=0;i&lt;s.length;i++)&#123;</span><br><span class="line">			StringTokenizer st=new StringTokenizer(s[i],&quot;,.;:-\&quot; &quot;);</span><br><span class="line">			while(st.hasMoreTokens())&#123;</span><br><span class="line">				String key=st.nextToken();</span><br><span class="line">				if(statistics.get(key)!=null)&#123;</span><br><span class="line">					statistics.put(key, statistics.get(key)+1);</span><br><span class="line">				&#125;</span><br><span class="line">				else</span><br><span class="line">					statistics.put(key, 1);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(statistics);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.*;</span><br><span class="line">public class homework5_7 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		String str = &quot;public,abstract,assert,boolean,break,byte,case,catch,char,class,continue,default,do,double,else,enum,extends,final,finally,float,for,if,implements,import,int,interface,instanceof,long,native,new,package,private,protected,return,short,static,strictfp,super,switch,synchronized,this,throw,throws,transient,try,void,volatile,while&quot;;</span><br><span class="line">        Set &lt;String&gt;actionSet = new HashSet&lt;&gt;(Arrays.asList(str.split(&quot;,&quot;)));</span><br><span class="line">        Map &lt;String,Integer&gt;keywords  = new HashMap&lt;String,Integer&gt;();</span><br><span class="line">        System.out.print(&quot;\n&quot;);</span><br><span class="line">        String s = &quot;&quot;;</span><br><span class="line">        File file = new File(&quot;TestMap.java&quot;);</span><br><span class="line">        FileInputStream fis = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            fis = new FileInputStream(file);</span><br><span class="line">            int content;</span><br><span class="line">            while ((content = fis.read()) != -1) &#123;</span><br><span class="line">                s += (char)content;</span><br><span class="line">            &#125;</span><br><span class="line">            StringTokenizer st = new StringTokenizer(s,&quot;,; ()&#123;&#125;.=	&quot;);</span><br><span class="line">            while(st.hasMoreTokens())&#123;</span><br><span class="line">				String key=st.nextToken();     	</span><br><span class="line">				if(actionSet.contains(key))&#123;</span><br><span class="line">				if(keywords.get(key)!=null)&#123;</span><br><span class="line">					keywords.put(key, keywords.get(key)+1);</span><br><span class="line">				&#125;</span><br><span class="line">				else&#123;</span><br><span class="line">					keywords.put(key, 1);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(keywords);  </span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                if (fis != null)</span><br><span class="line">                    fis.close();</span><br><span class="line">            &#125; catch (IOException ex) &#123;</span><br><span class="line">                ex.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>运行结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;new=3, static=3, void=1, import=1, public=2, this=1, for=1, while=1, class=1, if=2, int=1&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-
+              <h2 id="Java-容器学习"><a href="#Java-容器学习" class="headerlink" title="Java 容器学习"></a>Java 容器学习</h2><blockquote>
+<p>容器，就是一种Java中的可以容纳各种对象的数据结构，容器可以储存各种对象：例如String、int都可以，如果不确定要让容器接受哪一种对象，可以使用泛型来替代。但是如果使用泛型，如果往容器里存Integer、String两种甚至更多种不同的对象，虽然编译器不会报错，但是会报出有安全问题警告，所以尽量还是直接指定存储哪一种对象，而非使用泛型。<br></p></blockquote>
+          
       
     </div>
     
@@ -362,6 +317,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java学习/">Java学习</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="/2019/10/28/Java-容器学习/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -452,10 +411,10 @@
 
 
   
-    <article id="pages-sqlsever反弹注入" class="article article-type-pages" itemscope itemprop="blogPost">
+    <article id="pages-整数反转" class="article article-type-pages" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2019/10/14/sqlsever反弹注入/" class="article-date">
+      <a  href="/2019/10/14/整数反转/" class="article-date">
       <time datetime="2019-10-14T15:08:24.000Z" itemprop="datePublished">2019-10-14</time>
 </a>
 
@@ -470,7 +429,7 @@
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a>
+      <a  class="article-title" href="/2019/10/14/整数反转/">整数反转</a>
     </h1>
   
 
@@ -481,8 +440,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p>
-<p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）<br></p>
+              <h2 id="LeetCode刷题笔记"><a href="#LeetCode刷题笔记" class="headerlink" title="LeetCode刷题笔记"></a>LeetCode刷题笔记</h2><h3 id="整数反转"><a href="#整数反转" class="headerlink" title="整数反转"></a>整数反转</h3><p><strong>题目链接：<a href="https://leetcode-cn.com/problems/reverse-integer/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-integer/</a></strong></p>
+<hr>
+<blockquote>
+<p>给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。<br></p></blockquote>
           
       
     </div>
@@ -493,12 +454,12 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/渗透测试/">渗透测试</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode刷题笔记/">LeetCode刷题笔记</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
-          <a   href="/2019/10/14/sqlsever反弹注入/#more">查看更多 >></a>
+          <a   href="/2019/10/14/整数反转/#more">查看更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -588,10 +549,10 @@
 
 
   
-    <article id="pages-整数反转" class="article article-type-pages" itemscope itemprop="blogPost">
+    <article id="pages-sqlsever反弹注入" class="article article-type-pages" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2019/10/14/整数反转/" class="article-date">
+      <a  href="/2019/10/14/sqlsever反弹注入/" class="article-date">
       <time datetime="2019-10-14T15:08:24.000Z" itemprop="datePublished">2019-10-14</time>
 </a>
 
@@ -606,7 +567,7 @@
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="/2019/10/14/整数反转/">整数反转</a>
+      <a  class="article-title" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a>
     </h1>
   
 
@@ -617,10 +578,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="LeetCode刷题笔记"><a href="#LeetCode刷题笔记" class="headerlink" title="LeetCode刷题笔记"></a>LeetCode刷题笔记</h2><h3 id="整数反转"><a href="#整数反转" class="headerlink" title="整数反转"></a>整数反转</h3><p><strong>题目链接：<a href="https://leetcode-cn.com/problems/reverse-integer/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-integer/</a></strong></p>
-<hr>
-<blockquote>
-<p>给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。<br></p></blockquote>
+              <p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p>
+<p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）<br></p>
           
       
     </div>
@@ -631,12 +590,12 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode刷题笔记/">LeetCode刷题笔记</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/渗透测试/">渗透测试</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
-          <a   href="/2019/10/14/整数反转/#more">查看更多 >></a>
+          <a   href="/2019/10/14/sqlsever反弹注入/#more">查看更多 >></a>
         </p>
       
       <div class="clearfix"></div>
