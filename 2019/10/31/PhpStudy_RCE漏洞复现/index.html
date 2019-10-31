@@ -7,26 +7,26 @@
   
   
   
-  <title>Java-容器学习 | Crustsalt&#39;s Blog</title>
+  <title>PhpStudy RCE漏洞复现 | Crustsalt&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="PhpStudy RCE漏洞复现PhpStudy后门时间出现了挺长一阵子了，我一直没有进行复现，今天尝试复现一下。  查看漏洞是否存在(1)phpStudy20161103版本后门位置存在位置  *\phpStudy\php\php-5.2.17\ext\php_xmlrpc.dll *\phpStudy\php\php-5.2.17\ext\php_xmlrpc.dll  (2)phpStudy">
 <meta name="keywords" content="渗透测试,漏洞复现">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java-容器学习">
-<meta property="og:url" content="http://yoursite.com/2019/10/28/PhpStudy RCE漏洞复现/index.html">
+<meta property="og:title" content="PhpStudy RCE漏洞复现">
+<meta property="og:url" content="http://yoursite.com/2019/10/31/PhpStudy_RCE漏洞复现/index.html">
 <meta property="og:site_name" content="Crustsalt&#39;s Blog">
 <meta property="og:description" content="PhpStudy RCE漏洞复现PhpStudy后门时间出现了挺长一阵子了，我一直没有进行复现，今天尝试复现一下。  查看漏洞是否存在(1)phpStudy20161103版本后门位置存在位置  *\phpStudy\php\php-5.2.17\ext\php_xmlrpc.dll *\phpStudy\php\php-5.2.17\ext\php_xmlrpc.dll  (2)phpStudy">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/10/28/PhpStudy%20RCE漏洞复现/Hexo/source/_posts/img/1572531118563.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/28/PhpStudy%20RCE漏洞复现/Hexo/source/_posts/img/1572531356667.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/28/PhpStudy%20RCE漏洞复现/Hexo/source/_posts/img/1572532128021.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/28/PhpStudy%20RCE漏洞复现/Hexo/source/_posts/img/1572533721654.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/28/PhpStudy%20RCE漏洞复现/Hexo/source/_posts/img/1572534460297.png">
-<meta property="og:updated_time" content="2019-10-31T15:14:59.627Z">
+<meta property="og:image" content="http://yoursite.com/2019/10/31/PhpStudy_RCE漏洞复现/Hexo/source/_posts/PhpStudy_RCE漏洞复现/1572531118563.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/31/PhpStudy_RCE漏洞复现/Hexo/source/_posts/PhpStudy_RCE漏洞复现/1572531356667.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/31/PhpStudy_RCE漏洞复现/Hexo/source/_posts/PhpStudy_RCE漏洞复现/1572532128021.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/31/PhpStudy_RCE漏洞复现/Hexo/source/_posts/PhpStudy_RCE漏洞复现/1572533721654.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/31/PhpStudy_RCE漏洞复现/Hexo/source/_posts/PhpStudy_RCE漏洞复现/1572534460297.png">
+<meta property="og:updated_time" content="2019-10-31T15:20:24.697Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java-容器学习">
+<meta name="twitter:title" content="PhpStudy RCE漏洞复现">
 <meta name="twitter:description" content="PhpStudy RCE漏洞复现PhpStudy后门时间出现了挺长一阵子了，我一直没有进行复现，今天尝试复现一下。  查看漏洞是否存在(1)phpStudy20161103版本后门位置存在位置  *\phpStudy\php\php-5.2.17\ext\php_xmlrpc.dll *\phpStudy\php\php-5.2.17\ext\php_xmlrpc.dll  (2)phpStudy">
-<meta name="twitter:image" content="http://yoursite.com/2019/10/28/PhpStudy%20RCE漏洞复现/Hexo/source/_posts/img/1572531118563.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/31/PhpStudy_RCE漏洞复现/Hexo/source/_posts/PhpStudy_RCE漏洞复现/1572531118563.png">
   
     <link rel="alternative" href="/atom.xml" title="Crustsalt&#39;s Blog" type="application/atom+xml">
   
@@ -279,11 +279,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="pages-PhpStudy RCE漏洞复现" class="article article-type-pages" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="pages-PhpStudy_RCE漏洞复现" class="article article-type-pages" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2019/10/28/PhpStudy RCE漏洞复现/" class="article-date">
-      <time datetime="2019-10-28T03:39:15.000Z" itemprop="datePublished">2019-10-28</time>
+      <a  href="/2019/10/31/PhpStudy_RCE漏洞复现/" class="article-date">
+      <time datetime="2019-10-31T15:20:50.000Z" itemprop="datePublished">2019-10-31</time>
 </a>
 
     </div>
@@ -297,7 +297,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java-容器学习
+      PhpStudy RCE漏洞复现
     </h1>
   
 
@@ -332,19 +332,19 @@
 <p>*:\PHPTutorial\PHP\PHP-5.4.45\ext\php_xmlrpc.dll</p>
 </blockquote>
 <p>查找dll文件中的”@eval”</p>
-<p><img src="/2019/10/28/PhpStudy RCE漏洞复现/Hexo\source\_posts\img\1572531118563.png" alt="1572531118563"></p>
+<p><img src="/2019/10/31/PhpStudy_RCE漏洞复现/Hexo\source\_posts\PhpStudy_RCE漏洞复现\1572531118563.png" alt="1572531118563"></p>
 <p>可见存在后门在169行</p>
 <blockquote>
 <p>顺便说一下，Windows的powershell无法使用grep，所以只能用Select-String进行替代。</p>
 </blockquote>
 <p>以下为PowerShell中可以替代grep的三种命令，but亲测findstr不能用。</p>
-<p><img src="/2019/10/28/PhpStudy RCE漏洞复现/Hexo\source\_posts\img\1572531356667.png" alt="1572531356667"></p>
+<p><img src="/2019/10/31/PhpStudy_RCE漏洞复现/Hexo\source\_posts\PhpStudy_RCE漏洞复现\1572531356667.png" alt="1572531356667"></p>
 <blockquote>
 <p>findstr：           cat .\create.tf  |findstr alicloud_slb<br>where：            cat .\create.tf  |where {$_ -match “alicloud_slb”}<br>Select-String： Select-String “alicloud_slb” .\create.tf</p>
 </blockquote>
 <hr>
 <h4 id="搭建PhpStudy靶机环境"><a href="#搭建PhpStudy靶机环境" class="headerlink" title="搭建PhpStudy靶机环境"></a>搭建PhpStudy靶机环境</h4><p>首先在靶机搭建phpstudy网站，在攻击机看是否可以访问</p>
-<p><img src="/2019/10/28/PhpStudy RCE漏洞复现/Hexo\source\_posts\img\1572532128021.png" alt="1572532128021"></p>
+<p><img src="/2019/10/31/PhpStudy_RCE漏洞复现/Hexo\source\_posts\PhpStudy_RCE漏洞复现\1572532128021.png" alt="1572532128021"></p>
 <p>攻击机开启bp进行抓包</p>
 <blockquote>
 <p>GET / HTTP/1.1</p>
@@ -362,10 +362,10 @@
 <p>system(“your command”);</p>
 <p>将想要执行的命令放到your command中，对整条命令进行base64编码，放入Accept-Charset即可执行命令。</p>
 <p>我连接超时了，结果发现是php_xmlrpc拓展没开，并且一定要保留请求体，在Cache-Control后面一定要至少敲两行回车，要不会请求超时。</p>
-<p><img src="/2019/10/28/PhpStudy RCE漏洞复现/Hexo\source\_posts\img\1572533721654.png" alt="1572533721654"></p>
+<p><img src="/2019/10/31/PhpStudy_RCE漏洞复现/Hexo\source\_posts\PhpStudy_RCE漏洞复现\1572533721654.png" alt="1572533721654"></p>
 <p>然后直接一条龙，使用Phpstudy用户权限就是当前登陆用户权限，systeminfo看一波，netstat看一波端口，直接写webshell。(最近想再看看关于如何免杀，之前写的马msf12重编码依然被火绒拦……所以webshell这块之后再写)</p>
 <p>之后顺便把后门删了(懒得搭windows虚拟机的我冒险用物理机以身试险)</p>
-<p><img src="/2019/10/28/PhpStudy RCE漏洞复现/Hexo\source\_posts\img\1572534460297.png" alt="1572534460297"></p>
+<p><img src="/2019/10/31/PhpStudy_RCE漏洞复现/Hexo\source\_posts\PhpStudy_RCE漏洞复现\1572534460297.png" alt="1572534460297"></p>
 
       
     </div>
@@ -374,13 +374,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2019/10/28/PhpStudy RCE漏洞复现/">Java-容器学习</a></p>
+        <p><span>本文标题:</span><a  href="/2019/10/31/PhpStudy_RCE漏洞复现/">PhpStudy RCE漏洞复现</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Crustsalt 的个人博客">Crustsalt</a></p>
-        <p><span>发布时间:</span>2019年10月28日 - 11时39分</p>
-        <p><span>最后更新:</span>2019年10月31日 - 23时14分</p>
+        <p><span>发布时间:</span>2019年10月31日 - 23时20分</p>
+        <p><span>最后更新:</span>2019年10月31日 - 23时20分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/10/28/PhpStudy RCE漏洞复现/" title="Java-容器学习">http://yoursite.com/2019/10/28/PhpStudy RCE漏洞复现/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/10/28/PhpStudy RCE漏洞复现/　　作者: Crustsalt" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/10/31/PhpStudy_RCE漏洞复现/" title="PhpStudy RCE漏洞复现">http://yoursite.com/2019/10/31/PhpStudy_RCE漏洞复现/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/10/31/PhpStudy_RCE漏洞复现/　　作者: Crustsalt" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -391,18 +391,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2019/10/28/Java-容器学习/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Java-容器学习
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2019/10/23/非递减数列/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">非递减数列</div>
+    <a  href="/2019/10/30/Windows API编程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Windows API编程</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -487,18 +478,16 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2019/10/28/Java-容器学习/" title="上一篇: Java-容器学习">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2019/10/23/非递减数列/" title="下一篇: 非递减数列">
+            <a  href="/2019/10/30/Windows API编程/" title="下一篇: Windows API编程">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/10/30/Windows API编程/">Windows API编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/Java-容器学习/">Java-容器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/PhpStudy RCE漏洞复现/">Java-容器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/非递减数列/">非递减数列</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/整数反转/">整数反转</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/两数之和/">两数之和</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/PhpStudy_RCE漏洞复现/">PhpStudy RCE漏洞复现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/30/Windows API编程/">Windows API编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/Java-容器学习/">Java-容器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/非递减数列/">非递减数列</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/整数反转/">整数反转</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/两数之和/">两数之和</a></li></ul>
     
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
