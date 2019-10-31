@@ -58,7 +58,7 @@
 <div class="intrude-less">
     <header id="header" class="inner">
         
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
         <a href="/" class="profilepic">
             
@@ -291,7 +291,7 @@
         <h2 id="LeetCode刷题笔记"><a href="#LeetCode刷题笔记" class="headerlink" title="LeetCode刷题笔记"></a>LeetCode刷题笔记</h2><h3 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h3><p><strong>题目链接：<a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum/</a></strong></p>
 <hr>
 <blockquote>
-<p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">示例:</span><br><span class="line">给定 nums = [2, 7, 11, 15], target = 9</span><br><span class="line">因为 nums[0] + nums[1] = 2 + 7 = 9</span><br><span class="line">所以返回 [0, 1]</span><br></pre></td></tr></table></figure></p>
+<p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。<br><a id="more"></a><br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">示例:</span><br><span class="line">给定 nums = <span class="string">[2, 7, 11, 15]</span>, target = <span class="number">9</span></span><br><span class="line">因为 nums<span class="string">[0]</span> + nums<span class="string">[1]</span> = <span class="number">2</span> + <span class="number">7</span> = <span class="number">9</span></span><br><span class="line">所以返回 <span class="string">[0, 1]</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <hr>
 <h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><blockquote>
@@ -315,7 +315,7 @@
 </tr>
 </tbody>
 </table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def twoSum(self, nums: List[int], target: int) -&gt; List[int]:</span><br><span class="line">        answer = []</span><br><span class="line">        flag = 0</span><br><span class="line">        for number in range(len(nums)):</span><br><span class="line">            for number0 in range(number+1,len(nums)):</span><br><span class="line">                if((nums[number]+nums[number0])==target):</span><br><span class="line">                    answer.append(number)</span><br><span class="line">                    answer.append(number0)</span><br><span class="line">                    flag = 1</span><br><span class="line">                    break</span><br><span class="line">            if(flag == 1):</span><br><span class="line">                break</span><br><span class="line">        return answer</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def twoSum(self, num<span class="variable">s:</span> List[<span class="keyword">int</span>], targe<span class="variable">t:</span> <span class="keyword">int</span>) -&gt; List[<span class="keyword">int</span>]:</span><br><span class="line">        answer = []</span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> <span class="keyword">number</span> in <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">for</span> number0 in <span class="built_in">range</span>(<span class="keyword">number</span>+<span class="number">1</span>,<span class="built_in">len</span>(nums)):</span><br><span class="line">                <span class="keyword">if</span>((nums[<span class="keyword">number</span>]+nums[number0])==target):</span><br><span class="line">                    answer.<span class="keyword">append</span>(<span class="keyword">number</span>)</span><br><span class="line">                    answer.<span class="keyword">append</span>(number0)</span><br><span class="line">                    flag = <span class="number">1</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> answer</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>之后是从大佬那里看来的思路，利用python3带的in方法，一个for循环遍历nums元素，记为left，利用target-left_index得到的值，记为right，利用in方法检测是否在left之后的列表里，如果在，则把当前遍历元素之后的元素拿出来，检测第一个出现right，然后返回</p>
 </blockquote>
@@ -337,7 +337,7 @@
 </tr>
 </tbody>
 </table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def twoSum(self, nums: List[int], target: int) -&gt; List[int]:</span><br><span class="line">        for left in range(len(nums)):</span><br><span class="line">            right = target - nums[left]</span><br><span class="line">            i = nums[left+1:]</span><br><span class="line">            if(right in i):</span><br><span class="line">                x = i.index(right)</span><br><span class="line">                x = x + left + 1</span><br><span class="line">                return [left,x]</span><br><span class="line">        return []</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def twoSum(self, num<span class="variable">s:</span> List[<span class="keyword">int</span>], targe<span class="variable">t:</span> <span class="keyword">int</span>) -&gt; List[<span class="keyword">int</span>]:</span><br><span class="line">        <span class="keyword">for</span> <span class="keyword">left</span> in <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">right</span> = target - nums[<span class="keyword">left</span>]</span><br><span class="line">            i = nums[<span class="keyword">left</span>+<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">right</span> in i):</span><br><span class="line">                <span class="keyword">x</span> = i.<span class="built_in">index</span>(<span class="keyword">right</span>)</span><br><span class="line">                <span class="keyword">x</span> = <span class="keyword">x</span> + <span class="keyword">left</span> + <span class="number">1</span></span><br><span class="line">                <span class="keyword">return</span> [<span class="keyword">left</span>,<span class="keyword">x</span>]</span><br><span class="line">        <span class="keyword">return</span> []</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>enumerate产生一个有下标值和对应值的列表，一个一个遍历nums，如果不在字典里，就把target-当前遍历值即当前需要的值加入字典，并解释为当前遍历值的下标，等遍历到需要的那个值，就直接查找是否在字典里，如果在，说明前面遍历时有某个值恰好加上当前遍历的值即为target，取对应的：值即为需要的下标，返回即可</p>
 </blockquote>
@@ -359,7 +359,7 @@
 </tr>
 </tbody>
 </table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def twoSum(self, nums: List[int], target: int) -&gt; List[int]:</span><br><span class="line">        dic = &#123;&#125;</span><br><span class="line">        for i, num in enumerate(nums):</span><br><span class="line">            if num in dic:</span><br><span class="line">                return [dic[num], i]</span><br><span class="line">            else:</span><br><span class="line">                dic[target - num] = i</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line"><span class="class">    <span class="title">def</span> <span class="title">twoSum</span>(<span class="title">self</span>, <span class="title">nums</span>: <span class="title">List</span>[<span class="title">int</span>], <span class="title">target</span>: <span class="title">int</span>) -&gt; <span class="title">List</span>[<span class="title">int</span>]:</span></span><br><span class="line"><span class="class">        <span class="title">dic</span> = </span>&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i, <span class="built_in">num</span> <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">num</span> <span class="keyword">in</span> dic:</span><br><span class="line">                <span class="keyword">return</span> [dic[<span class="built_in">num</span>], i]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dic[target - <span class="built_in">num</span>] = i</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -419,7 +419,7 @@
 </style>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
 <script>
     var valueHide = "隐藏目录";
@@ -493,7 +493,7 @@
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2019/10/31/PhpStudy_RCE漏洞复现/">PhpStudy RCE漏洞复现</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2019/10/30/Windows API编程/">Windows API编程</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2019/10/28/Java-容器学习/">Java-容器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2019/10/23/非递减数列/">非递减数列</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2019/10/14/两数之和/">两数之和</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2019/10/14/整数反转/">整数反转</a></li></ul>
     
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
     <script>
         $(".post-list").addClass("toc-article");
@@ -559,7 +559,7 @@
 
     </div>
     
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
 <script src="/blog/js/main.js"></script>
 
