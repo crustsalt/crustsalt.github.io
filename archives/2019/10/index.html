@@ -23,6 +23,8 @@
     <link rel="icon" href="/img/favicon.jpg">
   
   
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -36,7 +38,7 @@
   <script>
       var yiliaConfig = {
           fancybox: true,
-          animate: false,
+          animate: true,
           isHome: false,
           isPost: false,
           isArchive: true,
@@ -53,11 +55,11 @@
 <div class="intrude-less">
     <header id="header" class="inner">
         
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
         <a href="/" class="profilepic">
             
-            <img src="/img/avatar.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+            <img lazy-src="/img/avatar.jpg" class="js-avatar">
             
         </a>
         <hgroup>
@@ -178,7 +180,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java学习/" style="font-size: 10px;">Java学习</a> <a href="/tags/LeetCode刷题笔记/" style="font-size: 20px;">LeetCode刷题笔记</a> <a href="/tags/Windows-API编程/" style="font-size: 10px;">Windows API编程</a> <a href="/tags/渗透测试/" style="font-size: 15px;">渗透测试</a> <a href="/tags/漏洞复现/" style="font-size: 10px;">漏洞复现</a>
+                        <a href="/tags/Java学习/" style="font-size: 10px;">Java学习</a> <a href="/tags/LeetCode刷题笔记/" style="font-size: 20px;">LeetCode刷题笔记</a> <a href="/tags/Windows-API编程/" style="font-size: 10px;">Windows API编程</a> <a href="/tags/开发相关/" style="font-size: 10px;">开发相关</a> <a href="/tags/渗透测试/" style="font-size: 15px;">渗透测试</a> <a href="/tags/漏洞复现/" style="font-size: 10px;">漏洞复现</a>
                     </div>
                 </section>
                 
@@ -206,7 +208,7 @@
         <header id="header" class="inner">
             <a href="/" class="profilepic">
                 
-                    <img src="/img/avatar.jpg" class="js-avatar" style="width: 100%; height: 100%; opacity: 1;">
+                    <img lazy-src="/img/avatar.jpg" class="js-avatar">
                 
             </a>
             <hgroup>
@@ -388,39 +390,6 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
           <div class="article-meta">
-              <a  href="/2019/10/14/两数之和/" class="archive-article-date">
-      <time datetime="2019-10-14T15:08:24.000Z" itemprop="datePublished">10-14</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2019/10/14/两数之和/">两数之和</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode刷题笔记/">LeetCode刷题笔记</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-pages">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
               <a  href="/2019/10/14/sqlsever反弹注入/" class="archive-article-date">
       <time datetime="2019-10-14T15:08:24.000Z" itemprop="datePublished">10-14</time>
 </a>
@@ -440,6 +409,39 @@
           
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/渗透测试/">渗透测试</a></li></ul>
+    </div>
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-pages">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a  href="/2019/10/14/两数之和/" class="archive-article-date">
+      <time datetime="2019-10-14T15:08:24.000Z" itemprop="datePublished">10-14</time>
+</a>
+
+        </div>
+         
+  
+    <h1 itemprop="name">
+      <a  class="archive-article-title" href="/2019/10/14/两数之和/">两数之和</a>
+    </h1>
+  
+
+
+        <div class="article-info info-on-archive">
+          
+
+          
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode刷题笔记/">LeetCode刷题笔记</a></li></ul>
     </div>
 
         </div>
@@ -491,8 +493,6 @@
 </div>
       <footer id="footer">
     <div class="outer">
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
         <div id="footer-info">
             <div class="footer-left">
                 &copy; 2019 Crustsalt
@@ -527,7 +527,7 @@
 
     </div>
     
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
 <script src="/js/main.js"></script>
 
@@ -583,7 +583,7 @@ ga('send', 'pageview');
 
     <button class="hide-labels">TAG 开关</button>
     
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
     <script>
         $(document).ready(function() {
