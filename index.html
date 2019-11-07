@@ -183,7 +183,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java学习/" style="font-size: 10px;">Java学习</a> <a href="/tags/Windows-API编程/" style="font-size: 10px;">Windows API编程</a> <a href="/tags/sql注入/" style="font-size: 20px;">sql注入</a> <a href="/tags/两数之和/" style="font-size: 10px;">两数之和</a> <a href="/tags/套接字学习/" style="font-size: 10px;">套接字学习</a> <a href="/tags/整数反转/" style="font-size: 10px;">整数反转</a> <a href="/tags/漏洞复现/" style="font-size: 10px;">漏洞复现</a> <a href="/tags/非递减数列/" style="font-size: 10px;">非递减数列</a>
+                        <a href="/tags/Java学习/" style="font-size: 10px;">Java学习</a> <a href="/tags/Windows-API编程/" style="font-size: 10px;">Windows API编程</a> <a href="/tags/sql注入/" style="font-size: 20px;">sql注入</a> <a href="/tags/两数之和/" style="font-size: 10px;">两数之和</a> <a href="/tags/套接字学习/" style="font-size: 10px;">套接字学习</a> <a href="/tags/整数反转/" style="font-size: 10px;">整数反转</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/漏洞复现/" style="font-size: 10px;">漏洞复现</a> <a href="/tags/非递减数列/" style="font-size: 10px;">非递减数列</a>
                     </div>
                 </section>
                 
@@ -246,6 +246,76 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="pages-文件上传靶场" class="article article-type-pages" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2019/11/07/文件上传靶场/" class="article-date">
+      <time datetime="2019-11-07T03:49:50.000Z" itemprop="datePublished">2019-11-07</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2019/11/07/文件上传靶场/">文件上传靶场</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="文件上传靶场"><a href="#文件上传靶场" class="headerlink" title="文件上传靶场"></a>文件上传靶场</h2><p>整理磁盘的时候莫名其妙发现这个半年前写的blog没发，今天发上来，这是一个比较经典的文件上传靶场，类型比较全。<br><img src="https://s2.ax1x.com/2019/01/27/ku5SxS.png" alt="image"><br></p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/渗透测试/">渗透测试</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件上传/">文件上传</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a   href="/2019/11/07/文件上传靶场/#more">查看更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="pages-Sqli" class="article article-type-pages" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -275,9 +345,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="Sqli-lab-1-65关放弃指北"><a href="#Sqli-lab-1-65关放弃指北" class="headerlink" title="Sqli-lab 1-65关放弃指北"></a><strong>Sqli-lab</strong> 1-65关放弃指北</h2><p>从大一我就说要写完 Sqli-lab ，然而至今好像也才写到20关。不如把 Sqli-lab 写完吧。（可能是有生之年？）先附上别人的writeup： <a href="https://www.cnblogs.com/-qing-/p/11610385.html" target="_blank" rel="noopener">https://www.cnblogs.com/-qing-/p/11610385.html</a> 。</p>
-<p>先大体说一下Sqli-lab，这是一个锻炼sql注入能力，是一个印度程序员开发的，一共有65关，刷完了Sqli-lab就基本上有了应对绝大多数场景的手工注入能力，某种意义上说这是sql注入的基础。而该项目的注入点就在于id参数（这个项目是真的能把id参数玩出花来）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost/sqli-labs/Less-1/index.php?id=1</span><br></pre></td></tr></table></figure>
+              <h2 id="Sqli-lab-1-65关放弃指北"><a href="#Sqli-lab-1-65关放弃指北" class="headerlink" title="Sqli-lab 1-65关放弃指北"></a><strong>Sqli-lab</strong> 1-65关放弃指北</h2><p>Sqli-lab通关writeup，寒假觉得自己太堕落了，对sql注入也仅仅只掌握了最基本的原理，所以决定把sqli刷一遍。<br>并且为了方便注入，我在sql语句后加入了</p>
+<blockquote>
+<p>echo $sql;</p>
+</blockquote>
+<p>这样可以方便学习。并且由于关卡数量比较庞大，每个关卡爆到表名就算完成任务（反正刷src也不能脱裤对吧）<br></p>
           
       
     </div>
@@ -750,79 +822,6 @@
 
 
   
-    <article id="pages-两数之和" class="article article-type-pages" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2019/10/14/两数之和/" class="article-date">
-      <time datetime="2019-10-14T15:08:24.000Z" itemprop="datePublished">2019-10-14</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2019/10/14/两数之和/">两数之和</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="LeetCode刷题笔记"><a href="#LeetCode刷题笔记" class="headerlink" title="LeetCode刷题笔记"></a>LeetCode刷题笔记</h2><h3 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h3><p><strong>题目链接：<a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum/</a></strong></p>
-<hr>
-<blockquote>
-<p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。<br></p></blockquote>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/LeetCode刷题笔记/">LeetCode刷题笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/两数之和/">两数之和</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/2019/10/14/两数之和/#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
     <article id="pages-整数反转" class="article article-type-pages" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -876,6 +875,79 @@
       
         <p class="article-more-link">
           <a   href="/2019/10/14/整数反转/#more">查看更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="pages-两数之和" class="article article-type-pages" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2019/10/14/两数之和/" class="article-date">
+      <time datetime="2019-10-14T15:08:24.000Z" itemprop="datePublished">2019-10-14</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2019/10/14/两数之和/">两数之和</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="LeetCode刷题笔记"><a href="#LeetCode刷题笔记" class="headerlink" title="LeetCode刷题笔记"></a>LeetCode刷题笔记</h2><h3 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h3><p><strong>题目链接：<a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum/</a></strong></p>
+<hr>
+<blockquote>
+<p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。<br>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。<br></p></blockquote>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/LeetCode刷题笔记/">LeetCode刷题笔记</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/两数之和/">两数之和</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a   href="/2019/10/14/两数之和/#more">查看更多 >></a>
         </p>
       
       <div class="clearfix"></div>
