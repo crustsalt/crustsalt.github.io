@@ -7,20 +7,23 @@
   
   
   
-  <title>Windows API编程 | Crustsalt&#39;s Blog</title>
+  <title>Nmap扫描模式初探究 | Crustsalt&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Windows API编程 题目：使用 Windows 核心 API 实现以下程序   程序 1：该程序能够创建一个本机的 OllyDbg 进程（使用 CreateProcess，显式指定 OllyDbg 可执行文件的路径）  程序 2：a) 该程序能够创建一个线程，显示 MessageBoxb) 在以上子线程中，编程获得 kernel32.dll 在当前系统中的路径信息，作为内容显示在以上的 M">
-<meta name="keywords" content="Windows API编程">
+  <meta name="description" content="Nmap扫描模式探究一直只会Nmap最基本的扫描，对于Nmap的很多扫描模式没有深入探究，这次尝试学习一下。（重点是我挖不出来洞了，tcl">
+<meta name="keywords" content="Nmap学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows API编程">
-<meta property="og:url" content="/2019/10/30/Windows API编程/index.html">
+<meta property="og:title" content="Nmap扫描模式初探究">
+<meta property="og:url" content="/2019/11/16/Nmap扫描模式初探究/index.html">
 <meta property="og:site_name" content="Crustsalt&#39;s Blog">
-<meta property="og:description" content="Windows API编程 题目：使用 Windows 核心 API 实现以下程序   程序 1：该程序能够创建一个本机的 OllyDbg 进程（使用 CreateProcess，显式指定 OllyDbg 可执行文件的路径）  程序 2：a) 该程序能够创建一个线程，显示 MessageBoxb) 在以上子线程中，编程获得 kernel32.dll 在当前系统中的路径信息，作为内容显示在以上的 M">
+<meta property="og:description" content="Nmap扫描模式探究一直只会Nmap最基本的扫描，对于Nmap的很多扫描模式没有深入探究，这次尝试学习一下。（重点是我挖不出来洞了，tcl">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-12T03:42:44.560Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/16/MBUolT.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/16/MBdqiR.png">
+<meta property="og:updated_time" content="2019-11-16T14:24:06.689Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows API编程">
-<meta name="twitter:description" content="Windows API编程 题目：使用 Windows 核心 API 实现以下程序   程序 1：该程序能够创建一个本机的 OllyDbg 进程（使用 CreateProcess，显式指定 OllyDbg 可执行文件的路径）  程序 2：a) 该程序能够创建一个线程，显示 MessageBoxb) 在以上子线程中，编程获得 kernel32.dll 在当前系统中的路径信息，作为内容显示在以上的 M">
+<meta name="twitter:title" content="Nmap扫描模式初探究">
+<meta name="twitter:description" content="Nmap扫描模式探究一直只会Nmap最基本的扫描，对于Nmap的很多扫描模式没有深入探究，这次尝试学习一下。（重点是我挖不出来洞了，tcl">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/16/MBUolT.png">
   
     <link rel="alternative" href="/atom.xml" title="Crustsalt&#39;s Blog" type="application/atom+xml">
   
@@ -246,11 +249,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="pages-Windows API编程" class="article article-type-pages" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Nmap扫描模式初探究" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2019/10/30/Windows API编程/" class="article-date">
-      <time datetime="2019-10-30T04:00:15.000Z" itemprop="datePublished">2019-10-30</time>
+      <a  href="/2019/11/16/Nmap扫描模式初探究/" class="article-date">
+      <time datetime="2019-11-16T14:24:26.000Z" itemprop="datePublished">2019-11-16</time>
 </a>
 
     </div>
@@ -264,7 +267,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Windows API编程
+      Nmap扫描模式初探究
     </h1>
   
 
@@ -274,13 +277,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发相关/">开发相关</a>
+    <a class="article-category-link" href="/categories/渗透测试/">渗透测试</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows-API编程/">Windows API编程</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nmap学习/">Nmap学习</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -290,26 +293,27 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Windows-API编程"><a href="#Windows-API编程" class="headerlink" title="Windows API编程"></a>Windows API编程</h2><blockquote>
-<p>题目：使用 Windows 核心 API 实现以下程序 </p>
-<ol>
-<li>程序 1：该程序能够创建一个本机的 OllyDbg 进程（使用 CreateProcess，显式指定 OllyDbg 可执行文件的路径） </li>
-<li>程序 2：<br>a) 该程序能够创建一个线程，显示 MessageBox<br>b) 在以上子线程中，编程获得 kernel32.dll 在当前系统中的路径信息，作为内容显示在以上的 MessageBox 中<br>c) 在以上子线程中，编程获得子线程所加载 kernel32.dll 中的GetCurrentThreadId()函数的地址，调用该函数，获得子线程的线程编号，将线程编号连接到上一问的 kernel32.dll路径后面，再将连接结果字符串显示在 MessageBox 中</li>
-</ol>
-</blockquote>
-<a id="more"></a> 
-<hr>
-<p>以下程序我使用的是Dev-C++ “TDM-GCC 4.9.2 32-bit Release”编译成功的。</p>
+        <h2 id="Nmap扫描模式探究"><a href="#Nmap扫描模式探究" class="headerlink" title="Nmap扫描模式探究"></a>Nmap扫描模式探究</h2><p>一直只会Nmap最基本的扫描，对于Nmap的很多扫描模式没有深入探究，这次尝试学习一下。（重点是我挖不出来洞了，tcl</p>
+<a id="more"></a>
+<h3 id="Nmap简介"><a href="#Nmap简介" class="headerlink" title="Nmap简介"></a>Nmap简介</h3><p>Nmap是一款开源免费的网络发现（Network Discovery）和安全审计（Security Auditing）工具。软件名字Nmap是Network Mapper的简称。Nmap最初是由Fyodor在1997年开始创建的。随后在开源社区众多的志愿者参与下，该工具逐渐成为最为流行安全必备工具之一。</p>
+<h3 id="Nmap常用参数"><a href="#Nmap常用参数" class="headerlink" title="Nmap常用参数"></a>Nmap常用参数</h3><p>我对Nmap的了解一直很浅，只是当作一个可以扫描端口的工具。</p>
 <blockquote>
-<p>程序1解决方案<br>此题明白CreateProcess的参数即可<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TCHAR commandLine[] = TEXT(<span class="string">"C:\\Users\\dell\\Desktop\\常用\\吾爱破解专用版Ollydbg\\原版\\英文原版\\OLLYDBG.EXE"</span>);</span><br><span class="line">    STARTUPINFO si = &#123;<span class="keyword">sizeof</span>(si)&#125;;</span><br><span class="line">    PROCESS_INFORMATION pi;</span><br><span class="line">    <span class="keyword">bool</span> bRet = CreateProcess(</span><br><span class="line">        <span class="literal">NULL</span>,<span class="comment">//应用程序名称，指向启动进程的 exe 文件 </span></span><br><span class="line">        commandLine,<span class="comment">//命令行字符串，是启动进程的命令行中的参数。		</span></span><br><span class="line">        <span class="literal">NULL</span>,<span class="comment">//进程的安全属性 ，指向 SECURITY_ATTRIBUTES 结构变量，是进程的安全属性，可以为 NULL 则使用默认的安全属性</span></span><br><span class="line">        <span class="literal">NULL</span>,<span class="comment">//线程的安全属性 ，指向 SECURITY_ATTRIBUTES 结构变量。 </span></span><br><span class="line">        FALSE,<span class="comment">/*是否继承父进程属性 ，表示新进程是否从调用进程处继承了句柄。如果参数的值为 TRUE，调用进程中的每一个可继</span></span><br><span class="line"><span class="comment">		承的打开句柄都将被子进程继承。被继承的句柄与原进程拥有完全相同的值和访问权限；如果设为 FALSE，那么不继承。 */</span> </span><br><span class="line">        CREATE_NO_WINDOW,<span class="comment">//创建标志，表示进程的创建标志以及优先级控制。 </span></span><br><span class="line">        <span class="literal">NULL</span>,<span class="comment">//指向新的环境块的指针，指向新进程的环境变量块，如果设置为 NULL，那么使用父进程的环境变量。 </span></span><br><span class="line">        <span class="literal">NULL</span>,<span class="comment">//指向当前目录名的指针 ，指定创建后新进程的当前目录，如果设置为 NULL，那么就在父进程所在的当前目录。 </span></span><br><span class="line">        &amp;si,<span class="comment">// 传递给新进程的信息，指向一个 STARTUPINFO 结构，该结构里可以设定启动信息，可以设置为 NULL 。</span></span><br><span class="line">        &amp;pi<span class="comment">//进程返回的信息，指向一个 PROCESS_INFORMATION 结构，返回被创建进程的信息。</span></span><br><span class="line">		);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>nmap 127.0.0.1 -p 1-65535</p>
 </blockquote>
-<hr>
-<blockquote>
-<p>程序2解决方案<br>学会调用Windows api即可（面向搜索引擎编程），我注释写的很详尽了<br>但是有一点投机取巧，我没有使用Windows api去搜索kernel32.dll路径，我是获取系统路径，如果是windows系统，那么kernel32.dll一定会在System32文件夹中。正确的做法应该还要再加一步确定kernel32.dll是否在System32文件夹中。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">getDllFuncAddr</span><span class="params">(<span class="keyword">char</span>* dllName, <span class="keyword">char</span>* funcName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	HMODULE h = LoadLibrary(dllName);</span><br><span class="line">	<span class="keyword">long</span> addr = (<span class="keyword">long</span>)GetProcAddress(h, funcName);</span><br><span class="line">	FreeLibrary(h);</span><br><span class="line">	<span class="keyword">return</span> addr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">Thread1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">long</span> address;</span><br><span class="line">	<span class="keyword">int</span> number;</span><br><span class="line">	<span class="keyword">char</span> str[<span class="number">10</span>]=<span class="string">"\0"</span>;</span><br><span class="line">	<span class="keyword">char</span> path[MAX_PATH];</span><br><span class="line">	<span class="keyword">char</span> name[] = <span class="string">"\\kernel32.dll;id="</span>; </span><br><span class="line">	<span class="keyword">char</span> str1[] = <span class="string">"kernel32.dll"</span>;</span><br><span class="line">	<span class="keyword">char</span> str2[] = <span class="string">"GetCurrentThreadId"</span>;</span><br><span class="line">    GetSystemDirectory(path,MAX_PATH);<span class="comment">/*获取当前系统路径*/</span></span><br><span class="line">    <span class="built_in">strcat</span>(path,name);<span class="comment">/*因为kernel32.dll一定在系统目录system32下，所以只需要获取system32路径即可*/</span></span><br><span class="line">	address = getDllFuncAddr(str1, str2);<span class="comment">/*保存函数地址*/</span> </span><br><span class="line">	number = ((<span class="keyword">long</span>(*)())address)();<span class="comment">/*把address强制转化为指针类型并用其调用函数*/</span> </span><br><span class="line">	ltoa(number,str,<span class="number">10</span>); <span class="comment">/*把id号放入一个字符串*/</span> </span><br><span class="line">	<span class="built_in">strcat</span>(path,str);<span class="comment">/*字符串连接*/</span> </span><br><span class="line">	MessageBox ( <span class="literal">NULL</span>, TEXT (path), TEXT (<span class="string">"Win_prog"</span>), MB_OK ) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	CreateThread(<span class="literal">NULL</span>,<span class="number">0</span>,(LPTHREAD_START_ROUTINE)Thread1,<span class="literal">NULL</span>,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	HANDLE  CreateThread(</span></span><br><span class="line"><span class="comment">   		LPSECURITY_ATTRIBUTES lpThreadAttributes, //线程安全性描述（一个结构体，一般是NULL）</span></span><br><span class="line"><span class="comment">   		SIZE_T dwStackSize,                      //一种数值（栈深度，一般是0）   </span></span><br><span class="line"><span class="comment">   		LPTHREAD_START_ROUTINE lpStartAddress,  //启动函数</span></span><br><span class="line"><span class="comment">   		_In_opt_ __drv_aliasesMem LPVOID lpParameter, // 附加参数（一般为NULL）</span></span><br><span class="line"><span class="comment">    	_In_ DWORD dwCreationFlags,          //运行参数（是否在创建完成后就启动线程</span></span><br><span class="line"><span class="comment">   		_Out_opt_ LPDWORD lpThreadId   // 返回句柄（一般是0，或者是一个DWORD型变量的地址，别忘了&amp;）</span></span><br><span class="line"><span class="comment">    );</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="comment">/*防止主进程结束导致子线程被kill*/</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>参考资料：<br><strong> C语言 ( <em> ( void ( </em> ) ( ) ) 0 ) ( ) 的理解:<br><a href="https://blog.csdn.net/fengfeng0328/article/details/85949805" target="_blank" rel="noopener">https://blog.csdn.net/fengfeng0328/article/details/85949805</a> </strong><br><strong> 获取指定dll中的某个函数的地址:<br><a href="https://blog.csdn.net/leng_que/article/details/4668787" target="_blank" rel="noopener">https://blog.csdn.net/leng_que/article/details/4668787</a> </strong><br><strong> WindowsAPI使用详解——GetWindowsDirectory|GetSystemDirectory 获取操作系统文件夹的路径:<br><a href="https://www.cnblogs.com/callback/p/4248038.html" target="_blank" rel="noopener">https://www.cnblogs.com/callback/p/4248038.html</a> </strong></p>
-</blockquote>
+<p>我一般都是用这种非常浅显的语句进行扫描的，但是Nmap常用的参数有很多，-sS -p -sv 等等，主要针对Nmap的扫描模式进行探究。</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"><span class="symbol">T4:</span>  快速扫描（可以加快执行速度）</span></span><br><span class="line"><span class="ruby">-sn：Ping扫描， 不进行端口扫描（-sn被称为-sP）</span></span><br><span class="line"><span class="ruby">-<span class="symbol">sA:</span>  发送tcp的ack包进行探测，可以探测主机是否存活</span></span><br><span class="line"><span class="ruby">-<span class="symbol">sS:</span>  半开放扫描（半开扫描，很少有系统能把它记入系统日志，非<span class="number">3</span>次握手的tcp扫描）</span></span><br><span class="line"><span class="ruby">-sT：<span class="number">3</span>次握手方式tcp的扫描,慢</span></span><br><span class="line"><span class="ruby">-sU：udp端口的扫描</span></span><br><span class="line"><span class="ruby">-sF：也是tcp的扫描一种，发送一个FIN标志的数据包</span></span><br><span class="line"><span class="ruby">-sV：版本检测(sV)</span></span><br><span class="line"><span class="ruby">-<span class="symbol">Pn:</span>  跳过主机发现，进行深入扫描（防止主机过滤ping扫描，可直接进行端口扫描）</span></span><br><span class="line"><span class="ruby">-<span class="symbol">O:</span>    操作系统检测</span></span><br><span class="line"><span class="ruby">-<span class="symbol">A:</span>    参数，综合扫描。比较慢，不推荐</span></span><br><span class="line"><span class="ruby">-e：  指定网络接口,扫描时使用哪个网卡</span></span><br><span class="line"><span class="ruby"><span class="string">`nmap -e eth0 192.168.1.1/24`</span></span></span><br><span class="line"><span class="ruby">-S：  可以伪装源地址进行扫描。这样好处在于不会被对方发现自己的真实IP</span></span><br></pre></td></tr></table></figure>
+<p>调几个重要的说一下</p>
+<h4 id="sS"><a href="#sS" class="headerlink" title="-sS"></a>-sS</h4><p>首先放一张TCP三次握手的图</p>
+<p><img src="https://s2.ax1x.com/2019/11/16/MBUolT.png" alt="三次握手"></p>
+<p>可以看出要扫描端口，客户端先给服务器发送一个SYN包，seq是客户端发送的一个随机数，服务端如果对应的端口是开放的，会返回一个ack包代表接收到了，ack=x+1，代表回应的是seq=x的这条请求，也返回了ACK和SYN包。然后客户端收到ACK和SYN之后，知道服务端对应端口是开放的，但是不接着往下发包，就没有构成一个完整的TCP连接，一般来说服务端也不会记录下这种行为，所以这种方式较为隐蔽。</p>
+<h4 id="sT"><a href="#sT" class="headerlink" title="-sT"></a>-sT</h4><p>这种模式是直接进行TCP连接，连上了就开放，连不上端口就是关闭，缺点是会留下大量的错误日志。</p>
+<h4 id="sP"><a href="#sP" class="headerlink" title="-sP"></a>-sP</h4><p>这种模式是ping扫描，只有主机存活才可以使用，默认不加扫描模式的话就是这一种扫描。</p>
+<h4 id="sU"><a href="#sU" class="headerlink" title="-sU"></a>-sU</h4><p>这种方式是UDP端口扫描。它不需要发送任何的SYN包，因为这种技术是针对UDP端口的。UDP扫描发送UDP数据包到目标主机，并等待响应,如果返回ICMP不可达的错误消息，说明端口是关闭的，如果得到正确的适当的回应，说明端口是开放的.udp端口扫描速度比较慢。但是UDP只管发包，并不关心包在传输途中是否丢失，如果包丢失，会无法检测。</p>
+<h4 id="sF"><a href="#sF" class="headerlink" title="-sF"></a>-sF</h4><p>有些时候防火墙绘过滤tcp syn数据包，有些时候会记录syn数据包并检测时候有nmap扫描。这时候可以使用TCP FIN scanning。这种方式很简单。发送tcp FIN数据包到待测端口。如果返回RST数据包，则说明该端口关闭，如果无返回则说明该端口开放。这时tcp协议的一个BUG，所以这种扫描方式不一定百分之百可靠（例如windows），但是这种扫描方式适合大部分 *NIX 系统。</p>
+<p><img src="https://s2.ax1x.com/2019/11/16/MBdqiR.png" alt="img"></p>
+<h4 id="sA"><a href="#sA" class="headerlink" title="-sA"></a>-sA</h4><p>一个简单的ACK扫描意味着攻击者只有较低几率检测到受害机，但是有较高几率发现防火墙<br>防火墙的四种响应:</p>
+<p>open port（防火墙允许少数端口打开）<br>closed port（由于防火墙的缘故，大部分的端口都被关闭）<br>filtered（nmap不能确定端口是否打开或者关闭）<br>unfiletered（nmap能够访问这个端口，但是不清楚这个端口打开的状态）</p>
+<h4 id="Pn"><a href="#Pn" class="headerlink" title="-Pn"></a>-Pn</h4><p>当确保主机存活的时候可以使用pn进行深入扫描</p>
 
       
     </div>
@@ -318,13 +322,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2019/10/30/Windows API编程/">Windows API编程</a></p>
+        <p><span>本文标题:</span><a  href="/2019/11/16/Nmap扫描模式初探究/">Nmap扫描模式初探究</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Crustsalt 的个人博客">Crustsalt</a></p>
-        <p><span>发布时间:</span>2019年10月30日 - 12时00分</p>
-        <p><span>最后更新:</span>2019年11月12日 - 11时42分</p>
+        <p><span>发布时间:</span>2019年11月16日 - 22时24分</p>
+        <p><span>最后更新:</span>2019年11月16日 - 22时24分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/10/30/Windows API编程/" title="Windows API编程">/2019/10/30/Windows API编程/</a>
-            <span class="copy-path" data-clipboard-text="原文: /2019/10/30/Windows API编程/　　作者: Crustsalt" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/11/16/Nmap扫描模式初探究/" title="Nmap扫描模式初探究">/2019/11/16/Nmap扫描模式初探究/</a>
+            <span class="copy-path" data-clipboard-text="原文: /2019/11/16/Nmap扫描模式初探究/　　作者: Crustsalt" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -335,18 +339,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2019/10/31/PhpStudy_RCE漏洞复现/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          PhpStudy RCE漏洞复现
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2019/10/28/Java-容器学习/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java-容器学习</div>
+    <a  href="/2019/11/12/Java-文件操作与多线程编程基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java-文件操作与多线程编程基础</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -358,7 +353,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-API编程"><span class="toc-number">1.</span> <span class="toc-text">Windows API编程</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nmap扫描模式探究"><span class="toc-number">1.</span> <span class="toc-text">Nmap扫描模式探究</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nmap简介"><span class="toc-number">1.1.</span> <span class="toc-text">Nmap简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nmap常用参数"><span class="toc-number">1.2.</span> <span class="toc-text">Nmap常用参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sS"><span class="toc-number">1.2.1.</span> <span class="toc-text">-sS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sT"><span class="toc-number">1.2.2.</span> <span class="toc-text">-sT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sP"><span class="toc-number">1.2.3.</span> <span class="toc-text">-sP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sU"><span class="toc-number">1.2.4.</span> <span class="toc-text">-sU</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sF"><span class="toc-number">1.2.5.</span> <span class="toc-text">-sF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sA"><span class="toc-number">1.2.6.</span> <span class="toc-text">-sA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pn"><span class="toc-number">1.2.7.</span> <span class="toc-text">-Pn</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -419,13 +414,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2019/10/31/PhpStudy_RCE漏洞复现/" title="上一篇: PhpStudy RCE漏洞复现">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2019/10/28/Java-容器学习/" title="下一篇: Java-容器学习">
+            <a  href="/2019/11/12/Java-文件操作与多线程编程基础/" title="下一篇: Java-文件操作与多线程编程基础">
                 <i class="fa fa-angle-right"></i>
             </a>
         

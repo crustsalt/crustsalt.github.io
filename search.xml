@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Nmap扫描模式初探究</title>
+      <link href="/2019/11/16/Nmap%E6%89%AB%E6%8F%8F%E6%A8%A1%E5%BC%8F%E5%88%9D%E6%8E%A2%E7%A9%B6/"/>
+      <url>/2019/11/16/Nmap%E6%89%AB%E6%8F%8F%E6%A8%A1%E5%BC%8F%E5%88%9D%E6%8E%A2%E7%A9%B6/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Nmap扫描模式探究"><a href="#Nmap扫描模式探究" class="headerlink" title="Nmap扫描模式探究"></a>Nmap扫描模式探究</h2><p>一直只会Nmap最基本的扫描，对于Nmap的很多扫描模式没有深入探究，这次尝试学习一下。（重点是我挖不出来洞了，tcl</p><a id="more"></a><h3 id="Nmap简介"><a href="#Nmap简介" class="headerlink" title="Nmap简介"></a>Nmap简介</h3><p>Nmap是一款开源免费的网络发现（Network Discovery）和安全审计（Security Auditing）工具。软件名字Nmap是Network Mapper的简称。Nmap最初是由Fyodor在1997年开始创建的。随后在开源社区众多的志愿者参与下，该工具逐渐成为最为流行安全必备工具之一。</p><h3 id="Nmap常用参数"><a href="#Nmap常用参数" class="headerlink" title="Nmap常用参数"></a>Nmap常用参数</h3><p>我对Nmap的了解一直很浅，只是当作一个可以扫描端口的工具。</p><blockquote><p>nmap 127.0.0.1 -p 1-65535</p></blockquote><p>我一般都是用这种非常浅显的语句进行扫描的，但是Nmap常用的参数有很多，-sS -p -sv 等等，主要针对Nmap的扫描模式进行探究。</p><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"><span class="symbol">T4:</span>  快速扫描（可以加快执行速度）</span></span><br><span class="line"><span class="ruby">-sn：Ping扫描， 不进行端口扫描（-sn被称为-sP）</span></span><br><span class="line"><span class="ruby">-<span class="symbol">sA:</span>  发送tcp的ack包进行探测，可以探测主机是否存活</span></span><br><span class="line"><span class="ruby">-<span class="symbol">sS:</span>  半开放扫描（半开扫描，很少有系统能把它记入系统日志，非<span class="number">3</span>次握手的tcp扫描）</span></span><br><span class="line"><span class="ruby">-sT：<span class="number">3</span>次握手方式tcp的扫描,慢</span></span><br><span class="line"><span class="ruby">-sU：udp端口的扫描</span></span><br><span class="line"><span class="ruby">-sF：也是tcp的扫描一种，发送一个FIN标志的数据包</span></span><br><span class="line"><span class="ruby">-sV：版本检测(sV)</span></span><br><span class="line"><span class="ruby">-<span class="symbol">Pn:</span>  跳过主机发现，进行深入扫描（防止主机过滤ping扫描，可直接进行端口扫描）</span></span><br><span class="line"><span class="ruby">-<span class="symbol">O:</span>    操作系统检测</span></span><br><span class="line"><span class="ruby">-<span class="symbol">A:</span>    参数，综合扫描。比较慢，不推荐</span></span><br><span class="line"><span class="ruby">-e：  指定网络接口,扫描时使用哪个网卡</span></span><br><span class="line"><span class="ruby"><span class="string">`nmap -e eth0 192.168.1.1/24`</span></span></span><br><span class="line"><span class="ruby">-S：  可以伪装源地址进行扫描。这样好处在于不会被对方发现自己的真实IP</span></span><br></pre></td></tr></table></figure><p>调几个重要的说一下</p><h4 id="sS"><a href="#sS" class="headerlink" title="-sS"></a>-sS</h4><p>首先放一张TCP三次握手的图</p><p><img src="https://s2.ax1x.com/2019/11/16/MBUolT.png" alt="三次握手"></p><p>可以看出要扫描端口，客户端先给服务器发送一个SYN包，seq是客户端发送的一个随机数，服务端如果对应的端口是开放的，会返回一个ack包代表接收到了，ack=x+1，代表回应的是seq=x的这条请求，也返回了ACK和SYN包。然后客户端收到ACK和SYN之后，知道服务端对应端口是开放的，但是不接着往下发包，就没有构成一个完整的TCP连接，一般来说服务端也不会记录下这种行为，所以这种方式较为隐蔽。</p><h4 id="sT"><a href="#sT" class="headerlink" title="-sT"></a>-sT</h4><p>这种模式是直接进行TCP连接，连上了就开放，连不上端口就是关闭，缺点是会留下大量的错误日志。</p><h4 id="sP"><a href="#sP" class="headerlink" title="-sP"></a>-sP</h4><p>这种模式是ping扫描，只有主机存活才可以使用，默认不加扫描模式的话就是这一种扫描。</p><h4 id="sU"><a href="#sU" class="headerlink" title="-sU"></a>-sU</h4><p>这种方式是UDP端口扫描。它不需要发送任何的SYN包，因为这种技术是针对UDP端口的。UDP扫描发送UDP数据包到目标主机，并等待响应,如果返回ICMP不可达的错误消息，说明端口是关闭的，如果得到正确的适当的回应，说明端口是开放的.udp端口扫描速度比较慢。但是UDP只管发包，并不关心包在传输途中是否丢失，如果包丢失，会无法检测。</p><h4 id="sF"><a href="#sF" class="headerlink" title="-sF"></a>-sF</h4><p>有些时候防火墙绘过滤tcp syn数据包，有些时候会记录syn数据包并检测时候有nmap扫描。这时候可以使用TCP FIN scanning。这种方式很简单。发送tcp FIN数据包到待测端口。如果返回RST数据包，则说明该端口关闭，如果无返回则说明该端口开放。这时tcp协议的一个BUG，所以这种扫描方式不一定百分之百可靠（例如windows），但是这种扫描方式适合大部分 *NIX 系统。</p><p><img src="https://s2.ax1x.com/2019/11/16/MBdqiR.png" alt="img"></p><h4 id="sA"><a href="#sA" class="headerlink" title="-sA"></a>-sA</h4><p>一个简单的ACK扫描意味着攻击者只有较低几率检测到受害机，但是有较高几率发现防火墙<br>防火墙的四种响应:</p><p>open port（防火墙允许少数端口打开）<br>closed port（由于防火墙的缘故，大部分的端口都被关闭）<br>filtered（nmap不能确定端口是否打开或者关闭）<br>unfiletered（nmap能够访问这个端口，但是不清楚这个端口打开的状态）</p><h4 id="Pn"><a href="#Pn" class="headerlink" title="-Pn"></a>-Pn</h4><p>当确保主机存活的时候可以使用pn进行深入扫描</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Nmap学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java-文件操作与多线程编程基础</title>
       <link href="/2019/11/12/Java-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
       <url>/2019/11/12/Java-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/</url>
@@ -262,31 +287,6 @@
     
     
     <entry>
-      <title>SQLSever的反弹注入</title>
-      <link href="/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/"/>
-      <url>/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/</url>
-      
-        <content type="html"><![CDATA[<p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p><p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）</p><a id="more"></a><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> opendatasource(<span class="string">'sqloledb'</span>,<span class="string">'server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名'</span>).数据库名.dbo.数据库中的表名 <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">admin</span><span class="comment">--</span></span><br></pre></td></tr></table></figure><blockquote><p>select * from admin –</p></blockquote><p>是可以自定义的sql语句，但是要注意在sqlsever中#不能注释，要用–才可以</p><p>这个可以说是一个小知识点，但是有要求，需要接收数据的数据库有自己的公网ip。所以可以用十分钟邮箱</p><p><a href="http://note.youdao.com/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p><p>到香港云注册一个新账号，香港云新账号可以试用一个60天的虚拟空间，虚拟空间有公网ip和sqlsever、mysql数据库，这样就可以不本地安装了</p><p>香港云<a href="http://note.youdao.com/" target="_blank" rel="noopener">http://www.webweb.com</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 渗透测试 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> sql注入 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>整数反转</title>
       <link href="/2019/10/14/%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/"/>
       <url>/2019/10/14/%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/</url>
@@ -329,6 +329,31 @@
         <tags>
             
             <tag> 两数之和 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SQLSever的反弹注入</title>
+      <link href="/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/"/>
+      <url>/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/</url>
+      
+        <content type="html"><![CDATA[<p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p><p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）</p><a id="more"></a><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> opendatasource(<span class="string">'sqloledb'</span>,<span class="string">'server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名'</span>).数据库名.dbo.数据库中的表名 <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">admin</span><span class="comment">--</span></span><br></pre></td></tr></table></figure><blockquote><p>select * from admin –</p></blockquote><p>是可以自定义的sql语句，但是要注意在sqlsever中#不能注释，要用–才可以</p><p>这个可以说是一个小知识点，但是有要求，需要接收数据的数据库有自己的公网ip。所以可以用十分钟邮箱</p><p><a href="http://note.youdao.com/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p><p>到香港云注册一个新账号，香港云新账号可以试用一个60天的虚拟空间，虚拟空间有公网ip和sqlsever、mysql数据库，这样就可以不本地安装了</p><p>香港云<a href="http://note.youdao.com/" target="_blank" rel="noopener">http://www.webweb.com</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sql注入 </tag>
             
         </tags>
       
