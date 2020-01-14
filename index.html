@@ -275,46 +275,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="QT学习笔记（一）"><a href="#QT学习笔记（一）" class="headerlink" title="QT学习笔记（一）"></a>QT学习笔记（一）</h2><h3 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h3><p>我下载的是<a href="https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.12/5.12.3/" target="_blank" rel="noopener">Qt5.12.3</a>，点开无脑傻瓜式安装.</p>
-<p><img src="https://s2.ax1x.com/2020/01/14/lqat2T.jpg" alt="Qt"></p>
-<p>需要注意的有几点：</p>
-<p>1.有可能出现下载器下载不下来的玄学状况，可以重新尝试用浏览器直接下载(速度还挺快)</p>
-<p>2.安装组件时候的坑，选择如下图的组件</p>
-<p><img src="https://s2.ax1x.com/2020/01/14/lqafqH.jpg" alt="组件列表"></p>
-<p><strong>MSVC 2017 64-bit</strong>是保证可以使用VS进行编辑，<strong>MinGW 7.3.0 64-bit</strong>是保证在Windows下有能够运行的编译器，下面一堆QT打头的是预先装好防止之后需要重新添加组件的。</p>
-<p>3.建议预先装好所有可能需要装的组件，因为会出现使用<strong>MaintenanceTool</strong>，添加临时存储库后，无法添加新的组件，只能删除已有组件，查询解决方案未果，所以只能预先装好，否则只能重新安装。</p>
-<hr>
-<h3 id="Qt文件结构"><a href="#Qt文件结构" class="headerlink" title="Qt文件结构"></a>Qt文件结构</h3><p>Qt的文件组成有四个部分</p>
-<p><img src="https://s2.ax1x.com/2020/01/14/lqwdE9.jpg" alt="image-20200114174320406"></p>
-<blockquote>
-<p>pro文件是存储项目设置的文件, 用于记录项目的一些设置，以及项目包含文件的组织管理。  </p>
-</blockquote>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-------------------------------------------------</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Project created by QtCreator 2020-01-14T17:42:35</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#-------------------------------------------------</span></span><br><span class="line"></span><br><span class="line">QT       += core gui</span><br><span class="line"></span><br><span class="line">greaterThan(QT_MAJOR_VERSION, 4): QT += widgets</span><br><span class="line"></span><br><span class="line">TARGET = Demo</span><br><span class="line">TEMPLATE = app</span><br><span class="line"></span><br><span class="line"><span class="comment"># The following define makes your compiler emit warnings if you use</span></span><br><span class="line"><span class="comment"># any feature of Qt which has been marked as deprecated (the exact warnings</span></span><br><span class="line"><span class="comment"># depend on your compiler). Please consult the documentation of the</span></span><br><span class="line"><span class="comment"># deprecated API in order to know how to port your code away from it.</span></span><br><span class="line">DEFINES += QT_DEPRECATED_WARNINGS</span><br><span class="line"></span><br><span class="line"><span class="comment"># You can also make your code fail to compile if you use deprecated APIs.</span></span><br><span class="line"><span class="comment"># In order to do so, uncomment the following line.</span></span><br><span class="line"><span class="comment"># You can also select to disable deprecated APIs only up to a certain version of Qt.</span></span><br><span class="line"><span class="comment">#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0</span></span><br><span class="line"></span><br><span class="line">CONFIG += c++11</span><br><span class="line"></span><br><span class="line">SOURCES += \</span><br><span class="line">        main.cpp \</span><br><span class="line">        mainwindow.cpp</span><br><span class="line"></span><br><span class="line">HEADERS += \</span><br><span class="line">        mainwindow.h</span><br><span class="line"></span><br><span class="line">FORMS += \</span><br><span class="line">        mainwindow.ui</span><br><span class="line"></span><br><span class="line"><span class="comment"># Default rules for deployment.</span></span><br><span class="line"><span class="section">qnx: target.path = /tmp/$$&#123;TARGET&#125;/bin</span></span><br><span class="line"><span class="section">else: unix:!android: target.path = /opt/$$&#123;TARGET&#125;/bin</span></span><br><span class="line"><span class="section">!isEmpty(target.path): INSTALLS += target</span></span><br></pre></td></tr></table></figure>
-<p> “Qt += core gui”表示项目中加入 core gui 模块。core gui 是 Qt 用于 GUI 设计的类库模块，如果创建的是控制台（Console）应用程序，就不需要添加 core gui。 </p>
-<p>greaterThan代表如果Qt版本大于4，才会加入widgets模块。</p>
-<p>TARGET表示生成的可执行文件的名字是Demo.exe。</p>
-<p>TEMPLATE示项目使用的模板是 app，是一般的应用程序。 </p>
-<p>后面的 SOURCES、HEADERS、FORMS 记录了项目中包含的源程序文件、头文件和窗体文件（.ui 文件）的名称。这些文件列表是 Qt Creator 自动添加到项目管理文件里面的，用户不需要手动修改。</p>
-<blockquote>
-<p>Headers表示所引用的头文件。</p>
-</blockquote>
-<blockquote>
-<p>sources表示源代码部分。</p>
-</blockquote>
-<blockquote>
-<p>Forms表示可视化设计的窗体的定义文件，例如各个元素的位置等。</p>
-</blockquote>
-<hr>
-<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p>首先打开Qt</p>
-<p><img src="https://s2.ax1x.com/2020/01/14/lqdB6S.jpg" alt="Qt打开"></p>
-<p>新建一个文件或项目，选择第一个。</p>
-<p><img src="https://s2.ax1x.com/2020/01/14/lqwMAs.png" alt="image-20200114174141173"></p>
-<p>在入门阶段无脑下一步即可，点开ui文件，加入Lable标签,。</p>
-<p><img src="https://s2.ax1x.com/2020/01/14/lqI6HA.jpg" alt=""></p>
-<p>加入PushButton，使用信号与槽，把button按钮设置为最小化。</p>
-<p><img src="https://s2.ax1x.com/2020/01/14/lqogr4.jpg" alt=""></p>
-<p><img src="https://s2.ax1x.com/2020/01/14/lqo5Px.jpg" alt=""></p>
-
+              <h2 id="QT学习笔记（一）"><a href="#QT学习笔记（一）" class="headerlink" title="QT学习笔记（一）"></a>QT学习笔记（一）</h2><h3 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h3><p>我下载的是<a href="https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.12/5.12.3/" target="_blank" rel="noopener">Qt5.12.3</a>，点开无脑傻瓜式安装。<br></p>
+          
       
     </div>
     
@@ -331,6 +293,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="/2020/01/14/QT学习笔记（一）/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
