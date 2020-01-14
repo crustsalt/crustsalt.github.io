@@ -7,22 +7,29 @@
   
   
   
-  <title>套接字编程学习 | Crustsalt&#39;s Blog</title>
+  <title>QT学习笔记（一） | Crustsalt&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="套接字编程学习使用的是Windows的线程库，但是实现地较为简单和整体的架构也比较混乱，写一篇blog稍微总结一下。">
-<meta name="keywords" content="套接字学习">
+  <meta name="description" content="QT学习笔记（一）安装过程我下载的是Qt5.12.3，点开无脑傻瓜式安装.  需要注意的有几点： 1.有可能出现下载器下载不下来的玄学状况，可以重新尝试用浏览器直接下载(速度还挺快) 2.安装组件时候的坑，选择如下图的组件  MSVC 2017 64-bit是保证可以使用VS进行编辑，MinGW 7.3.0 64-bit是保证在Windows下有能够运行的编译器，下面一堆QT打头的是预先装好防止之">
+<meta name="keywords" content="C++,Qt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="套接字编程学习">
-<meta property="og:url" content="/2019/11/01/套接字编程学习/index.html">
+<meta property="og:title" content="QT学习笔记（一）">
+<meta property="og:url" content="/2020/01/14/QT学习笔记（一）/index.html">
 <meta property="og:site_name" content="Crustsalt&#39;s Blog">
-<meta property="og:description" content="套接字编程学习使用的是Windows的线程库，但是实现地较为简单和整体的架构也比较混乱，写一篇blog稍微总结一下。">
+<meta property="og:description" content="QT学习笔记（一）安装过程我下载的是Qt5.12.3，点开无脑傻瓜式安装.  需要注意的有几点： 1.有可能出现下载器下载不下来的玄学状况，可以重新尝试用浏览器直接下载(速度还挺快) 2.安装组件时候的坑，选择如下图的组件  MSVC 2017 64-bit是保证可以使用VS进行编辑，MinGW 7.3.0 64-bit是保证在Windows下有能够运行的编译器，下面一堆QT打头的是预先装好防止之">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s2.ax1x.com/2019/11/01/KH67WR.jpg">
-<meta property="og:updated_time" content="2019-11-12T03:43:31.861Z">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/14/lqat2T.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/14/lqafqH.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/14/lqwdE9.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/14/lqdB6S.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/14/lqwMAs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/14/lqI6HA.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/14/lqogr4.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/14/lqo5Px.jpg">
+<meta property="og:updated_time" content="2020-01-14T11:52:13.511Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="套接字编程学习">
-<meta name="twitter:description" content="套接字编程学习使用的是Windows的线程库，但是实现地较为简单和整体的架构也比较混乱，写一篇blog稍微总结一下。">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/01/KH67WR.jpg">
+<meta name="twitter:title" content="QT学习笔记（一）">
+<meta name="twitter:description" content="QT学习笔记（一）安装过程我下载的是Qt5.12.3，点开无脑傻瓜式安装.  需要注意的有几点： 1.有可能出现下载器下载不下来的玄学状况，可以重新尝试用浏览器直接下载(速度还挺快) 2.安装组件时候的坑，选择如下图的组件  MSVC 2017 64-bit是保证可以使用VS进行编辑，MinGW 7.3.0 64-bit是保证在Windows下有能够运行的编译器，下面一堆QT打头的是预先装好防止之">
+<meta name="twitter:image" content="https://s2.ax1x.com/2020/01/14/lqat2T.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Crustsalt&#39;s Blog" type="application/atom+xml">
   
@@ -248,11 +255,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="pages-套接字编程学习" class="article article-type-pages" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="pages-QT学习笔记（一）" class="article article-type-pages" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2019/11/01/套接字编程学习/" class="article-date">
-      <time datetime="2019-11-01T13:28:50.000Z" itemprop="datePublished">2019-11-01</time>
+      <a  href="/2020/01/14/QT学习笔记（一）/" class="article-date">
+      <time datetime="2020-01-14T11:51:52.000Z" itemprop="datePublished">2020-01-14</time>
 </a>
 
     </div>
@@ -266,7 +273,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      套接字编程学习
+      QT学习笔记（一）
     </h1>
   
 
@@ -282,7 +289,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/套接字学习/">套接字学习</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -292,94 +299,45 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="套接字编程学习"><a href="#套接字编程学习" class="headerlink" title="套接字编程学习"></a>套接字编程学习</h2><p>使用的是Windows的线程库，但是实现地较为简单和整体的架构也比较混乱，写一篇blog稍微总结一下。</p>
-<a id="more"></a> 
+        <h2 id="QT学习笔记（一）"><a href="#QT学习笔记（一）" class="headerlink" title="QT学习笔记（一）"></a>QT学习笔记（一）</h2><h3 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a>安装过程</h3><p>我下载的是<a href="https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.12/5.12.3/" target="_blank" rel="noopener">Qt5.12.3</a>，点开无脑傻瓜式安装.</p>
+<p><img src="https://s2.ax1x.com/2020/01/14/lqat2T.jpg" alt="Qt"></p>
+<p>需要注意的有几点：</p>
+<p>1.有可能出现下载器下载不下来的玄学状况，可以重新尝试用浏览器直接下载(速度还挺快)</p>
+<p>2.安装组件时候的坑，选择如下图的组件</p>
+<p><img src="https://s2.ax1x.com/2020/01/14/lqafqH.jpg" alt="组件列表"></p>
+<p><strong>MSVC 2017 64-bit</strong>是保证可以使用VS进行编辑，<strong>MinGW 7.3.0 64-bit</strong>是保证在Windows下有能够运行的编译器，下面一堆QT打头的是预先装好防止之后需要重新添加组件的。</p>
+<p>3.建议预先装好所有可能需要装的组件，因为会出现使用<strong>MaintenanceTool</strong>，添加临时存储库后，无法添加新的组件，只能删除已有组件，查询解决方案未果，所以只能预先装好，否则只能重新安装。</p>
 <hr>
-<h3 id="套接字概念"><a href="#套接字概念" class="headerlink" title="套接字概念"></a>套接字概念</h3><blockquote>
-<p>套接字（socket）是一个抽象层，应用程序可以通过它发送或接收数据，可对其进行像对文件一样的打开、读写和关闭等操作。套接字允许应用程序将I/O插入到网络中，并与网络中的其他应用程序进行通信。网络套接字是IP地址与端口的组合。 </p>
+<h3 id="Qt文件结构"><a href="#Qt文件结构" class="headerlink" title="Qt文件结构"></a>Qt文件结构</h3><p>Qt的文件组成有四个部分</p>
+<p><img src="https://s2.ax1x.com/2020/01/14/lqwdE9.jpg" alt="image-20200114174320406"></p>
+<blockquote>
+<p>pro文件是存储项目设置的文件, 用于记录项目的一些设置，以及项目包含文件的组织管理。  </p>
+</blockquote>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-------------------------------------------------</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Project created by QtCreator 2020-01-14T17:42:35</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#-------------------------------------------------</span></span><br><span class="line"></span><br><span class="line">QT       += core gui</span><br><span class="line"></span><br><span class="line">greaterThan(QT_MAJOR_VERSION, 4): QT += widgets</span><br><span class="line"></span><br><span class="line">TARGET = Demo</span><br><span class="line">TEMPLATE = app</span><br><span class="line"></span><br><span class="line"><span class="comment"># The following define makes your compiler emit warnings if you use</span></span><br><span class="line"><span class="comment"># any feature of Qt which has been marked as deprecated (the exact warnings</span></span><br><span class="line"><span class="comment"># depend on your compiler). Please consult the documentation of the</span></span><br><span class="line"><span class="comment"># deprecated API in order to know how to port your code away from it.</span></span><br><span class="line">DEFINES += QT_DEPRECATED_WARNINGS</span><br><span class="line"></span><br><span class="line"><span class="comment"># You can also make your code fail to compile if you use deprecated APIs.</span></span><br><span class="line"><span class="comment"># In order to do so, uncomment the following line.</span></span><br><span class="line"><span class="comment"># You can also select to disable deprecated APIs only up to a certain version of Qt.</span></span><br><span class="line"><span class="comment">#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0</span></span><br><span class="line"></span><br><span class="line">CONFIG += c++11</span><br><span class="line"></span><br><span class="line">SOURCES += \</span><br><span class="line">        main.cpp \</span><br><span class="line">        mainwindow.cpp</span><br><span class="line"></span><br><span class="line">HEADERS += \</span><br><span class="line">        mainwindow.h</span><br><span class="line"></span><br><span class="line">FORMS += \</span><br><span class="line">        mainwindow.ui</span><br><span class="line"></span><br><span class="line"><span class="comment"># Default rules for deployment.</span></span><br><span class="line"><span class="section">qnx: target.path = /tmp/$$&#123;TARGET&#125;/bin</span></span><br><span class="line"><span class="section">else: unix:!android: target.path = /opt/$$&#123;TARGET&#125;/bin</span></span><br><span class="line"><span class="section">!isEmpty(target.path): INSTALLS += target</span></span><br></pre></td></tr></table></figure>
+<p> “Qt += core gui”表示项目中加入 core gui 模块。core gui 是 Qt 用于 GUI 设计的类库模块，如果创建的是控制台（Console）应用程序，就不需要添加 core gui。 </p>
+<p>greaterThan代表如果Qt版本大于4，才会加入widgets模块。</p>
+<p>TARGET表示生成的可执行文件的名字是Demo.exe。</p>
+<p>TEMPLATE示项目使用的模板是 app，是一般的应用程序。 </p>
+<p>后面的 SOURCES、HEADERS、FORMS 记录了项目中包含的源程序文件、头文件和窗体文件（.ui 文件）的名称。这些文件列表是 Qt Creator 自动添加到项目管理文件里面的，用户不需要手动修改。</p>
+<blockquote>
+<p>Headers表示所引用的头文件。</p>
 </blockquote>
 <blockquote>
-<p>通信时，其中的一个网络应用程序将要传输的一段信息写入它所在主机的Socket中，该Socket通过网络接口卡的传输介质将这段信息发送给另一台主机的Socket中，使这段信息能传送到其他程序中。 </p>
-</blockquote>
-<p>用人话讲其实就是所谓套接字就是传输层的端点，两个传输层的连接过程是，先把要传输的数据传给套接字，让套接字去传输信息，另一个传输层的套接字接受这个信息。</p>
-<h4 id="套接字的分类"><a href="#套接字的分类" class="headerlink" title="套接字的分类"></a>套接字的分类</h4><blockquote>
-<p>流式套接字： 它提供了一种可靠的、面向连接的双向数据传输服务，实现了数据无差错、无重复的发送。 也就是说流式套接字建立了一种安全可靠的连接。（TCP）</p>
+<p>sources表示源代码部分。</p>
 </blockquote>
 <blockquote>
-<p>数据报套接字： 它提供了一种无连接、不可靠的双向数据传输服务。数据包以独立的形式被发送，并且保留了记录边界，不提供可靠性保证。 （UDP）</p>
-</blockquote>
-<blockquote>
-<p>原始套接字: 该套接字允许对较低层协议（如IP或ICMP）进行直接访问，常用于网络协议分析，检验新的网络协议实现，也可用于测试新配置或安装的网络设备。 </p>
+<p>Forms表示可视化设计的窗体的定义文件，例如各个元素的位置等。</p>
 </blockquote>
 <hr>
-<h3 id="套接字编程流程"><a href="#套接字编程流程" class="headerlink" title="套接字编程流程"></a>套接字编程流程</h3><p>先上一个套接字编程的流程图</p>
-<p><img src="https://s2.ax1x.com/2019/11/01/KH67WR.jpg" alt="套接字编程流程图"></p>
-<p>然后介绍一下具体的流程</p>
-<p>Server:</p>
-<blockquote>
-<p>引用头文件和加载动态链接库</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"winsock2.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment (lib,<span class="meta-string">"ws2_32.lib"</span>)</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>指定套接字版本并初始化动态链接库</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WSADATA WSAData;</span><br><span class="line">WORD SocketVersion = MAKEWORD(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">WSAStartup(SocketVersion,&amp;WSAData);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>建立一个套接字</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sListen = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>配置套接字所需要的参数</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PORT 12345</span></span><br><span class="line">server.sin_family = AF_INET;<span class="comment">/*使用IPV4*/</span></span><br><span class="line">server.sin_port = htons(PORT);<span class="comment">/*使用12345端口并把主机字节序转化为网络字节序*/</span></span><br><span class="line">server.sin_addr.s_addr = htonl(INADDR_ANY);<span class="comment">/*接受到本机所有网卡的数据*/</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>绑定一个套接字</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RetVal = bind(sListen,(struct sockaddr *)&amp;server,size);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>设置监听</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">listen(sListen, maxnumber);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>关闭连接与清除初始化动态链接库时分配的资源</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">closesocket(sListen);</span><br><span class="line">WSACleanup();</span><br></pre></td></tr></table></figure>
-<p>Client:</p>
-<blockquote>
-<p>client与Server不同的地方有connect，连接服务器</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SOCKET sClient;</span><br><span class="line">SOCKADDR_IN server;</span><br><span class="line">connect(sClient, (struct sockaddr*) &amp; server, <span class="keyword">sizeof</span>(SOCKADDR_IN))</span><br></pre></td></tr></table></figure>
-<hr>
-<p>我写了一个可以客户端可以随意给服务端发消息，客户端可以通过指令和指定的另外的客户端发消息，但是因为线程不能创建线程，所以只能发一条回一条。</p>
-<blockquote>
-<p>首先创建一个线程用来接受所有客户端的消息。接受消息的同时会记录下该客户端的惟一标识号，便于之后查询当前在线用户和用户通信的实现。</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">thread <span class="title">task01</span><span class="params">(receiveprocess, sClient)</span></span>;  <span class="comment">/*接收消息子线程*/</span></span><br><span class="line">task01.detach();</span><br></pre></td></tr></table></figure>
-<p>顺便写一下detach和join的区别</p>
-<blockquote>
-<p>detach：主线程与子线程分离，子线程结束后，资源自动回收。</p>
-<p>join：子线程合入主线程，主线程阻塞等待子线程结束，然后回收子线程资源。 </p>
-</blockquote>
-<p>说人话就是detach和主线程没关系，资源回收会由系统自动回收。join是主线程阻塞，等着回收该线程资源。</p>
-<blockquote>
-<p>在receiveprocess函数中我接受一个客户端的消息，但因为我接收消息使用的是一个公共的全局缓冲区，所以约等于接受所有客户端的消息。第二个语句将字符串末尾加上字符串结束符，保证字符串正确显示。</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RetVal = recv(sClient, ReceiveBuff, MSGSIZE, <span class="number">0</span>);</span><br><span class="line">ReceiveBuff[RetVal] = <span class="string">'\0'</span>;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>接着用户可以输入指令，在receiveprocess中将用户输入与固定字符串进行比对。比如用户输入communicate会与某个用户进行通信。（由服务器转发实现）</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (!<span class="built_in">strcmp</span>(ReceiveBuff, communicate))<span class="comment">/*通过communicate指令与当前当前在线用户通信*/</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> want = <span class="number">-1</span>;</span><br><span class="line">			<span class="keyword">int</span> a = findusernumber(sClient);<span class="comment">/*该用户唯一标识码*/</span></span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"a = "</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			s = <span class="string">"请输入您的想要与谁通信"</span>;</span><br><span class="line">			sendtouser(s, sClient);</span><br><span class="line">			want = reciveonenumber(sClient, a);<span class="comment">/*该用户想要与谁通信*/</span></span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt;<span class="string">"用户"</span>&lt;&lt;a&lt;&lt; <span class="string">"想与"</span> &lt;&lt; want &lt;&lt; <span class="string">"通信"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			communicateuseranduser(information[a].user, information[want].user, a, want);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>而服务端发消息只需要使用send函数即可，所以只要有用户提出通信请求，记录下该用户的唯一标识码和该用户想要通信的用户的唯一标识码，使用服务端的send函数可以实现服务端的转发。但是我还没有实现两个客户端之间可以随意所欲地发消息。如果想要随意所欲发消息，那么需要再创建两个线程，一个接收消息一个发送消息。</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">send(b, information[a1].ReceiveBuff, <span class="built_in">strlen</span>(information[a1].ReceiveBuff), <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>因为只有单线程进行通信，但又要同时接受和发送，我只能利用一个变量的自增。（有时间我改成双线程），information[i].ReceiveBuff是某一个用户私有的缓冲区，i是该用户在用户的数据结构中所处的序号。客户端发起通信请求–&gt;服务端接收请求并转发消息至另一个客户端–&gt;另一个客户端收到请求。由此可实现客户端与客户端的通信。</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (flagp % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">			receiveuseranduser(a, a1);</span><br><span class="line">			flagp++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			receiveuseranduser(b, b1);</span><br><span class="line">			flagp++;</span><br><span class="line">		&#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">receiveuseranduser</span><span class="params">(SOCKET sClient,<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">	<span class="comment">/*接收线程消息函数*/</span></span><br><span class="line">		RetVal = recv(sClient, information[i].ReceiveBuff, MSGSIZE, <span class="number">0</span>);</span><br><span class="line">		information[i].ReceiveBuff[RetVal] = <span class="string">'\0'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>勉勉强强搭好了一个框，剩下的就是糊纸了。数据结构改一改就可以变成邮件管理系统什么的。</p>
-<p>文件传输功能尚未完成，有时间就写（咕）。之后我会把优化版的代码贴上来，如果我想得起来的话。</p>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p>首先打开Qt</p>
+<p><img src="https://s2.ax1x.com/2020/01/14/lqdB6S.jpg" alt="Qt打开"></p>
+<p>新建一个文件或项目，选择第一个。</p>
+<p><img src="https://s2.ax1x.com/2020/01/14/lqwMAs.png" alt="image-20200114174141173"></p>
+<p>在入门阶段无脑下一步即可，点开ui文件，加入Lable标签,。</p>
+<p><img src="https://s2.ax1x.com/2020/01/14/lqI6HA.jpg" alt=""></p>
+<p>加入PushButton，使用信号与槽，把button按钮设置为最小化。</p>
+<p><img src="https://s2.ax1x.com/2020/01/14/lqogr4.jpg" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/01/14/lqo5Px.jpg" alt=""></p>
 
       
     </div>
@@ -388,13 +346,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2019/11/01/套接字编程学习/">套接字编程学习</a></p>
+        <p><span>本文标题:</span><a  href="/2020/01/14/QT学习笔记（一）/">QT学习笔记（一）</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Crustsalt 的个人博客">Crustsalt</a></p>
-        <p><span>发布时间:</span>2019年11月01日 - 21时28分</p>
-        <p><span>最后更新:</span>2019年11月12日 - 11时43分</p>
+        <p><span>发布时间:</span>2020年01月14日 - 19时51分</p>
+        <p><span>最后更新:</span>2020年01月14日 - 19时52分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/11/01/套接字编程学习/" title="套接字编程学习">/2019/11/01/套接字编程学习/</a>
-            <span class="copy-path" data-clipboard-text="原文: /2019/11/01/套接字编程学习/　　作者: Crustsalt" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/01/14/QT学习笔记（一）/" title="QT学习笔记（一）">/2020/01/14/QT学习笔记（一）/</a>
+            <span class="copy-path" data-clipboard-text="原文: /2020/01/14/QT学习笔记（一）/　　作者: Crustsalt" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -405,18 +363,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2019/11/02/Sqli/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Sqli-lab 1-65关放弃指北
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2019/10/31/PhpStudy_RCE漏洞复现/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">PhpStudy RCE漏洞复现</div>
+    <a  href="/2019/11/16/Nmap扫描模式初探究/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Nmap扫描模式初探究</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -428,7 +377,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#套接字编程学习"><span class="toc-number">1.</span> <span class="toc-text">套接字编程学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#套接字概念"><span class="toc-number">1.1.</span> <span class="toc-text">套接字概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#套接字的分类"><span class="toc-number">1.1.1.</span> <span class="toc-text">套接字的分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#套接字编程流程"><span class="toc-number">1.2.</span> <span class="toc-text">套接字编程流程</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#QT学习笔记（一）"><span class="toc-number">1.</span> <span class="toc-text">QT学习笔记（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装过程"><span class="toc-number">1.1.</span> <span class="toc-text">安装过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Qt文件结构"><span class="toc-number">1.2.</span> <span class="toc-text">Qt文件结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-number">1.3.</span> <span class="toc-text">Demo</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -489,13 +438,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2019/11/02/Sqli/" title="上一篇: Sqli-lab 1-65关放弃指北">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2019/10/31/PhpStudy_RCE漏洞复现/" title="下一篇: PhpStudy RCE漏洞复现">
+            <a  href="/2019/11/16/Nmap扫描模式初探究/" title="下一篇: Nmap扫描模式初探究">
                 <i class="fa fa-angle-right"></i>
             </a>
         
