@@ -9,22 +9,22 @@
   
   <title>QT学习笔记（二） | Crustsalt&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="QT学习笔记（二）咕了好久了，假期学习动力严重欠费，该好好写写blog了。 信号与槽机制初探信号与槽机制是Qt中一个独特的机制，比如当你按下一个button控件的时候，会发出一个信号，通过创建一个槽来捕获这个信号，捕获时候执行特地的动作，即Qt中的信号发出与处理——信号与槽。 信号与槽的两种简单实现方式信号与槽的手动绑定首先打开Qt先新建一个项目，布局一个Push Button，  在mainwi">
+  <meta name="description" content="QT学习笔记（二）咕了好久了，假期学习动力严重欠费，该好好写写blog了。">
 <meta name="keywords" content="C++,Qt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="QT学习笔记（二）">
 <meta property="og:url" content="/2020/01/23/QT学习笔记（二）/index.html">
 <meta property="og:site_name" content="Crustsalt&#39;s Blog">
-<meta property="og:description" content="QT学习笔记（二）咕了好久了，假期学习动力严重欠费，该好好写写blog了。 信号与槽机制初探信号与槽机制是Qt中一个独特的机制，比如当你按下一个button控件的时候，会发出一个信号，通过创建一个槽来捕获这个信号，捕获时候执行特地的动作，即Qt中的信号发出与处理——信号与槽。 信号与槽的两种简单实现方式信号与槽的手动绑定首先打开Qt先新建一个项目，布局一个Push Button，  在mainwi">
+<meta property="og:description" content="QT学习笔记（二）咕了好久了，假期学习动力严重欠费，该好好写写blog了。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/23/1VtUmD.jpg">
 <meta property="og:image" content="/23/QT学习笔记（二）/Users/dell/AppData/Roaming/Typora/typora-user-images/image-20200123224723243.png">
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/23/1V69mR.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/23/1V63h8.jpg">
-<meta property="og:updated_time" content="2020-01-23T14:57:05.493Z">
+<meta property="og:updated_time" content="2020-01-23T14:59:51.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QT学习笔记（二）">
-<meta name="twitter:description" content="QT学习笔记（二）咕了好久了，假期学习动力严重欠费，该好好写写blog了。 信号与槽机制初探信号与槽机制是Qt中一个独特的机制，比如当你按下一个button控件的时候，会发出一个信号，通过创建一个槽来捕获这个信号，捕获时候执行特地的动作，即Qt中的信号发出与处理——信号与槽。 信号与槽的两种简单实现方式信号与槽的手动绑定首先打开Qt先新建一个项目，布局一个Push Button，  在mainwi">
+<meta name="twitter:description" content="QT学习笔记（二）咕了好久了，假期学习动力严重欠费，该好好写写blog了。">
 <meta name="twitter:image" content="https://s2.ax1x.com/2020/01/23/1VtUmD.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Crustsalt&#39;s Blog" type="application/atom+xml">
@@ -295,7 +295,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="QT学习笔记（二）"><a href="#QT学习笔记（二）" class="headerlink" title="QT学习笔记（二）"></a>QT学习笔记（二）</h2><p>咕了好久了，假期学习动力严重欠费，该好好写写blog了。</p>
+        <h2 id="QT学习笔记（二）"><a href="#QT学习笔记（二）" class="headerlink" title="QT学习笔记（二）"></a>QT学习笔记（二）</h2><p>咕了好久了，假期学习动力严重欠费，该好好写写blog了。<br><a id="more"></a></p>
 <h3 id="信号与槽机制初探"><a href="#信号与槽机制初探" class="headerlink" title="信号与槽机制初探"></a>信号与槽机制初探</h3><p>信号与槽机制是Qt中一个独特的机制，比如当你按下一个button控件的时候，会发出一个信号，通过创建一个槽来捕获这个信号，捕获时候执行特地的动作，即Qt中的信号发出与处理——信号与槽。</p>
 <h4 id="信号与槽的两种简单实现方式"><a href="#信号与槽的两种简单实现方式" class="headerlink" title="信号与槽的两种简单实现方式"></a>信号与槽的两种简单实现方式</h4><h5 id="信号与槽的手动绑定"><a href="#信号与槽的手动绑定" class="headerlink" title="信号与槽的手动绑定"></a>信号与槽的手动绑定</h5><p>首先打开Qt先新建一个项目，布局一个Push Button，</p>
 <p><img src="https://s2.ax1x.com/2020/01/23/1VtUmD.jpg" alt=""></p>
@@ -321,7 +321,7 @@
         <p><span>本文标题:</span><a  href="/2020/01/23/QT学习笔记（二）/">QT学习笔记（二）</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Crustsalt 的个人博客">Crustsalt</a></p>
         <p><span>发布时间:</span>2020年01月23日 - 20时44分</p>
-        <p><span>最后更新:</span>2020年01月23日 - 22时57分</p>
+        <p><span>最后更新:</span>2020年01月23日 - 22时59分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2020/01/23/QT学习笔记（二）/" title="QT学习笔记（二）">/2020/01/23/QT学习笔记（二）/</a>
             <span class="copy-path" data-clipboard-text="原文: /2020/01/23/QT学习笔记（二）/　　作者: Crustsalt" title=""></span>
@@ -419,7 +419,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/01/23/QT学习笔记（二）/">QT学习笔记（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/14/QT学习笔记（一）/">QT学习笔记（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/16/Nmap扫描模式初探究/">Nmap扫描模式初探究</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/Java-文件操作与多线程编程基础/">Java-文件操作与多线程编程基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/键盘消息钩取学习/">键盘消息钩取学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/密码学实验/">密码学实验</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/文件上传靶场/">文件上传靶场</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/Sqli/">Sqli-lab 1-65关放弃指北</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/01/套接字编程学习/">套接字编程学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/PhpStudy_RCE漏洞复现/">PhpStudy RCE漏洞复现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/30/Windows API编程/">Windows API编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/Java-容器学习/">Java-容器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/非递减数列/">非递减数列</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/整数反转/">整数反转</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/两数之和/">两数之和</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/01/23/QT学习笔记（二）/">QT学习笔记（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/14/QT学习笔记（一）/">QT学习笔记（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/16/Nmap扫描模式初探究/">Nmap扫描模式初探究</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/Java-文件操作与多线程编程基础/">Java-文件操作与多线程编程基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/键盘消息钩取学习/">键盘消息钩取学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/密码学实验/">密码学实验</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/文件上传靶场/">文件上传靶场</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/Sqli/">Sqli-lab 1-65关放弃指北</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/01/套接字编程学习/">套接字编程学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/PhpStudy_RCE漏洞复现/">PhpStudy RCE漏洞复现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/30/Windows API编程/">Windows API编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/Java-容器学习/">Java-容器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/非递减数列/">非递减数列</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/整数反转/">整数反转</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/两数之和/">两数之和</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></li></ul>
     
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
