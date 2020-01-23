@@ -183,7 +183,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Java学习/" style="font-size: 20px;">Java学习</a> <a href="/tags/Nmap学习/" style="font-size: 10px;">Nmap学习</a> <a href="/tags/Qt/" style="font-size: 10px;">Qt</a> <a href="/tags/Windows-API编程/" style="font-size: 10px;">Windows API编程</a> <a href="/tags/Windows编程/" style="font-size: 10px;">Windows编程</a> <a href="/tags/sql注入/" style="font-size: 20px;">sql注入</a> <a href="/tags/两数之和/" style="font-size: 10px;">两数之和</a> <a href="/tags/多线程编程基础/" style="font-size: 10px;">多线程编程基础</a> <a href="/tags/套接字学习/" style="font-size: 10px;">套接字学习</a> <a href="/tags/容器基础/" style="font-size: 10px;">容器基础</a> <a href="/tags/密码学实验/" style="font-size: 10px;">密码学实验</a> <a href="/tags/整数反转/" style="font-size: 10px;">整数反转</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/文件操作/" style="font-size: 10px;">文件操作</a> <a href="/tags/漏洞复现/" style="font-size: 10px;">漏洞复现</a> <a href="/tags/键盘消息钩取学习/" style="font-size: 10px;">键盘消息钩取学习</a> <a href="/tags/非递减数列/" style="font-size: 10px;">非递减数列</a>
+                        <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/Java学习/" style="font-size: 20px;">Java学习</a> <a href="/tags/Nmap学习/" style="font-size: 10px;">Nmap学习</a> <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/Windows-API编程/" style="font-size: 10px;">Windows API编程</a> <a href="/tags/Windows编程/" style="font-size: 10px;">Windows编程</a> <a href="/tags/sql注入/" style="font-size: 20px;">sql注入</a> <a href="/tags/两数之和/" style="font-size: 10px;">两数之和</a> <a href="/tags/多线程编程基础/" style="font-size: 10px;">多线程编程基础</a> <a href="/tags/套接字学习/" style="font-size: 10px;">套接字学习</a> <a href="/tags/容器基础/" style="font-size: 10px;">容器基础</a> <a href="/tags/密码学实验/" style="font-size: 10px;">密码学实验</a> <a href="/tags/整数反转/" style="font-size: 10px;">整数反转</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/文件操作/" style="font-size: 10px;">文件操作</a> <a href="/tags/漏洞复现/" style="font-size: 10px;">漏洞复现</a> <a href="/tags/键盘消息钩取学习/" style="font-size: 10px;">键盘消息钩取学习</a> <a href="/tags/非递减数列/" style="font-size: 10px;">非递减数列</a>
                     </div>
                 </section>
                 
@@ -245,6 +245,86 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="pages-QT学习笔记（二）" class="article article-type-pages" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/01/23/QT学习笔记（二）/" class="article-date">
+      <time datetime="2020-01-23T12:44:15.000Z" itemprop="datePublished">2020-01-23</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/01/23/QT学习笔记（二）/">QT学习笔记（二）</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="QT学习笔记（二）"><a href="#QT学习笔记（二）" class="headerlink" title="QT学习笔记（二）"></a>QT学习笔记（二）</h2><p>咕了好久了，假期学习动力严重欠费，该好好写写blog了。</p>
+<h3 id="信号与槽机制初探"><a href="#信号与槽机制初探" class="headerlink" title="信号与槽机制初探"></a>信号与槽机制初探</h3><p>信号与槽机制是Qt中一个独特的机制，比如当你按下一个button控件的时候，会发出一个信号，通过创建一个槽来捕获这个信号，捕获时候执行特地的动作，即Qt中的信号发出与处理——信号与槽。</p>
+<h4 id="信号与槽的两种简单实现方式"><a href="#信号与槽的两种简单实现方式" class="headerlink" title="信号与槽的两种简单实现方式"></a>信号与槽的两种简单实现方式</h4><h5 id="信号与槽的手动绑定"><a href="#信号与槽的手动绑定" class="headerlink" title="信号与槽的手动绑定"></a>信号与槽的手动绑定</h5><p>首先打开Qt先新建一个项目，布局一个Push Button，</p>
+<p><img src="https://s2.ax1x.com/2020/01/23/1VtUmD.jpg" alt=""></p>
+<p>在<strong>mainwindow.h</strong>里声明槽函数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//mainwindow.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> MAINWINDOW_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAINWINDOW_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMainWindow&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Ui &#123;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span> :</span> <span class="keyword">public</span> QMainWindow</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">MainWindow</span><span class="params">(QWidget *parent = <span class="literal">nullptr</span>)</span></span>;</span><br><span class="line">    ~MainWindow();</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里是添加的地方</span></span><br><span class="line"><span class="keyword">public</span> slots:       <span class="comment">//槽函数声明标志</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">A_example</span><span class="params">()</span></span>;    <span class="comment">//槽函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Ui::MainWindow *ui;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// MAINWINDOW_H</span></span></span><br></pre></td></tr></table></figure>
+<p>声明槽函数后，就要编写槽函数了，可以参考这个<a href="https://www.cnblogs.com/lsgxeva/p/7814072.html" target="_blank" rel="noopener">链接</a>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//mainwindow.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ui_mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMessageBox&gt;</span></span></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">    QMainWindow(parent),</span><br><span class="line">    ui(<span class="keyword">new</span> Ui::MainWindow)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//添加关联代码，必须放在 setupUi 函数之后</span></span><br><span class="line">        connect(ui-&gt;test, SIGNAL(clicked()), <span class="keyword">this</span>, SLOT(A_example()));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">delete</span> ui;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//槽函数定义代码，与普通成员函数类似</span></span><br><span class="line"><span class="keyword">void</span> MainWindow::A_example()</span><br><span class="line">&#123;</span><br><span class="line">    QMessageBox::information(<span class="keyword">this</span>, tr(<span class="string">"Example"</span>), tr(<span class="string">"My Test"</span>));<span class="comment">//Qt中使用字符串要用tr函数，原因是tr会调用translate函数，实现一个多国语言翻译功能，比如tr函数里面写的是英文，可以导入翻译包，将英文转换为其它语言</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>跑一下试试</p>
+<p><img src="/23/QT学习笔记（二）/Users\dell\AppData\Roaming\Typora\typora-user-images\image-20200123224723243.png" alt=""></p>
+<h5 id="信号与槽的自动绑定"><a href="#信号与槽的自动绑定" class="headerlink" title="信号与槽的自动绑定"></a>信号与槽的自动绑定</h5><p>在这里右击控件，选择转到槽。</p>
+<p><img src="https://s2.ax1x.com/2020/01/23/1V69mR.jpg" alt=""></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ui_mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMessageBox&gt;</span></span></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">    QMainWindow(parent),</span><br><span class="line">    ui(<span class="keyword">new</span> Ui::MainWindow)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//添加关联代码，必须放在 setupUi 函数之后</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">delete</span> ui;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//槽函数定义代码，与普通成员函数类似</span></span><br><span class="line"><span class="keyword">void</span> MainWindow::on_test_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    QMessageBox::information(<span class="keyword">this</span>, tr(<span class="string">"two"</span>), tr(<span class="string">"TWO"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可见运行结果，第二种方法无需自己写connect，较为方便。</p>
+<p><img src="https://s2.ax1x.com/2020/01/23/1V63h8.jpg" alt="1V63h8.jpg"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/开发相关/">开发相关</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
   
     <article id="pages-QT学习笔记（一）" class="article article-type-pages" itemscope itemprop="blogPost">
   
@@ -864,82 +944,6 @@
       
         <p class="article-more-link">
           <a   href="/2019/10/31/PhpStudy_RCE漏洞复现/#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="pages-Windows API编程" class="article article-type-pages" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2019/10/30/Windows API编程/" class="article-date">
-      <time datetime="2019-10-30T04:00:15.000Z" itemprop="datePublished">2019-10-30</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2019/10/30/Windows API编程/">Windows API编程</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="Windows-API编程"><a href="#Windows-API编程" class="headerlink" title="Windows API编程"></a>Windows API编程</h2><blockquote>
-<p>题目：使用 Windows 核心 API 实现以下程序 </p>
-<ol>
-<li>程序 1：该程序能够创建一个本机的 OllyDbg 进程（使用 CreateProcess，显式指定 OllyDbg 可执行文件的路径） </li>
-<li>程序 2：<br>a) 该程序能够创建一个线程，显示 MessageBox<br>b) 在以上子线程中，编程获得 kernel32.dll 在当前系统中的路径信息，作为内容显示在以上的 MessageBox 中<br>c) 在以上子线程中，编程获得子线程所加载 kernel32.dll 中的GetCurrentThreadId()函数的地址，调用该函数，获得子线程的线程编号，将线程编号连接到上一问的 kernel32.dll路径后面，再将连接结果字符串显示在 MessageBox 中</li>
-</ol>
-</blockquote>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发相关/">开发相关</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows-API编程/">Windows API编程</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/2019/10/30/Windows API编程/#more">查看更多 >></a>
         </p>
       
       <div class="clearfix"></div>
