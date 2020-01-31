@@ -7,25 +7,20 @@
   
   
   
-  <title>QT学习笔记（二） | Crustsalt&#39;s Blog</title>
+  <title>字符串转换整数 | Crustsalt&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="QT学习笔记（二）咕了好久了，假期学习动力严重欠费，该好好写写blog了。">
-<meta name="keywords" content="C++,Qt">
+  <meta name="description" content="LeetCode刷题笔记字符串转换整数题目链接： https://leetcode-cn.com/problems/string-to-integer-atoi/   ​    请你来实现一个 atoi 函数，使其能将字符串转换成整数。">
+<meta name="keywords" content="字符串转换整数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="QT学习笔记（二）">
-<meta property="og:url" content="/2020/01/23/QT学习笔记（二）/index.html">
+<meta property="og:title" content="字符串转换整数">
+<meta property="og:url" content="/2020/01/31/字符串转换整数/index.html">
 <meta property="og:site_name" content="Crustsalt&#39;s Blog">
-<meta property="og:description" content="QT学习笔记（二）咕了好久了，假期学习动力严重欠费，该好好写写blog了。">
+<meta property="og:description" content="LeetCode刷题笔记字符串转换整数题目链接： https://leetcode-cn.com/problems/string-to-integer-atoi/   ​    请你来实现一个 atoi 函数，使其能将字符串转换成整数。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://s2.ax1x.com/2020/01/23/1VtUmD.jpg">
-<meta property="og:image" content="/23/QT学习笔记（二）/Users/dell/AppData/Roaming/Typora/typora-user-images/image-20200123224723243.png">
-<meta property="og:image" content="https://s2.ax1x.com/2020/01/23/1V69mR.jpg">
-<meta property="og:image" content="https://s2.ax1x.com/2020/01/23/1V63h8.jpg">
-<meta property="og:updated_time" content="2020-01-23T14:59:51.234Z">
+<meta property="og:updated_time" content="2020-01-31T13:56:59.074Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QT学习笔记（二）">
-<meta name="twitter:description" content="QT学习笔记（二）咕了好久了，假期学习动力严重欠费，该好好写写blog了。">
-<meta name="twitter:image" content="https://s2.ax1x.com/2020/01/23/1VtUmD.jpg">
+<meta name="twitter:title" content="字符串转换整数">
+<meta name="twitter:description" content="LeetCode刷题笔记字符串转换整数题目链接： https://leetcode-cn.com/problems/string-to-integer-atoi/   ​    请你来实现一个 atoi 函数，使其能将字符串转换成整数。">
   
     <link rel="alternative" href="/atom.xml" title="Crustsalt&#39;s Blog" type="application/atom+xml">
   
@@ -251,11 +246,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="pages-QT学习笔记（二）" class="article article-type-pages" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="pages-字符串转换整数" class="article article-type-pages" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2020/01/23/QT学习笔记（二）/" class="article-date">
-      <time datetime="2020-01-23T12:44:15.000Z" itemprop="datePublished">2020-01-23</time>
+      <a  href="/2020/01/31/字符串转换整数/" class="article-date">
+      <time datetime="2020-01-31T13:29:24.000Z" itemprop="datePublished">2020-01-31</time>
 </a>
 
     </div>
@@ -269,7 +264,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      QT学习笔记（二）
+      字符串转换整数
     </h1>
   
 
@@ -279,13 +274,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发相关/">开发相关</a>
+    <a class="article-category-link" href="/categories/LeetCode刷题笔记/">LeetCode刷题笔记</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Qt/">Qt</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符串转换整数/">字符串转换整数</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -295,21 +290,111 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="QT学习笔记（二）"><a href="#QT学习笔记（二）" class="headerlink" title="QT学习笔记（二）"></a>QT学习笔记（二）</h2><p>咕了好久了，假期学习动力严重欠费，该好好写写blog了。<br><a id="more"></a></p>
-<h3 id="信号与槽机制初探"><a href="#信号与槽机制初探" class="headerlink" title="信号与槽机制初探"></a>信号与槽机制初探</h3><p>信号与槽机制是Qt中一个独特的机制，比如当你按下一个button控件的时候，会发出一个信号，通过创建一个槽来捕获这个信号，捕获时候执行特地的动作，即Qt中的信号发出与处理——信号与槽。</p>
-<h4 id="信号与槽的两种简单实现方式"><a href="#信号与槽的两种简单实现方式" class="headerlink" title="信号与槽的两种简单实现方式"></a>信号与槽的两种简单实现方式</h4><h5 id="信号与槽的手动绑定"><a href="#信号与槽的手动绑定" class="headerlink" title="信号与槽的手动绑定"></a>信号与槽的手动绑定</h5><p>首先打开Qt先新建一个项目，布局一个Push Button，</p>
-<p><img src="https://s2.ax1x.com/2020/01/23/1VtUmD.jpg" alt=""></p>
-<p>在<strong>mainwindow.h</strong>里声明槽函数。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//mainwindow.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> MAINWINDOW_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAINWINDOW_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMainWindow&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Ui &#123;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainWindow</span> :</span> <span class="keyword">public</span> QMainWindow</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">MainWindow</span><span class="params">(QWidget *parent = <span class="literal">nullptr</span>)</span></span>;</span><br><span class="line">    ~MainWindow();</span><br><span class="line"></span><br><span class="line"><span class="comment">//这里是添加的地方</span></span><br><span class="line"><span class="keyword">public</span> slots:       <span class="comment">//槽函数声明标志</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">A_example</span><span class="params">()</span></span>;    <span class="comment">//槽函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Ui::MainWindow *ui;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// MAINWINDOW_H</span></span></span><br></pre></td></tr></table></figure>
-<p>声明槽函数后，就要编写槽函数了，可以参考这个<a href="https://www.cnblogs.com/lsgxeva/p/7814072.html" target="_blank" rel="noopener">链接</a>。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//mainwindow.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ui_mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMessageBox&gt;</span></span></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">    QMainWindow(parent),</span><br><span class="line">    ui(<span class="keyword">new</span> Ui::MainWindow)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//添加关联代码，必须放在 setupUi 函数之后</span></span><br><span class="line">        connect(ui-&gt;test, SIGNAL(clicked()), <span class="keyword">this</span>, SLOT(A_example()));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">delete</span> ui;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//槽函数定义代码，与普通成员函数类似</span></span><br><span class="line"><span class="keyword">void</span> MainWindow::A_example()</span><br><span class="line">&#123;</span><br><span class="line">    QMessageBox::information(<span class="keyword">this</span>, tr(<span class="string">"Example"</span>), tr(<span class="string">"My Test"</span>));<span class="comment">//Qt中使用字符串要用tr函数，原因是tr会调用translate函数，实现一个多国语言翻译功能，比如tr函数里面写的是英文，可以导入翻译包，将英文转换为其它语言</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>跑一下试试</p>
-<p><img src="/23/QT学习笔记（二）/Users\dell\AppData\Roaming\Typora\typora-user-images\image-20200123224723243.png" alt=""></p>
-<h5 id="信号与槽的自动绑定"><a href="#信号与槽的自动绑定" class="headerlink" title="信号与槽的自动绑定"></a>信号与槽的自动绑定</h5><p>在这里右击控件，选择转到槽。</p>
-<p><img src="https://s2.ax1x.com/2020/01/23/1V69mR.jpg" alt=""></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ui_mainwindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMessageBox&gt;</span></span></span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">    QMainWindow(parent),</span><br><span class="line">    ui(<span class="keyword">new</span> Ui::MainWindow)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">//添加关联代码，必须放在 setupUi 函数之后</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">delete</span> ui;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//槽函数定义代码，与普通成员函数类似</span></span><br><span class="line"><span class="keyword">void</span> MainWindow::on_test_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    QMessageBox::information(<span class="keyword">this</span>, tr(<span class="string">"two"</span>), tr(<span class="string">"TWO"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可见运行结果，第二种方法无需自己写connect，较为方便。</p>
-<p><img src="https://s2.ax1x.com/2020/01/23/1V63h8.jpg" alt="1V63h8.jpg"></p>
+        <h2 id="LeetCode刷题笔记"><a href="#LeetCode刷题笔记" class="headerlink" title="LeetCode刷题笔记"></a>LeetCode刷题笔记</h2><h3 id="字符串转换整数"><a href="#字符串转换整数" class="headerlink" title="字符串转换整数"></a>字符串转换整数</h3><p><strong>题目链接： <a href="https://leetcode-cn.com/problems/string-to-integer-atoi/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/string-to-integer-atoi/</a> </strong></p>
+<hr>
+<p>​    请你来实现一个 atoi 函数，使其能将字符串转换成整数。</p>
+<a id="more"></a>
+<p>​    首先，该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止。</p>
+<p>​    当我们寻找到的第一个非空字符为正或者负号时，则将该符号与之后面尽可能多的连续数字组合起来，作为该整数的正负号；假如第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成整数。</p>
+<p>​    该字符串除了有效的整数部分之后也可能会存在多余的字符，这些字符可以被忽略，它们对于函数不应该造成影响。</p>
+<p>​    注意：假如该字符串中的第一个非空格字符不是一个有效整数字符、字符串为空或字符串仅包含空白字符时，则你的函数不需要进行转换。</p>
+<p>​    在任何情况下，若函数不能进行有效的转换时，请返回 0。</p>
+<p>​    说明：</p>
+<p>​    假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−231,  231 − 1]。如果数值超过这个范围，请返回  INT_MAX (231 − 1) 或 INT_MIN (−231) 。</p>
+<blockquote>
+<p>示例 1:</p>
+</blockquote>
+<p>输入: “42”<br>输出: 42</p>
+<blockquote>
+<p>示例 2:</p>
+</blockquote>
+<p>输入: “   -42”<br>输出: -42<br>解释: 第一个非空白字符为 ‘-‘, 它是一个负号。<br>     我们尽可能将负号与后面所有连续出现的数字组合起来，最后得到 -42 。</p>
+<blockquote>
+<p>示例 3:</p>
+</blockquote>
+<p>输入: “4193 with words”<br>输出: 4193<br>解释: 转换截止于数字 ‘3’ ，因为它的下一个字符不为数字。</p>
+<blockquote>
+<p>示例 4:</p>
+</blockquote>
+<p>输入: “words and 987”<br>输出: 0<br>解释: 第一个非空字符是 ‘w’, 但它不是数字或正、负号。<br>     因此无法执行有效的转换。</p>
+<blockquote>
+<p>示例 5:</p>
+</blockquote>
+<p>输入: “-91283472332”<br>输出: -2147483648<br>解释: 数字 “-91283472332” 超过 32 位有符号整数范围。<br>     因此返回 INT_MIN (−231) 。</p>
+<hr>
+<blockquote>
+<p>大佬代码</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">myAtoi</span><span class="params">(self, str: str)</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">return</span> max(min(int(*re.findall(<span class="string">'^[\+\-]?\d+'</span>, str.lstrip())), <span class="number">2</span>**<span class="number">31</span> - <span class="number">1</span>), <span class="number">-2</span>**<span class="number">31</span>)</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>提交结果</th>
+<th>执行用时</th>
+<th>内存消耗</th>
+<th>语言</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通过</td>
+<td>40 ms</td>
+<td>13 MB</td>
+<td>Python3</td>
+</tr>
+</tbody>
+</table>
+<p>果然N个ifelse不敌一个正则，解析一下大佬的意思</p>
+<p>把去过左面空格的字符串传入正则，正则匹配+或-开头并且后面为数字的字符串，把字符串转换为整数，与两个边界比较。</p>
+<hr>
+<blockquote>
+<p>执行速度最快的代码</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">myAtoi</span><span class="params">(self, str: str)</span> -&gt; int:</span></span><br><span class="line">        str = str.lstrip()</span><br><span class="line">        count =<span class="string">''</span></span><br><span class="line">        <span class="keyword">if</span> str == <span class="string">''</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> str[<span class="number">0</span>]==<span class="string">'+'</span> <span class="keyword">or</span> str[<span class="number">0</span>]==<span class="string">'-'</span>:</span><br><span class="line">            count+=str[<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> str[<span class="number">1</span>:]:</span><br><span class="line">                <span class="keyword">if</span> <span class="string">'0'</span>&lt;=i&lt;=<span class="string">'9'</span>:</span><br><span class="line">                    count+=i</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="string">'0'</span>&lt;=str[<span class="number">0</span>]&lt;=<span class="string">'9'</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> str:</span><br><span class="line">                <span class="keyword">if</span> <span class="string">'0'</span>&lt;=i&lt;=<span class="string">'9'</span>:</span><br><span class="line">                    count+=i</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> count == <span class="string">'+'</span> <span class="keyword">or</span> count == <span class="string">'-'</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> int(count)&lt;<span class="number">-2147483648</span> :</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-2147483648</span></span><br><span class="line">        <span class="keyword">elif</span> int(count)&gt;<span class="number">2147483647</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2147483647</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> int(count)</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">提交结果</th>
+<th style="text-align:left">执行用时</th>
+<th style="text-align:left">内存消耗</th>
+<th style="text-align:left">语言</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">通过</td>
+<td style="text-align:left">32ms</td>
+<td style="text-align:left">12.9MB</td>
+<td style="text-align:left">Python3</td>
+</tr>
+</tbody>
+</table>
+<p>思路没什么好讲的，一堆ifelse显然易见</p>
+<hr>
+<blockquote>
+<p>我的辣鸡代码</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">myAtoi</span><span class="params">(self, str: str)</span> -&gt; int:</span></span><br><span class="line">        str0 = str.strip()</span><br><span class="line">        <span class="keyword">if</span>(str0==<span class="string">""</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        list0 = [<span class="string">"0"</span>,<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>,<span class="string">"4"</span>,<span class="string">"5"</span>,<span class="string">"6"</span>,<span class="string">"7"</span>,<span class="string">"8"</span>,<span class="string">"9"</span>]</span><br><span class="line">        index = <span class="number">-1</span></span><br><span class="line">        <span class="keyword">if</span>(str0[<span class="number">0</span>]==<span class="string">"-"</span>):</span><br><span class="line">            str1 = str0[<span class="number">1</span>:]</span><br><span class="line">            <span class="keyword">if</span>(str1==<span class="string">""</span> <span class="keyword">or</span> str1[<span class="number">0</span>] <span class="keyword">not</span> <span class="keyword">in</span> list0):</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(str1)):</span><br><span class="line">                <span class="keyword">if</span>(str1[i] <span class="keyword">in</span> list0):</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    index = i</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span>(index == <span class="number">-1</span>):</span><br><span class="line">                index = len(str1)</span><br><span class="line">            <span class="keyword">if</span>(int(str0[:index+<span class="number">1</span>])&lt;<span class="number">-2147483648</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"-2147483648"</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> int(str0[:index+<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">elif</span>(str0[<span class="number">0</span>] <span class="keyword">in</span> list0 <span class="keyword">or</span> str0[<span class="number">0</span>] == <span class="string">"+"</span>):</span><br><span class="line">            <span class="keyword">if</span>(str0[<span class="number">0</span>]==<span class="string">"+"</span>):</span><br><span class="line">                str0 = str0[<span class="number">1</span>:]</span><br><span class="line">                <span class="keyword">if</span>(str0 == <span class="string">""</span> <span class="keyword">or</span> str0[<span class="number">0</span>] <span class="keyword">not</span> <span class="keyword">in</span> list0):</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(str0)):</span><br><span class="line">                <span class="keyword">if</span>(str0[i] <span class="keyword">in</span> list0):</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    index = i</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span>(index == <span class="number">-1</span>):</span><br><span class="line">                index = len(str0)</span><br><span class="line">            <span class="keyword">if</span>(int(str0[:index])&gt;<span class="number">2147483647</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"2147483647"</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> int(str0[:index])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>提交结果</th>
+<th>执行用时</th>
+<th>内存消耗</th>
+<th>语言</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通过</td>
+<td>52 ms</td>
+<td>13 MB</td>
+<td>Python3</td>
+</tr>
+</tbody>
+</table>
+<p>代码和上面的第二个代码思路基本一样，但是多了几个冗余的if步骤，所以执行用时很慢</p>
 
       
     </div>
@@ -318,13 +403,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2020/01/23/QT学习笔记（二）/">QT学习笔记（二）</a></p>
+        <p><span>本文标题:</span><a  href="/2020/01/31/字符串转换整数/">字符串转换整数</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Crustsalt 的个人博客">Crustsalt</a></p>
-        <p><span>发布时间:</span>2020年01月23日 - 20时44分</p>
-        <p><span>最后更新:</span>2020年01月23日 - 22时59分</p>
+        <p><span>发布时间:</span>2020年01月31日 - 21时29分</p>
+        <p><span>最后更新:</span>2020年01月31日 - 21时56分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/01/23/QT学习笔记（二）/" title="QT学习笔记（二）">/2020/01/23/QT学习笔记（二）/</a>
-            <span class="copy-path" data-clipboard-text="原文: /2020/01/23/QT学习笔记（二）/　　作者: Crustsalt" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/01/31/字符串转换整数/" title="字符串转换整数">/2020/01/31/字符串转换整数/</a>
+            <span class="copy-path" data-clipboard-text="原文: /2020/01/31/字符串转换整数/　　作者: Crustsalt" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -335,18 +420,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2020/01/31/字符串转换整数/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          字符串转换整数
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2020/01/14/QT学习笔记（一）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">QT学习笔记（一）</div>
+    <a  href="/2020/01/23/QT学习笔记（二）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">QT学习笔记（二）</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -358,7 +434,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#QT学习笔记（二）"><span class="toc-number">1.</span> <span class="toc-text">QT学习笔记（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#信号与槽机制初探"><span class="toc-number">1.1.</span> <span class="toc-text">信号与槽机制初探</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#信号与槽的两种简单实现方式"><span class="toc-number">1.1.1.</span> <span class="toc-text">信号与槽的两种简单实现方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#信号与槽的手动绑定"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">信号与槽的手动绑定</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#信号与槽的自动绑定"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">信号与槽的自动绑定</span></a></li></ol></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#LeetCode刷题笔记"><span class="toc-number">1.</span> <span class="toc-text">LeetCode刷题笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串转换整数"><span class="toc-number">1.1.</span> <span class="toc-text">字符串转换整数</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -419,13 +495,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2020/01/31/字符串转换整数/" title="上一篇: 字符串转换整数">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2020/01/14/QT学习笔记（一）/" title="下一篇: QT学习笔记（一）">
+            <a  href="/2020/01/23/QT学习笔记（二）/" title="下一篇: QT学习笔记（二）">
                 <i class="fa fa-angle-right"></i>
             </a>
         
