@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>BlusCMS审计 | Crustsalt&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="BlueCMS审计一直想学代码审计，在假期废了二十天之后，决定还是稍微学一点吧，毕竟学个安全连个代码审计都不会这根本说不过去嘛……">
+<meta name="keywords" content="BlueCMS,代码审计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BlusCMS审计">
+<meta property="og:url" content="/2020/02/21/bluscms代码审计/index.html">
+<meta property="og:site_name" content="Crustsalt&#39;s Blog">
+<meta property="og:description" content="BlueCMS审计一直想学代码审计，在假期废了二十天之后，决定还是稍微学一点吧，毕竟学个安全连个代码审计都不会这根本说不过去嘛……">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-02-21T06:41:34.706Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BlusCMS审计">
+<meta name="twitter:description" content="BlueCMS审计一直想学代码审计，在假期废了二十天之后，决定还是稍微学一点吧，毕竟学个安全连个代码审计都不会这根本说不过去嘛……">
+  
+    <link rel="alternative" href="/atom.xml" title="Crustsalt&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.jpg">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.jpg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Crustsalt</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/LeetCode刷题笔记/">LeetCode刷题笔记</a></li>
+                        
+                            <li><a  href="/categories/渗透测试/">渗透测试</a></li>
+                        
+                            <li><a  href="/categories/开发相关/">开发相关</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/crustsalt" title="github">github</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/BlueCMS/" style="font-size: 10px;">BlueCMS</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/Java学习/" style="font-size: 20px;">Java学习</a> <a href="/tags/Nmap学习/" style="font-size: 10px;">Nmap学习</a> <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/Windows-API编程/" style="font-size: 10px;">Windows API编程</a> <a href="/tags/Windows编程/" style="font-size: 10px;">Windows编程</a> <a href="/tags/sql注入/" style="font-size: 20px;">sql注入</a> <a href="/tags/两数之和/" style="font-size: 10px;">两数之和</a> <a href="/tags/代码审计/" style="font-size: 10px;">代码审计</a> <a href="/tags/多线程编程基础/" style="font-size: 10px;">多线程编程基础</a> <a href="/tags/套接字学习/" style="font-size: 10px;">套接字学习</a> <a href="/tags/字符串转换整数/" style="font-size: 10px;">字符串转换整数</a> <a href="/tags/容器基础/" style="font-size: 10px;">容器基础</a> <a href="/tags/密码学实验/" style="font-size: 10px;">密码学实验</a> <a href="/tags/整数反转/" style="font-size: 10px;">整数反转</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/文件操作/" style="font-size: 10px;">文件操作</a> <a href="/tags/漏洞复现/" style="font-size: 10px;">漏洞复现</a> <a href="/tags/键盘消息钩取学习/" style="font-size: 10px;">键盘消息钩取学习</a> <a href="/tags/非递减数列/" style="font-size: 10px;">非递减数列</a>
+                    </div>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                
+                    <div id="js-aboutme">网安专业ing</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Crustsalt</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Crustsalt</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/LeetCode刷题笔记/">LeetCode刷题笔记</a></li>
+                
+                    <li><a href="/categories/渗透测试/">渗透测试</a></li>
+                
+                    <li><a href="/categories/开发相关/">开发相关</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/crustsalt" title="github">github</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="pages-bluscms代码审计" class="article article-type-pages" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/02/21/bluscms代码审计/" class="article-date">
+      <time datetime="2020-02-21T06:41:15.000Z" itemprop="datePublished">2020-02-21</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      BlusCMS审计
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/渗透测试/">渗透测试</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BlueCMS/">BlueCMS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/代码审计/">代码审计</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="BlueCMS审计"><a href="#BlueCMS审计" class="headerlink" title="BlueCMS审计"></a>BlueCMS审计</h2><p>一直想学代码审计，在假期废了二十天之后，决定还是稍微学一点吧，毕竟学个安全连个代码审计都不会这根本说不过去嘛……<br><a id="more"></a></p>
+<hr>
+<p>首先BlueCMS  v1.6 的已公开<strong>漏洞</strong>有如下</p>
+<blockquote>
+<ol>
+<li><em>/uploads/ad_js.php下存在sql注入漏洞</em></li>
+<li><em>user.php页面的存在存储型xss</em></li>
+<li><em>文件读取1</em> </li>
+<li><em>文件读取2</em></li>
+<li><em>注册页面存在反射型XSS</em></li>
+<li><em>ip地址伪造漏洞</em></li>
+</ol>
+</blockquote>
+<p>使用工具：<strong><em>seay源码审计工具</em></strong></p>
+<hr>
+<h3 id="uploads-ad-js-php下存在sql注入漏洞"><a href="#uploads-ad-js-php下存在sql注入漏洞" class="headerlink" title="/uploads/ad_js.php下存在sql注入漏洞"></a><em>/uploads/ad_js.php下存在sql注入漏洞</em></h3><p>ad_js.php源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">define(<span class="string">'IN_BLUE'</span>, <span class="keyword">true</span>);</span><br><span class="line"><span class="keyword">require_once</span> dirname(<span class="keyword">__FILE__</span>) . <span class="string">'/include/common.inc.php'</span>;</span><br><span class="line"></span><br><span class="line">$ad_id = !<span class="keyword">empty</span>($_GET[<span class="string">'ad_id'</span>]) ? trim($_GET[<span class="string">'ad_id'</span>]) : <span class="string">''</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">empty</span>($ad_id))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'Error!'</span>;</span><br><span class="line">	<span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*   </span></span><br><span class="line"><span class="comment">function getone($sql, $type=MYSQL_ASSOC)&#123;</span></span><br><span class="line"><span class="comment">    	$query = $this-&gt;query($sql,$this-&gt;linkid);</span></span><br><span class="line"><span class="comment">    	$row = mysql_fetch_array($query, $type);</span></span><br><span class="line"><span class="comment">    	return $row;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">$pre    = "blue_";</span></span><br><span class="line"><span class="comment">function table($table)</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">	global $pre;</span></span><br><span class="line"><span class="comment">	return  $pre .$table ;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">$ad = $db-&gt;getone(<span class="string">"SELECT * FROM "</span>.table(<span class="string">'ad'</span>).<span class="string">" WHERE ad_id ="</span>.$ad_id);</span><br><span class="line"><span class="keyword">if</span>($ad[<span class="string">'time_set'</span>] == <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">	$ad_content = $ad[<span class="string">'content'</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>($ad[<span class="string">'end_time'</span>] &lt; time())</span><br><span class="line">	&#123;</span><br><span class="line">		$ad_content = $ad[<span class="string">'exp_content'</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		$ad_content = $ad[<span class="string">'content'</span>];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">$ad_content = str_replace(<span class="string">'"'</span>, <span class="string">'\"'</span>,$ad_content);</span><br><span class="line">$ad_content = str_replace(<span class="string">"\r"</span>, <span class="string">"\\r"</span>,$ad_content);</span><br><span class="line">$ad_content = str_replace(<span class="string">"\n"</span>, <span class="string">"\\n"</span>,$ad_content);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;!--\r\ndocument.write(\""</span>.$ad_content.<span class="string">"\");\r\n--&gt;\r\n"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以看到其中比较关键的<strong><em>$ad_id</em></strong>是从GET型输入获取的，然后仅仅检测了该参数是否为空，就带入SQL语句进行查询，完全可以比如<strong><em>1 and 0 union select 1,2,3,4,5,6,7</em></strong>(假定七个字段)，就可以进行sql注入，之后是对于输出的内容进行替换，但其实根本谈不上什么防御效果。</p>
+<h3 id="user-php页面的存在存储型xss"><a href="#user-php页面的存在存储型xss" class="headerlink" title="user.php页面的存在存储型xss"></a><em>user.php页面的存在存储型xss</em></h3><p>user.php代码有点长，截取重点的贴上来</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">elseif</span>($act == <span class="string">'do_reg'</span>)&#123;</span><br><span class="line">$user_name 		=	!<span class="keyword">empty</span>($_POST[<span class="string">'user_name'</span>]) ? trim($_POST[<span class="string">'user_name'</span>]) : <span class="string">''</span>;</span><br><span class="line">$pwd       		= 	!<span class="keyword">empty</span>($_POST[<span class="string">'pwd'</span>]) ? trim($_POST[<span class="string">'pwd'</span>]) : <span class="string">''</span>;</span><br><span class="line">$pwd1 	   		= 	!<span class="keyword">empty</span>($_POST[<span class="string">'pwd1'</span>]) ? trim($_POST[<span class="string">'pwd1'</span>]) : <span class="string">''</span>;</span><br><span class="line">$email     		= 	!<span class="keyword">empty</span>($_POST[<span class="string">'email'</span>]) ? trim($_POST[<span class="string">'email'</span>]) : <span class="string">''</span>;</span><br><span class="line">$safecode  		= 	!<span class="keyword">empty</span>($_POST[<span class="string">'safecode'</span>]) ? trim($_POST[<span class="string">'safecode'</span>]) : <span class="string">''</span>;</span><br><span class="line">$from = !<span class="keyword">empty</span>($from) ? base64_decode($from) : <span class="string">'user.php'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(strlen($user_name) &lt; <span class="number">4</span> || strlen($user_name) &gt; <span class="number">16</span>)&#123;</span><br><span class="line">	showmsg(<span class="string">'用户名字符长度不符'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(strlen($pwd) &lt; <span class="number">6</span>)&#123;</span><br><span class="line">	showmsg(<span class="string">'密码不能少于6个字符'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>($pwd != $pwd1)&#123;</span><br><span class="line">	showmsg(<span class="string">'两次输入密码不一致'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(strtolower($safecode) != strtolower($_SESSION[<span class="string">'safecode'</span>]))&#123;</span><br><span class="line">	showmsg(<span class="string">'验证码错误'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>($db-&gt;getone(<span class="string">"SELECT * FROM "</span>.table(<span class="string">'user'</span>).<span class="string">" WHERE user_name='$user_name'"</span>))&#123;</span><br><span class="line">	showmsg(<span class="string">'该用户名已存在'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>($db-&gt;getone(<span class="string">"SELECT * FROM "</span>.table(<span class="string">'admin'</span>).<span class="string">" WHERE admin_name='$user_name'"</span>))&#123;</span><br><span class="line">	showmsg(<span class="string">'该用户名已存在'</span>);</span><br><span class="line">&#125;</span><br><span class="line">$sql = <span class="string">"INSERT INTO "</span>.table(<span class="string">'user'</span>).<span class="string">" (user_id, user_name, pwd, email, reg_time, last_login_time) VALUES ('', '$user_name', md5('$pwd'), '$email', '$timestamp', '$timestamp')"</span>;</span><br></pre></td></tr></table></figure>
+<p>因为email并没有进行过滤，所以写一个<script>alert<code>xss</code></script>就可以进行一个存储xss</p>
+<h3 id="文件读取1"><a href="#文件读取1" class="headerlink" title="文件读取1"></a>文件读取1</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">elseif</span>($act == <span class="string">'edit'</span>)&#123;</span><br><span class="line">	$file = $_GET[<span class="string">'tpl_name'</span>];</span><br><span class="line">	<span class="keyword">if</span>(!$handle = @fopen(BLUE_ROOT.<span class="string">'templates/default/'</span>.$file, <span class="string">'rb'</span>))&#123;</span><br><span class="line">		showmsg(<span class="string">'打开目标模板文件失败'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	$tpl[<span class="string">'content'</span>] = fread($handle, filesize(BLUE_ROOT.<span class="string">'templates/default/'</span>.$file));</span><br><span class="line">	$tpl[<span class="string">'content'</span>] = htmlentities($tpl[<span class="string">'content'</span>], ENT_QUOTES, GB2312);</span><br><span class="line">	fclose($handle);</span><br><span class="line">	$tpl[<span class="string">'name'</span>] = $file;</span><br><span class="line">	template_assign(<span class="keyword">array</span>(<span class="string">'current_act'</span>, <span class="string">'tpl'</span>), <span class="keyword">array</span>(<span class="string">'编辑模板'</span>, $tpl));</span><br><span class="line">	$smarty-&gt;display(<span class="string">'tpl_info.htm'</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>通过GET输入获取tpl_name，直接进行文件读取，经过html实体转化后变成htm文件。</p>
+<h3 id="文件读取2"><a href="#文件读取2" class="headerlink" title="文件读取2"></a>文件读取2</h3><p>$from变量是用户可控的，在登陆时可以通过抓包更改from变量的值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*第一处*/</span></span><br><span class="line">$from = !<span class="keyword">empty</span>($_REQUEST[<span class="string">'from'</span>]) ? $_REQUEST[<span class="string">'from'</span>] : <span class="string">''</span>;</span><br><span class="line">......</span><br><span class="line"><span class="keyword">elseif</span>($act == <span class="string">'do_login'</span>)&#123;</span><br><span class="line"> 	$user_name  	= 	!<span class="keyword">empty</span>($_POST[<span class="string">'user_name'</span>]) ? trim($_POST[<span class="string">'user_name'</span>]) : <span class="string">''</span>;</span><br><span class="line"> 	$pwd 			= 	!<span class="keyword">empty</span>($_POST[<span class="string">'pwd'</span>]) ? trim($_POST[<span class="string">'pwd'</span>]) : <span class="string">''</span>;</span><br><span class="line"> 	$safecode   	= 	!<span class="keyword">empty</span>($_POST[<span class="string">'safecode'</span>]) ? trim($_POST[<span class="string">'safecode'</span>]) : <span class="string">''</span>;</span><br><span class="line"> 	$useful_time	=	intval($_POST[<span class="string">'useful_time'</span>]);</span><br><span class="line"> 	$from = !<span class="keyword">empty</span>($from) ? base64_decode($from) : <span class="string">'user.php'</span>;</span><br><span class="line">......</span><br><span class="line">showmsg(<span class="string">'欢迎您 '</span>.$user_name.<span class="string">' 回来，现在将转到...'</span>, $from);</span><br></pre></td></tr></table></figure>
+<p>可以发现$from变量控制着页面登陆后的跳转，可以把$from改成别的，这样可以实现一个任意文件读取。</p>
+<h3 id="注册页面存在反射型XSS"><a href="#注册页面存在反射型XSS" class="headerlink" title="注册页面存在反射型XSS"></a><em>注册页面存在反射型XSS</em></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$from = !<span class="keyword">empty</span>($_REQUEST[<span class="string">'from'</span>]) ? $_REQUEST[<span class="string">'from'</span>] : <span class="string">''</span>;</span><br><span class="line">......</span><br><span class="line"><span class="keyword">elseif</span>($act == <span class="string">'reg'</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">empty</span>($_SESSION[<span class="string">'user_id'</span>]) &amp;&amp; $_SESSION[<span class="string">'user_id'</span>] != <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		showmsg(<span class="string">'您已经登录，请先退出登录再注册!'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">isset</span>($_SESSION[<span class="string">'last_reg'</span>]))</span><br><span class="line">	&#123;</span><br><span class="line">		$_SESSION[<span class="string">'last_reg'</span>] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">elseif</span> ($timestamp - $_SESSION[<span class="string">'last_reg'</span>] &lt; <span class="number">30</span>) </span><br><span class="line">	&#123;</span><br><span class="line">		showmsg(<span class="string">'为防止恶意注册，请于30秒后再来注册！'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	template_assign(<span class="keyword">array</span>(<span class="string">'current_act'</span>, <span class="string">'from'</span>), <span class="keyword">array</span>(<span class="string">'注册新用户'</span>, $from));</span><br><span class="line"> 	$smarty-&gt;display(<span class="string">'reg.htm'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此处会接收用户输入的$from值，并且不加过滤的输出html，所以会导致一个反射性xss</p>
+<h3 id="ip地址伪造漏洞"><a href="#ip地址伪造漏洞" class="headerlink" title="ip地址伪造漏洞"></a><em>ip地址伪造漏洞</em></h3><p>由如下代码可以看出，ip可以任意被伪造</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getip</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (getenv(<span class="string">'HTTP_CLIENT_IP'</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		$ip = getenv(<span class="string">'HTTP_CLIENT_IP'</span>); </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">elseif</span> (getenv(<span class="string">'HTTP_X_FORWARDED_FOR'</span>)) </span><br><span class="line">	&#123; <span class="comment">//获取客户端用代理服务器访问时的真实ip 地址</span></span><br><span class="line">		$ip = getenv(<span class="string">'HTTP_X_FORWARDED_FOR'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">elseif</span> (getenv(<span class="string">'HTTP_X_FORWARDED'</span>)) </span><br><span class="line">	&#123; </span><br><span class="line">		$ip = getenv(<span class="string">'HTTP_X_FORWARDED'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">elseif</span> (getenv(<span class="string">'HTTP_FORWARDED_FOR'</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		$ip = getenv(<span class="string">'HTTP_FORWARDED_FOR'</span>); </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">elseif</span> (getenv(<span class="string">'HTTP_FORWARDED'</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		$ip = getenv(<span class="string">'HTTP_FORWARDED'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123; </span><br><span class="line">		$ip = $_SERVER[<span class="string">'REMOTE_ADDR'</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> $ip;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*comment.php*/</span></span><br><span class="line"> $sql = <span class="string">"INSERT INTO "</span>.table(<span class="string">'comment'</span>).<span class="string">" (com_id, post_id, user_id, type, mood, content, pub_date, ip, is_check) VALUES ('', '$id', '$user_id', '$type', '$mood', '$content', '$timestamp', '"</span>.getip().<span class="string">"', '$is_check')"</span>;</span><br><span class="line"> $db-&gt;query($sql);</span><br></pre></td></tr></table></figure>
+<p>可以看出可以通过伪造ip，让其插入数据库中，首先可以形成一个存储xss，然后既然可以随便伪造ip，而这个语句执行结果也会返回，那么可以构造payload。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*getip()=1','1'),('','6','2','1','6',(select concat(admin_name,':',pwd) from blue_admin),'1','1*/</span></span><br><span class="line">$sql = INSERT INTO <span class="string">".table('comment')."</span> (com_id, post_id, user_id, type, mood, content, pub_date, ip, is_check)</span><br><span class="line">VALUES (<span class="string">''</span>, <span class="string">'$id'</span>, <span class="string">'$user_id'</span>, <span class="string">'$type'</span>, <span class="string">'$mood'</span>, <span class="string">'$content'</span>, <span class="string">'$timestamp'</span>, <span class="string">'1'</span>,<span class="string">'1'</span>),(<span class="string">''</span>,<span class="string">'6'</span>,<span class="string">'2'</span>,<span class="string">'1'</span>,<span class="string">'6'</span>,(select concat(admin_name,<span class="string">':'</span>,pwd) from blue_admin),<span class="string">'1'</span>,<span class="string">'1'</span>, <span class="string">'$is_check'</span>)<span class="string">";</span></span><br></pre></td></tr></table></figure>
+<p>变成了插入两条数据，第二条数据需要先去查询管理员账号密码，然后就可以舒舒服服进去后台了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2020/02/21/bluscms代码审计/">BlusCMS审计</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Crustsalt 的个人博客">Crustsalt</a></p>
+        <p><span>发布时间:</span>2020年02月21日 - 14时41分</p>
+        <p><span>最后更新:</span>2020年02月21日 - 14时41分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/02/21/bluscms代码审计/" title="BlusCMS审计">/2020/02/21/bluscms代码审计/</a>
+            <span class="copy-path" data-clipboard-text="原文: /2020/02/21/bluscms代码审计/　　作者: Crustsalt" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a  href="/2020/01/31/字符串转换整数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">字符串转换整数</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#BlueCMS审计"><span class="toc-number">1.</span> <span class="toc-text">BlueCMS审计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#uploads-ad-js-php下存在sql注入漏洞"><span class="toc-number">1.1.</span> <span class="toc-text">/uploads/ad_js.php下存在sql注入漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#user-php页面的存在存储型xss"><span class="toc-number">1.2.</span> <span class="toc-text">user.php页面的存在存储型xss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件读取1"><span class="toc-number">1.3.</span> <span class="toc-text">文件读取1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件读取2"><span class="toc-number">1.4.</span> <span class="toc-text">文件读取2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注册页面存在反射型XSS"><span class="toc-number">1.5.</span> <span class="toc-text">注册页面存在反射型XSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ip地址伪造漏洞"><span class="toc-number">1.6.</span> <span class="toc-text">ip地址伪造漏洞</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2020/01/31/字符串转换整数/" title="下一篇: 字符串转换整数">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/02/21/bluscms代码审计/">BlusCMS审计</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/31/字符串转换整数/">字符串转换整数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/23/QT学习笔记（二）/">QT学习笔记（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/14/QT学习笔记（一）/">QT学习笔记（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/16/Nmap扫描模式初探究/">Nmap扫描模式初探究</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/Java-文件操作与多线程编程基础/">Java-文件操作与多线程编程基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/键盘消息钩取学习/">键盘消息钩取学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/密码学实验/">密码学实验</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/文件上传靶场/">文件上传靶场</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/Sqli/">Sqli-lab 1-65关放弃指北</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/01/套接字编程学习/">套接字编程学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/PhpStudy_RCE漏洞复现/">PhpStudy RCE漏洞复现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/30/Windows API编程/">Windows API编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/Java-容器学习/">Java-容器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/非递减数列/">非递减数列</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/两数之和/">两数之和</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/整数反转/">整数反转</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 Crustsalt
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
