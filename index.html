@@ -183,7 +183,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/BlueCMS/" style="font-size: 10px;">BlueCMS</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CVE-2020-1938/" style="font-size: 10px;">CVE-2020-1938</a> <a href="/tags/Java学习/" style="font-size: 20px;">Java学习</a> <a href="/tags/Nmap学习/" style="font-size: 10px;">Nmap学习</a> <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/Windows-API编程/" style="font-size: 10px;">Windows API编程</a> <a href="/tags/Windows编程/" style="font-size: 10px;">Windows编程</a> <a href="/tags/sql注入/" style="font-size: 20px;">sql注入</a> <a href="/tags/两数之和/" style="font-size: 10px;">两数之和</a> <a href="/tags/代码审计/" style="font-size: 10px;">代码审计</a> <a href="/tags/多线程编程基础/" style="font-size: 10px;">多线程编程基础</a> <a href="/tags/套接字学习/" style="font-size: 10px;">套接字学习</a> <a href="/tags/字符串转换整数/" style="font-size: 10px;">字符串转换整数</a> <a href="/tags/容器基础/" style="font-size: 10px;">容器基础</a> <a href="/tags/密码学实验/" style="font-size: 10px;">密码学实验</a> <a href="/tags/整数反转/" style="font-size: 10px;">整数反转</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/文件操作/" style="font-size: 10px;">文件操作</a> <a href="/tags/漏洞复现/" style="font-size: 10px;">漏洞复现</a> <a href="/tags/键盘消息钩取学习/" style="font-size: 10px;">键盘消息钩取学习</a> <a href="/tags/非递减数列/" style="font-size: 10px;">非递减数列</a>
+                        <a href="/tags/BlueCMS/" style="font-size: 10px;">BlueCMS</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CVE-2020-1938/" style="font-size: 10px;">CVE-2020-1938</a> <a href="/tags/Crackme160/" style="font-size: 10px;">Crackme160</a> <a href="/tags/Java学习/" style="font-size: 20px;">Java学习</a> <a href="/tags/Nmap学习/" style="font-size: 10px;">Nmap学习</a> <a href="/tags/Qt/" style="font-size: 20px;">Qt</a> <a href="/tags/Windows-API编程/" style="font-size: 10px;">Windows API编程</a> <a href="/tags/Windows编程/" style="font-size: 10px;">Windows编程</a> <a href="/tags/sql注入/" style="font-size: 20px;">sql注入</a> <a href="/tags/两数之和/" style="font-size: 10px;">两数之和</a> <a href="/tags/代码审计/" style="font-size: 10px;">代码审计</a> <a href="/tags/多线程编程基础/" style="font-size: 10px;">多线程编程基础</a> <a href="/tags/套接字学习/" style="font-size: 10px;">套接字学习</a> <a href="/tags/字符串转换整数/" style="font-size: 10px;">字符串转换整数</a> <a href="/tags/容器基础/" style="font-size: 10px;">容器基础</a> <a href="/tags/密码学实验/" style="font-size: 10px;">密码学实验</a> <a href="/tags/整数反转/" style="font-size: 10px;">整数反转</a> <a href="/tags/文件上传/" style="font-size: 10px;">文件上传</a> <a href="/tags/文件操作/" style="font-size: 10px;">文件操作</a> <a href="/tags/漏洞复现/" style="font-size: 10px;">漏洞复现</a> <a href="/tags/逆向工程/" style="font-size: 10px;">逆向工程</a> <a href="/tags/键盘消息钩取学习/" style="font-size: 10px;">键盘消息钩取学习</a> <a href="/tags/非递减数列/" style="font-size: 10px;">非递减数列</a>
                     </div>
                 </section>
                 
@@ -245,6 +245,77 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Crackme 160-1 Acid burn 分析及注册机编写" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2021/10/26/Crackme 160-1 Acid burn 分析及注册机编写/" class="article-date">
+      <time datetime="2021-10-26T13:28:12.000Z" itemprop="datePublished">2021-10-26</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2021/10/26/Crackme 160-1 Acid burn 分析及注册机编写/">Crackme 160-1 Acid burn 分析及注册机编写</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="Crackme-160-1-Acid-burn-分析及注册机编写"><a href="#Crackme-160-1-Acid-burn-分析及注册机编写" class="headerlink" title="Crackme 160-1 Acid burn 分析及注册机编写"></a><strong>Crackme 160-1 Acid burn 分析及注册机编写</strong></h2><p>近来正在努力学逆向，所以打算从crackme160入手，这篇是第一个程序的分析。  </p>
+<p>CrackMe160 是比较适合新手学习逆向破解的CrackMe的一个集合一共160个待逆向破解的程序</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/逆向工程/">逆向工程</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Crackme160/">Crackme160</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逆向工程/">逆向工程</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a   href="/2021/10/26/Crackme 160-1 Acid burn 分析及注册机编写/#more">查看更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-Leetcode 1" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -864,79 +935,9 @@
 
 
   
-    <article id="post-密码学实验" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2019/11/08/密码学实验/" class="article-date">
-      <time datetime="2019-11-08T11:28:24.000Z" itemprop="datePublished">2019-11-08</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2019/11/08/密码学实验/">密码学实验</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="密码学实验"><a href="#密码学实验" class="headerlink" title="密码学实验"></a>密码学实验</h2><p>这是现代密码学配套实验，可以在实验中加深对现代密码学的了解，也可以加强自己的编程能力。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发相关/">开发相关</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/密码学实验/">密码学实验</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a   href="/2019/11/08/密码学实验/#more">查看更多 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
