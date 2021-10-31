@@ -275,37 +275,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Crackme-160-2-Afkayas-1-分析及注册机编写"><a href="#Crackme-160-2-Afkayas-1-分析及注册机编写" class="headerlink" title="Crackme 160-2 Afkayas.1 分析及注册机编写"></a><strong>Crackme 160-2 Afkayas.1 分析及注册机编写</strong></h2><p>先展示一下软件界面</p>
-<p><img src="https://i.loli.net/2021/10/31/XHC2DrUdWgJy8KM.jpg" alt="1.jpg"></p>
-<p>输入name，然后输入注册码，然后比较注册码正确与否，正确和错误会有不同的弹窗。下图分别为正确和错误弹窗。</p>
-<p><img src="https://i.loli.net/2021/10/31/3MTkhIaQW6AJgEX.jpg" alt="2.jpg"></p>
-<p><img src="https://i.loli.net/2021/10/31/u4AQGSFWsEVz85g.jpg" alt="3.jpg"></p>
-<hr>
-<h3 id="绕过注册码检测"><a href="#绕过注册码检测" class="headerlink" title="绕过注册码检测"></a><strong>绕过注册码检测</strong></h3><p>还是老规矩，搜搜字符串，发现弹出字符前有个je跳转，把je改成nop指令即可，这块有手就行。</p>
-<p><img src="https://i.loli.net/2021/10/31/JKdkQ6CaqZgy2vH.jpg" alt="4.jpg"></p>
-<hr>
-<h3 id="注册机编写"><a href="#注册机编写" class="headerlink" title="注册机编写"></a><strong>注册机编写</strong></h3><p>问题是这个注册机怎么写，我辛苦F8了一下午一晚上，理出了点头绪，最后还是借鉴了一下网上的教程。这里是主要的反汇编代码。其流程如下：</p>
-<ol>
-<li>赋予eax一个初值</li>
-<li>edi = eax</li>
-<li>edi = edi*0x17CFB</li>
-<li>edx = 所输入name字符串第一位的ascii码</li>
-<li>edi = edi + edx</li>
-<li>edi转换为十进制</li>
-</ol>
-<p><img src="https://i.loli.net/2021/10/31/ErITjuhV81lpkX9.jpg" alt="5.jpg"></p>
-<p><img src="https://i.loli.net/2021/10/31/GURPD6lftqcpA7r.jpg" alt="6.jpg"></p>
-<p>上图为反汇编代码中转换为十进制的循环，我楞是没看出来这是转换进制的代码，我还以为是生成注册码的一部分……</p>
-<p>现在问题来了，初值是什么，经过F8可以得知，初值其实是输入的name地址-0x4的一个值，我猜他是和输入的字符串有关，但是经过好几个字符串的测试没看出来有什么关联，看了网上教程才知道这个初值其实是输入字符串的长度，其实看vb的函数名就能猜出来…这告诉我们下次要记得看函数名，会改变eax初值的call名字叫vbaLenBstr，其实是获取字符串长度的函数，与之类似的还有以下这些：</p>
-<blockquote>
-<p>WideCHatToMultiByte　　将UNICODE字符转换成ANSI字符<br>rtcT8ValFromBstr　　　   把字符转换成浮点数　　<br>vbaStrCmp　　　　　　  比较字符串（常用断点）<br>vbaStrComp　　　　　   字符串比较（常用断点）<br>vbaStrCopy　　　　　　复制字符串<br>StrConv　　　　　　　  转换字符串<br>vbaStrMove　　　　　   移动字符串<br>vbaVarCat                       连接字符串<br>rtcMidCharVar                 在字符串中取字符或者字符串!</p>
-<p>vbaLenBstr                        取字符串的长度<br>vbaVarTstNe　　　　　　变量比较<br>vbaVarTstEq　　　　　　变量比较<br>rtcMsgBox　　　　　　   显示对话框<br>VarBstrCmp　　　　　　 比较字符串<br>VarCyCmp　　　　　　   比较字符串</p>
-</blockquote>
-<p>下次看名字就知道这个call是干什么的了，不用一点点F7头秃了。</p>
-<p>最后附上自己写的注册机，一个是自己写的注释多一些的，另一个是精简版代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#繁琐并且没有什么用只是看汇编的时候顺手写的然后再顺手传上来而已</span></span><br><span class="line"><span class="comment">#获取name的第一位</span></span><br><span class="line"><span class="comment">#name = input("name= ")</span></span><br><span class="line">name=<span class="string">"Crustsalt"</span></span><br><span class="line">length=len(name)*<span class="number">2</span></span><br><span class="line">tmp = ord(name[<span class="number">0</span>])</span><br><span class="line"><span class="comment">#对eax进行处理</span></span><br><span class="line">eax = length&gt;&gt;<span class="number">1</span></span><br><span class="line">edi = eax*<span class="number">0x17CFB</span></span><br><span class="line">begin = edi + tmp</span><br><span class="line">print(<span class="string">'AKA-'</span>+str(begin))</span><br><span class="line"><span class="comment">#以下部分可以不需要，只是进制转换，但实际上python默认输出的就是十进制，故上面的print和下面的print输出结果是一样的，这里只是当初看反汇编的时候顺手写了而已</span></span><br><span class="line">serial = <span class="string">''</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>):</span><br><span class="line">    result = begin//<span class="number">0xA</span></span><br><span class="line">    num = begin%<span class="number">10</span></span><br><span class="line">    begin = result</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">not</span> begin):</span><br><span class="line">        serial = serial + chr(num+<span class="number">0x30</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    serial = serial + chr(num+<span class="number">0x30</span>)</span><br><span class="line">print(<span class="string">'AKA-'</span>+str(serial[::<span class="number">-1</span>]))</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#精简的只有这一条注释</span></span><br><span class="line">name = input(<span class="string">"name= "</span>)</span><br><span class="line">length=len(name)</span><br><span class="line">tmp = ord(name[<span class="number">0</span>])</span><br><span class="line">edi = length*<span class="number">0x17CFB</span></span><br><span class="line">begin = edi + tmp</span><br><span class="line">print(<span class="string">'AKA-'</span>+str(begin))</span><br></pre></td></tr></table></figure>
-
+              <h2 id="Crackme-160-2-Afkayas-1-分析及注册机编写"><a href="#Crackme-160-2-Afkayas-1-分析及注册机编写" class="headerlink" title="Crackme 160-2 Afkayas.1 分析及注册机编写"></a><strong>Crackme 160-2 Afkayas.1 分析及注册机编写</strong></h2><p>这是Crackme160中的第二个程序，先展示一下软件界面。<br></p>
+          
       
     </div>
     
@@ -322,6 +293,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Crackme160/">Crackme160</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逆向工程/">逆向工程</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="/2021/10/31/Crackme 160-2 Afkayas.1 分析及注册机编写/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

@@ -9,13 +9,13 @@
   
   <title>Crackme 160-2 Afkayas.1 分析及注册机编写 | Crustsalt&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Crackme 160-2 Afkayas.1 分析及注册机编写先展示一下软件界面  输入name，然后输入注册码，然后比较注册码正确与否，正确和错误会有不同的弹窗。下图分别为正确和错误弹窗。    绕过注册码检测还是老规矩，搜搜字符串，发现弹出字符前有个je跳转，把je改成nop指令即可，这块有手就行。   注册机编写问题是这个注册机怎么写，我辛苦F8了一下午一晚上，理出了点头绪，最后还是借鉴了">
+  <meta name="description" content="Crackme 160-2 Afkayas.1 分析及注册机编写这是Crackme160中的第二个程序，先展示一下软件界面。">
 <meta name="keywords" content="逆向工程,Crackme160">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Crackme 160-2 Afkayas.1 分析及注册机编写">
 <meta property="og:url" content="/2021/10/31/Crackme 160-2 Afkayas.1 分析及注册机编写/index.html">
 <meta property="og:site_name" content="Crustsalt&#39;s Blog">
-<meta property="og:description" content="Crackme 160-2 Afkayas.1 分析及注册机编写先展示一下软件界面  输入name，然后输入注册码，然后比较注册码正确与否，正确和错误会有不同的弹窗。下图分别为正确和错误弹窗。    绕过注册码检测还是老规矩，搜搜字符串，发现弹出字符前有个je跳转，把je改成nop指令即可，这块有手就行。   注册机编写问题是这个注册机怎么写，我辛苦F8了一下午一晚上，理出了点头绪，最后还是借鉴了">
+<meta property="og:description" content="Crackme 160-2 Afkayas.1 分析及注册机编写这是Crackme160中的第二个程序，先展示一下软件界面。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.loli.net/2021/10/31/XHC2DrUdWgJy8KM.jpg">
 <meta property="og:image" content="https://i.loli.net/2021/10/31/3MTkhIaQW6AJgEX.jpg">
@@ -23,10 +23,10 @@
 <meta property="og:image" content="https://i.loli.net/2021/10/31/JKdkQ6CaqZgy2vH.jpg">
 <meta property="og:image" content="https://i.loli.net/2021/10/31/ErITjuhV81lpkX9.jpg">
 <meta property="og:image" content="https://i.loli.net/2021/10/31/GURPD6lftqcpA7r.jpg">
-<meta property="og:updated_time" content="2021-10-31T15:46:50.764Z">
+<meta property="og:updated_time" content="2021-10-31T15:48:43.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Crackme 160-2 Afkayas.1 分析及注册机编写">
-<meta name="twitter:description" content="Crackme 160-2 Afkayas.1 分析及注册机编写先展示一下软件界面  输入name，然后输入注册码，然后比较注册码正确与否，正确和错误会有不同的弹窗。下图分别为正确和错误弹窗。    绕过注册码检测还是老规矩，搜搜字符串，发现弹出字符前有个je跳转，把je改成nop指令即可，这块有手就行。   注册机编写问题是这个注册机怎么写，我辛苦F8了一下午一晚上，理出了点头绪，最后还是借鉴了">
+<meta name="twitter:description" content="Crackme 160-2 Afkayas.1 分析及注册机编写这是Crackme160中的第二个程序，先展示一下软件界面。">
 <meta name="twitter:image" content="https://i.loli.net/2021/10/31/XHC2DrUdWgJy8KM.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Crustsalt&#39;s Blog" type="application/atom+xml">
@@ -297,8 +297,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Crackme-160-2-Afkayas-1-分析及注册机编写"><a href="#Crackme-160-2-Afkayas-1-分析及注册机编写" class="headerlink" title="Crackme 160-2 Afkayas.1 分析及注册机编写"></a><strong>Crackme 160-2 Afkayas.1 分析及注册机编写</strong></h2><p>先展示一下软件界面</p>
-<p><img src="https://i.loli.net/2021/10/31/XHC2DrUdWgJy8KM.jpg" alt="1.jpg"></p>
+        <h2 id="Crackme-160-2-Afkayas-1-分析及注册机编写"><a href="#Crackme-160-2-Afkayas-1-分析及注册机编写" class="headerlink" title="Crackme 160-2 Afkayas.1 分析及注册机编写"></a><strong>Crackme 160-2 Afkayas.1 分析及注册机编写</strong></h2><p>这是Crackme160中的第二个程序，先展示一下软件界面。<br><a id="more"></a><br><img src="https://i.loli.net/2021/10/31/XHC2DrUdWgJy8KM.jpg" alt="1.jpg"></p>
 <p>输入name，然后输入注册码，然后比较注册码正确与否，正确和错误会有不同的弹窗。下图分别为正确和错误弹窗。</p>
 <p><img src="https://i.loli.net/2021/10/31/3MTkhIaQW6AJgEX.jpg" alt="2.jpg"></p>
 <p><img src="https://i.loli.net/2021/10/31/u4AQGSFWsEVz85g.jpg" alt="3.jpg"></p>
@@ -338,7 +337,7 @@
         <p><span>本文标题:</span><a  href="/2021/10/31/Crackme 160-2 Afkayas.1 分析及注册机编写/">Crackme 160-2 Afkayas.1 分析及注册机编写</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Crustsalt 的个人博客">Crustsalt</a></p>
         <p><span>发布时间:</span>2021年10月31日 - 23时46分</p>
-        <p><span>最后更新:</span>2021年10月31日 - 23时46分</p>
+        <p><span>最后更新:</span>2021年10月31日 - 23时48分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2021/10/31/Crackme 160-2 Afkayas.1 分析及注册机编写/" title="Crackme 160-2 Afkayas.1 分析及注册机编写">/2021/10/31/Crackme 160-2 Afkayas.1 分析及注册机编写/</a>
             <span class="copy-path" data-clipboard-text="原文: /2021/10/31/Crackme 160-2 Afkayas.1 分析及注册机编写/　　作者: Crustsalt" title=""></span>
