@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://i.loli.net/2021/10/31/JKdkQ6CaqZgy2vH.jpg">
 <meta property="og:image" content="https://i.loli.net/2021/10/31/ErITjuhV81lpkX9.jpg">
 <meta property="og:image" content="https://i.loli.net/2021/10/31/GURPD6lftqcpA7r.jpg">
-<meta property="og:updated_time" content="2021-10-31T15:48:43.388Z">
+<meta property="og:updated_time" content="2021-11-01T15:11:37.898Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Crackme 160-2 Afkayas.1 分析及注册机编写">
 <meta name="twitter:description" content="Crackme 160-2 Afkayas.1 分析及注册机编写这是Crackme160中的第二个程序，先展示一下软件界面。">
@@ -318,10 +318,72 @@
 <p><img src="https://i.loli.net/2021/10/31/GURPD6lftqcpA7r.jpg" alt="6.jpg"></p>
 <p>上图为反汇编代码中转换为十进制的循环，我楞是没看出来这是转换进制的代码，我还以为是生成注册码的一部分……</p>
 <p>现在问题来了，初值是什么，经过F8可以得知，初值其实是输入的name地址-0x4的一个值，我猜他是和输入的字符串有关，但是经过好几个字符串的测试没看出来有什么关联，看了网上教程才知道这个初值其实是输入字符串的长度，其实看vb的函数名就能猜出来…这告诉我们下次要记得看函数名，会改变eax初值的call名字叫vbaLenBstr，其实是获取字符串长度的函数，与之类似的还有以下这些：</p>
-<blockquote>
-<p>WideCHatToMultiByte　　将UNICODE字符转换成ANSI字符<br>rtcT8ValFromBstr　　　   把字符转换成浮点数　　<br>vbaStrCmp　　　　　　  比较字符串（常用断点）<br>vbaStrComp　　　　　   字符串比较（常用断点）<br>vbaStrCopy　　　　　　复制字符串<br>StrConv　　　　　　　  转换字符串<br>vbaStrMove　　　　　   移动字符串<br>vbaVarCat                       连接字符串<br>rtcMidCharVar                 在字符串中取字符或者字符串!</p>
-<p>vbaLenBstr                        取字符串的长度<br>vbaVarTstNe　　　　　　变量比较<br>vbaVarTstEq　　　　　　变量比较<br>rtcMsgBox　　　　　　   显示对话框<br>VarBstrCmp　　　　　　 比较字符串<br>VarCyCmp　　　　　　   比较字符串</p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th><strong>WideCHatToMultiByte</strong></th>
+<th><strong>将UNICODE字符转换成ANSI字符</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>rtcT8ValFromBstr</strong></td>
+<td><strong>把字符转换成浮点数</strong></td>
+</tr>
+<tr>
+<td><strong>vbaStrCmp</strong></td>
+<td><strong>比较字符串（常用断点）</strong></td>
+</tr>
+<tr>
+<td><strong>vbaStrComp</strong></td>
+<td><strong>字符串比较（常用断点）</strong></td>
+</tr>
+<tr>
+<td><strong>vbaStrCopy</strong></td>
+<td><strong>复制字符串</strong></td>
+</tr>
+<tr>
+<td><strong>StrConv</strong></td>
+<td><strong>转换字符串</strong></td>
+</tr>
+<tr>
+<td><strong>vbaStrMove</strong></td>
+<td><strong>移动字符串</strong></td>
+</tr>
+<tr>
+<td><strong>vbaVarCat</strong></td>
+<td><strong>连接字符串</strong></td>
+</tr>
+<tr>
+<td><strong>rtcMidCharVar</strong></td>
+<td><strong>在字符串中取字符或者字符串</strong></td>
+</tr>
+<tr>
+<td><strong>vbaLenBstr</strong></td>
+<td><strong>取字符串的长度</strong></td>
+</tr>
+<tr>
+<td><strong>vbaVarTstNe</strong></td>
+<td><strong>变量比较</strong></td>
+</tr>
+<tr>
+<td><strong>vbaVarTstEq</strong></td>
+<td><strong>变量比较</strong></td>
+</tr>
+<tr>
+<td><strong>rtcMsgBox</strong></td>
+<td><strong>显示对话框</strong></td>
+</tr>
+<tr>
+<td><strong>VarBstrCmp</strong></td>
+<td><strong>比较字符串</strong></td>
+</tr>
+<tr>
+<td><strong>VarCyCmp</strong></td>
+<td><strong>比较字符串</strong></td>
+</tr>
+</tbody>
+</table>
 <p>下次看名字就知道这个call是干什么的了，不用一点点F7头秃了。</p>
 <p>最后附上自己写的注册机，一个是自己写的注释多一些的，另一个是精简版代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#繁琐并且没有什么用只是看汇编的时候顺手写的然后再顺手传上来而已</span></span><br><span class="line"><span class="comment">#获取name的第一位</span></span><br><span class="line"><span class="comment">#name = input("name= ")</span></span><br><span class="line">name=<span class="string">"Crustsalt"</span></span><br><span class="line">length=len(name)*<span class="number">2</span></span><br><span class="line">tmp = ord(name[<span class="number">0</span>])</span><br><span class="line"><span class="comment">#对eax进行处理</span></span><br><span class="line">eax = length&gt;&gt;<span class="number">1</span></span><br><span class="line">edi = eax*<span class="number">0x17CFB</span></span><br><span class="line">begin = edi + tmp</span><br><span class="line">print(<span class="string">'AKA-'</span>+str(begin))</span><br><span class="line"><span class="comment">#以下部分可以不需要，只是进制转换，但实际上python默认输出的就是十进制，故上面的print和下面的print输出结果是一样的，这里只是当初看反汇编的时候顺手写了而已</span></span><br><span class="line">serial = <span class="string">''</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>):</span><br><span class="line">    result = begin//<span class="number">0xA</span></span><br><span class="line">    num = begin%<span class="number">10</span></span><br><span class="line">    begin = result</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">not</span> begin):</span><br><span class="line">        serial = serial + chr(num+<span class="number">0x30</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    serial = serial + chr(num+<span class="number">0x30</span>)</span><br><span class="line">print(<span class="string">'AKA-'</span>+str(serial[::<span class="number">-1</span>]))</span><br></pre></td></tr></table></figure>
@@ -337,7 +399,7 @@
         <p><span>本文标题:</span><a  href="/2021/10/31/Crackme 160-2 Afkayas.1 分析及注册机编写/">Crackme 160-2 Afkayas.1 分析及注册机编写</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Crustsalt 的个人博客">Crustsalt</a></p>
         <p><span>发布时间:</span>2021年10月31日 - 23时46分</p>
-        <p><span>最后更新:</span>2021年10月31日 - 23时48分</p>
+        <p><span>最后更新:</span>2021年11月01日 - 23时11分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2021/10/31/Crackme 160-2 Afkayas.1 分析及注册机编写/" title="Crackme 160-2 Afkayas.1 分析及注册机编写">/2021/10/31/Crackme 160-2 Afkayas.1 分析及注册机编写/</a>
             <span class="copy-path" data-clipboard-text="原文: /2021/10/31/Crackme 160-2 Afkayas.1 分析及注册机编写/　　作者: Crustsalt" title=""></span>
@@ -350,6 +412,15 @@
 
 
 <nav id="article-nav">
+  
+    <a  href="/2021/11/01/Crackme 160-3 AfKayAs.2 分析及注册机编写/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
     <a  href="/2021/10/26/Crackme 160-1 Acid burn 分析及注册机编写/" id="article-nav-older" class="article-nav-link-wrap">
@@ -426,7 +497,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a  href="/2021/11/01/Crackme 160-3 AfKayAs.2 分析及注册机编写/" title="上一篇: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
@@ -435,7 +508,7 @@
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/10/31/Crackme 160-2 Afkayas.1 分析及注册机编写/">Crackme 160-2 Afkayas.1 分析及注册机编写</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/26/Crackme 160-1 Acid burn 分析及注册机编写/">Crackme 160-1 Acid burn 分析及注册机编写</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/09/06/Leetcode 1/">Leetcode 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/24/Tomcat Ajp漏洞复现（CVE-2020-1938）/">CVE-2020-1938</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/21/bluscms代码审计/">BlusCMS审计</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/31/字符串转换整数/">字符串转换整数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/23/QT学习笔记（二）/">QT学习笔记（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/14/QT学习笔记（一）/">QT学习笔记（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/16/Nmap扫描模式初探究/">Nmap扫描模式初探究</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/Java-文件操作与多线程编程基础/">Java-文件操作与多线程编程基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/键盘消息钩取学习/">键盘消息钩取学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/密码学实验/">密码学实验</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/文件上传靶场/">文件上传靶场</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/Sqli/">Sqli-lab 1-65关放弃指北</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/01/套接字编程学习/">套接字编程学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/PhpStudy_RCE漏洞复现/">PhpStudy RCE漏洞复现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/30/Windows API编程/">Windows API编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/Java-容器学习/">Java-容器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/非递减数列/">非递减数列</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/两数之和/">两数之和</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/整数反转/">整数反转</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/11/01/Crackme 160-3 AfKayAs.2 分析及注册机编写/">Crackme 160-3 AfKayAs.2 分析及注册机编写</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/31/Crackme 160-2 Afkayas.1 分析及注册机编写/">Crackme 160-2 Afkayas.1 分析及注册机编写</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/10/26/Crackme 160-1 Acid burn 分析及注册机编写/">Crackme 160-1 Acid burn 分析及注册机编写</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/09/06/Leetcode 1/">Leetcode 1</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/24/Tomcat Ajp漏洞复现（CVE-2020-1938）/">CVE-2020-1938</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/21/bluscms代码审计/">BlusCMS审计</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/31/字符串转换整数/">字符串转换整数</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/23/QT学习笔记（二）/">QT学习笔记（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/14/QT学习笔记（一）/">QT学习笔记（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/16/Nmap扫描模式初探究/">Nmap扫描模式初探究</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/Java-文件操作与多线程编程基础/">Java-文件操作与多线程编程基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/12/键盘消息钩取学习/">键盘消息钩取学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/08/密码学实验/">密码学实验</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/07/文件上传靶场/">文件上传靶场</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/Sqli/">Sqli-lab 1-65关放弃指北</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/01/套接字编程学习/">套接字编程学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/31/PhpStudy_RCE漏洞复现/">PhpStudy RCE漏洞复现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/30/Windows API编程/">Windows API编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/28/Java-容器学习/">Java-容器学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/23/非递减数列/">非递减数列</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/sqlsever反弹注入/">SQLSever的反弹注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/两数之和/">两数之和</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/14/整数反转/">整数反转</a></li></ul>
     
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 
