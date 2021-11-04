@@ -4,13 +4,27 @@
   
     
     <entry>
-      <title></title>
-      <link href="/2021/11/01/Crackme%20160-3%20AfKayAs.2%20%E5%88%86%E6%9E%90%E5%8F%8A%E6%B3%A8%E5%86%8C%E6%9C%BA%E7%BC%96%E5%86%99/"/>
-      <url>/2021/11/01/Crackme%20160-3%20AfKayAs.2%20%E5%88%86%E6%9E%90%E5%8F%8A%E6%B3%A8%E5%86%8C%E6%9C%BA%E7%BC%96%E5%86%99/</url>
+      <title>Crackme 160-3 AfKayAs.2 分析及注册机编写</title>
+      <link href="/2021/11/04/Crackme%20160-3%20AfKayAs.2%20%E5%88%86%E6%9E%90%E5%8F%8A%E6%B3%A8%E5%86%8C%E6%9C%BA%E7%BC%96%E5%86%99/"/>
+      <url>/2021/11/04/Crackme%20160-3%20AfKayAs.2%20%E5%88%86%E6%9E%90%E5%8F%8A%E6%B3%A8%E5%86%8C%E6%9C%BA%E7%BC%96%E5%86%99/</url>
       
         <content type="html"><![CDATA[<h3 id="Crackme-160-3-AfKayAs-2-分析及注册机编写"><a href="#Crackme-160-3-AfKayAs-2-分析及注册机编写" class="headerlink" title="Crackme 160-3 AfKayAs.2 分析及注册机编写"></a><strong>Crackme 160-3 AfKayAs.2 分析及注册机编写</strong></h3><p>先展示一下软件界面。先是会显示这样一个窗口，等待一段时间后会变更为下一个界面。</p><a id="more"></a><p><img src="https://i.loli.net/2021/11/01/9rYTPdZOksK2Ec5.jpg" alt="1.jpg"></p><p><img src="https://i.loli.net/2021/11/01/ZYPymKoR1GCJ2Dv.jpg" alt="2.jpg"></p><p><img src="https://i.loli.net/2021/11/01/7U5Brqxn9vyoXzh.jpg" alt="4.jpg"></p><p>与上一个不同的是这里的注册码是浮点数，如果输入的不是浮点数直接提示run time error 类型不匹配，然后输入name和注册码匹配的话，会如上一个crackme一样弹出正确，否则弹出错误，这里就不放对应的截图了。</p><hr><h4 id="去开屏动画"><a href="#去开屏动画" class="headerlink" title="去开屏动画"></a><strong>去开屏动画</strong></h4><p>这个不太会，不知道为什么F7没有找到开屏广告启动的地方。</p><p>根据网上教程采用4C法去nag。</p><p>首先是vb程序的特点：程序入口会有一个push，然后进行一次call。</p><p><img src="https://i.loli.net/2021/11/04/FIcXbqMaNBLjnsR.jpg" alt="QQ截图20211104174321.jpg"></p><p>然后把要压栈的地址+0x4C，即0x4067D4+0x4C=0x406820。</p><p>在数据窗口找到该地址。</p><p><img src="https://i.loli.net/2021/11/04/avW67putgsIFBHO.jpg" alt="QQ截图20211104174707.jpg"></p><p>如图可见该地址的Dword值为0x00406868，继续跟踪可得</p><p><img src="https://i.loli.net/2021/11/04/KrsN1v5THalhGUA.jpg" alt="QQ截图20211104175708.jpg"></p><p>如图可见两个几乎一样的块。每块50(十六进制)个字节的长度,每块数据的第24(十六进制)个字节处都有一个标志（第一个是01，第二个是00）。该标志指定了每块代码（也就是程序启动后要加载的窗体）出现的顺序，先加载00，也就是我们要去的NAG窗口，再加载01，是主窗口。所以这里我们将各两个标志的值颠倒一下，01改00，00改01，二进制修改，保存文件，运行测试，NAG窗口去除了。</p><hr><h4 id="注册机编写"><a href="#注册机编写" class="headerlink" title="注册机编写"></a><strong>注册机编写</strong></h4><p>类似之前的步骤，以下是关键代码截图。</p><p>首先获取字符串长度，然后长度乘以0x15B38，获取输入的name的第一个字符的ascii码，把刚刚算出来的结果加上ascii码后再加2，算出来结果后再乘以3，最后再-2，最后再加15</p><p><img src="https://i.loli.net/2021/11/03/6AOkQ5da9RoqCzG.jpg" alt="10.jpg"></p><p><img src="https://i.loli.net/2021/11/03/3MBfwIqXO59DQzc.jpg" alt="5.jpg"></p><h4 id=""><a href="#" class="headerlink" title=""></a><img src="https://i.loli.net/2021/11/03/V8BUptn9Er4FOTP.jpg" alt="6.jpg"></h4><p><img src="https://i.loli.net/2021/11/03/mf1YIiwbo9BxOJk.jpg" alt="11.jpg"></p><p><img src="https://i.loli.net/2021/11/03/BTDLnKmZWiXJ4Hj.jpg" alt="7.jpg"></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">"Crustsalt"</span></span><br><span class="line">length = len(name)</span><br><span class="line">edi = length * <span class="number">0x15B38</span></span><br><span class="line">edi = edi + ord(name[<span class="number">0</span>])</span><br><span class="line">edi = edi + <span class="number">2</span></span><br><span class="line">edi = edi * <span class="number">3</span></span><br><span class="line">edi = edi - <span class="number">2</span></span><br><span class="line">edi = edi + <span class="number">15</span></span><br><span class="line">print(edi)</span><br></pre></td></tr></table></figure><p>但是有一点还是需要学一下，比如浮点数在内存中是怎么存储的，如果内存里切换成十六进制的方式显示为如下，但如果切换成64位双精度浮点则可以看见计算注册码需要的数值。以后遇到浮点数相关题目需要切换内存数据的显示方式，写完这篇blog后，我再去好好学一下内存里数据到底是怎么存储的。</p><p><img src="https://i.loli.net/2021/11/03/CGgz7R3c8DTAym4.jpg" alt="QQ截图20211103222421.jpg"></p><p><img src="https://i.loli.net/2021/11/03/74xRzt8n9uBQGYy.jpg" alt="QQ截图20211103231610.jpg"></p>]]></content>
       
       
+      <categories>
+          
+          <category> 逆向工程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 逆向工程 </tag>
+            
+            <tag> Crackme160 </tag>
+            
+        </tags>
       
     </entry>
     
