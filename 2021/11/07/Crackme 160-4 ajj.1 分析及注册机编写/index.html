@@ -7,20 +7,26 @@
   
   
   
-  <title>Windows API编程 | Crustsalt&#39;s Blog</title>
+  <title>Crackme 160-4 ajj.1 分析及注册机编写 | Crustsalt&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Windows API编程 题目：使用 Windows 核心 API 实现以下程序   程序 1：该程序能够创建一个本机的 OllyDbg 进程（使用 CreateProcess，显式指定 OllyDbg 可执行文件的路径）  程序 2：a) 该程序能够创建一个线程，显示 MessageBoxb) 在以上子线程中，编程获得 kernel32.dll 在当前系统中的路径信息，作为内容显示在以上的 M">
-<meta name="keywords" content="Windows API编程">
+  <meta name="description" content="Crackme 160-4 ajj.1 分析及注册机编写这次来做crackme160的第四个。">
+<meta name="keywords" content="逆向工程,Crackme160">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows API编程">
-<meta property="og:url" content="/2019/10/30/Windows API编程/index.html">
+<meta property="og:title" content="Crackme 160-4 ajj.1 分析及注册机编写">
+<meta property="og:url" content="/2021/11/07/Crackme 160-4 ajj.1 分析及注册机编写/index.html">
 <meta property="og:site_name" content="Crustsalt&#39;s Blog">
-<meta property="og:description" content="Windows API编程 题目：使用 Windows 核心 API 实现以下程序   程序 1：该程序能够创建一个本机的 OllyDbg 进程（使用 CreateProcess，显式指定 OllyDbg 可执行文件的路径）  程序 2：a) 该程序能够创建一个线程，显示 MessageBoxb) 在以上子线程中，编程获得 kernel32.dll 在当前系统中的路径信息，作为内容显示在以上的 M">
+<meta property="og:description" content="Crackme 160-4 ajj.1 分析及注册机编写这次来做crackme160的第四个。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-11-12T03:42:44.560Z">
+<meta property="og:image" content="https://i.loli.net/2021/11/07/71sP83kxrVpSuiN.jpg">
+<meta property="og:image" content="https://i.loli.net/2021/11/07/oygS3GmUZ9IbdwE.jpg">
+<meta property="og:image" content="https://i.loli.net/2021/11/07/ZvHscGAihgRfqWo.jpg">
+<meta property="og:image" content="https://i.loli.net/2021/11/07/bIw1NQJGov4R93x.jpg">
+<meta property="og:image" content="https://s3.bmp.ovh/imgs/2021/11/789aa03471672519.jpg">
+<meta property="og:updated_time" content="2021-11-07T09:02:05.746Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows API编程">
-<meta name="twitter:description" content="Windows API编程 题目：使用 Windows 核心 API 实现以下程序   程序 1：该程序能够创建一个本机的 OllyDbg 进程（使用 CreateProcess，显式指定 OllyDbg 可执行文件的路径）  程序 2：a) 该程序能够创建一个线程，显示 MessageBoxb) 在以上子线程中，编程获得 kernel32.dll 在当前系统中的路径信息，作为内容显示在以上的 M">
+<meta name="twitter:title" content="Crackme 160-4 ajj.1 分析及注册机编写">
+<meta name="twitter:description" content="Crackme 160-4 ajj.1 分析及注册机编写这次来做crackme160的第四个。">
+<meta name="twitter:image" content="https://i.loli.net/2021/11/07/71sP83kxrVpSuiN.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Crustsalt&#39;s Blog" type="application/atom+xml">
   
@@ -246,11 +252,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="pages-Windows API编程" class="article article-type-pages" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Crackme 160-4 ajj.1 分析及注册机编写" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="/2019/10/30/Windows API编程/" class="article-date">
-      <time datetime="2019-10-30T04:00:15.000Z" itemprop="datePublished">2019-10-30</time>
+      <a  href="/2021/11/07/Crackme 160-4 ajj.1 分析及注册机编写/" class="article-date">
+      <time datetime="2021-11-07T09:01:52.000Z" itemprop="datePublished">2021-11-07</time>
 </a>
 
     </div>
@@ -264,7 +270,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Windows API编程
+      Crackme 160-4 ajj.1 分析及注册机编写
     </h1>
   
 
@@ -274,13 +280,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/开发相关/">开发相关</a>
+    <a class="article-category-link" href="/categories/逆向工程/">逆向工程</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows-API编程/">Windows API编程</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Crackme160/">Crackme160</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逆向工程/">逆向工程</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -290,26 +296,23 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Windows-API编程"><a href="#Windows-API编程" class="headerlink" title="Windows API编程"></a>Windows API编程</h2><blockquote>
-<p>题目：使用 Windows 核心 API 实现以下程序 </p>
-<ol>
-<li>程序 1：该程序能够创建一个本机的 OllyDbg 进程（使用 CreateProcess，显式指定 OllyDbg 可执行文件的路径） </li>
-<li>程序 2：<br>a) 该程序能够创建一个线程，显示 MessageBox<br>b) 在以上子线程中，编程获得 kernel32.dll 在当前系统中的路径信息，作为内容显示在以上的 MessageBox 中<br>c) 在以上子线程中，编程获得子线程所加载 kernel32.dll 中的GetCurrentThreadId()函数的地址，调用该函数，获得子线程的线程编号，将线程编号连接到上一问的 kernel32.dll路径后面，再将连接结果字符串显示在 MessageBox 中</li>
-</ol>
-</blockquote>
-<a id="more"></a> 
+        <h2 id="Crackme-160-4-ajj-1-分析及注册机编写"><a href="#Crackme-160-4-ajj-1-分析及注册机编写" class="headerlink" title="Crackme 160-4 ajj.1 分析及注册机编写"></a><strong>Crackme 160-4 ajj.1 分析及注册机编写</strong></h2><p>这次来做crackme160的第四个。</p>
+<a id="more"></a>
 <hr>
-<p>以下程序我使用的是Dev-C++ “TDM-GCC 4.9.2 32-bit Release”编译成功的。</p>
-<blockquote>
-<p>程序1解决方案<br>此题明白CreateProcess的参数即可<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    TCHAR commandLine[] = TEXT(<span class="string">"C:\\Users\\dell\\Desktop\\常用\\吾爱破解专用版Ollydbg\\原版\\英文原版\\OLLYDBG.EXE"</span>);</span><br><span class="line">    STARTUPINFO si = &#123;<span class="keyword">sizeof</span>(si)&#125;;</span><br><span class="line">    PROCESS_INFORMATION pi;</span><br><span class="line">    <span class="keyword">bool</span> bRet = CreateProcess(</span><br><span class="line">        <span class="literal">NULL</span>,<span class="comment">//应用程序名称，指向启动进程的 exe 文件 </span></span><br><span class="line">        commandLine,<span class="comment">//命令行字符串，是启动进程的命令行中的参数。		</span></span><br><span class="line">        <span class="literal">NULL</span>,<span class="comment">//进程的安全属性 ，指向 SECURITY_ATTRIBUTES 结构变量，是进程的安全属性，可以为 NULL 则使用默认的安全属性</span></span><br><span class="line">        <span class="literal">NULL</span>,<span class="comment">//线程的安全属性 ，指向 SECURITY_ATTRIBUTES 结构变量。 </span></span><br><span class="line">        FALSE,<span class="comment">/*是否继承父进程属性 ，表示新进程是否从调用进程处继承了句柄。如果参数的值为 TRUE，调用进程中的每一个可继</span></span><br><span class="line"><span class="comment">		承的打开句柄都将被子进程继承。被继承的句柄与原进程拥有完全相同的值和访问权限；如果设为 FALSE，那么不继承。 */</span> </span><br><span class="line">        CREATE_NO_WINDOW,<span class="comment">//创建标志，表示进程的创建标志以及优先级控制。 </span></span><br><span class="line">        <span class="literal">NULL</span>,<span class="comment">//指向新的环境块的指针，指向新进程的环境变量块，如果设置为 NULL，那么使用父进程的环境变量。 </span></span><br><span class="line">        <span class="literal">NULL</span>,<span class="comment">//指向当前目录名的指针 ，指定创建后新进程的当前目录，如果设置为 NULL，那么就在父进程所在的当前目录。 </span></span><br><span class="line">        &amp;si,<span class="comment">// 传递给新进程的信息，指向一个 STARTUPINFO 结构，该结构里可以设定启动信息，可以设置为 NULL 。</span></span><br><span class="line">        &amp;pi<span class="comment">//进程返回的信息，指向一个 PROCESS_INFORMATION 结构，返回被创建进程的信息。</span></span><br><span class="line">		);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
+<p>首先看一下软件界面</p>
+<p><img src="https://i.loli.net/2021/11/07/71sP83kxrVpSuiN.jpg" alt="QQ截图20211107155601.jpg"></p>
+<p>界面没有确定键，只能输入用户名和注册码。</p>
 <hr>
-<blockquote>
-<p>程序2解决方案<br>学会调用Windows api即可（面向搜索引擎编程），我注释写的很详尽了<br>但是有一点投机取巧，我没有使用Windows api去搜索kernel32.dll路径，我是获取系统路径，如果是windows系统，那么kernel32.dll一定会在System32文件夹中。正确的做法应该还要再加一步确定kernel32.dll是否在System32文件夹中。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">getDllFuncAddr</span><span class="params">(<span class="keyword">char</span>* dllName, <span class="keyword">char</span>* funcName)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	HMODULE h = LoadLibrary(dllName);</span><br><span class="line">	<span class="keyword">long</span> addr = (<span class="keyword">long</span>)GetProcAddress(h, funcName);</span><br><span class="line">	FreeLibrary(h);</span><br><span class="line">	<span class="keyword">return</span> addr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">DWORD WINAPI <span class="title">Thread1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">long</span> address;</span><br><span class="line">	<span class="keyword">int</span> number;</span><br><span class="line">	<span class="keyword">char</span> str[<span class="number">10</span>]=<span class="string">"\0"</span>;</span><br><span class="line">	<span class="keyword">char</span> path[MAX_PATH];</span><br><span class="line">	<span class="keyword">char</span> name[] = <span class="string">"\\kernel32.dll;id="</span>; </span><br><span class="line">	<span class="keyword">char</span> str1[] = <span class="string">"kernel32.dll"</span>;</span><br><span class="line">	<span class="keyword">char</span> str2[] = <span class="string">"GetCurrentThreadId"</span>;</span><br><span class="line">    GetSystemDirectory(path,MAX_PATH);<span class="comment">/*获取当前系统路径*/</span></span><br><span class="line">    <span class="built_in">strcat</span>(path,name);<span class="comment">/*因为kernel32.dll一定在系统目录system32下，所以只需要获取system32路径即可*/</span></span><br><span class="line">	address = getDllFuncAddr(str1, str2);<span class="comment">/*保存函数地址*/</span> </span><br><span class="line">	number = ((<span class="keyword">long</span>(*)())address)();<span class="comment">/*把address强制转化为指针类型并用其调用函数*/</span> </span><br><span class="line">	ltoa(number,str,<span class="number">10</span>); <span class="comment">/*把id号放入一个字符串*/</span> </span><br><span class="line">	<span class="built_in">strcat</span>(path,str);<span class="comment">/*字符串连接*/</span> </span><br><span class="line">	MessageBox ( <span class="literal">NULL</span>, TEXT (path), TEXT (<span class="string">"Win_prog"</span>), MB_OK ) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	CreateThread(<span class="literal">NULL</span>,<span class="number">0</span>,(LPTHREAD_START_ROUTINE)Thread1,<span class="literal">NULL</span>,<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	HANDLE  CreateThread(</span></span><br><span class="line"><span class="comment">   		LPSECURITY_ATTRIBUTES lpThreadAttributes, //线程安全性描述（一个结构体，一般是NULL）</span></span><br><span class="line"><span class="comment">   		SIZE_T dwStackSize,                      //一种数值（栈深度，一般是0）   </span></span><br><span class="line"><span class="comment">   		LPTHREAD_START_ROUTINE lpStartAddress,  //启动函数</span></span><br><span class="line"><span class="comment">   		_In_opt_ __drv_aliasesMem LPVOID lpParameter, // 附加参数（一般为NULL）</span></span><br><span class="line"><span class="comment">    	_In_ DWORD dwCreationFlags,          //运行参数（是否在创建完成后就启动线程</span></span><br><span class="line"><span class="comment">   		_Out_opt_ LPDWORD lpThreadId   // 返回句柄（一般是0，或者是一个DWORD型变量的地址，别忘了&amp;）</span></span><br><span class="line"><span class="comment">    );</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="comment">/*防止主进程结束导致子线程被kill*/</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>参考资料：<br><strong> C语言 ( <em> ( void ( </em> ) ( ) ) 0 ) ( ) 的理解:<br><a href="https://blog.csdn.net/fengfeng0328/article/details/85949805" target="_blank" rel="noopener">https://blog.csdn.net/fengfeng0328/article/details/85949805</a> </strong><br><strong> 获取指定dll中的某个函数的地址:<br><a href="https://blog.csdn.net/leng_que/article/details/4668787" target="_blank" rel="noopener">https://blog.csdn.net/leng_que/article/details/4668787</a> </strong><br><strong> WindowsAPI使用详解——GetWindowsDirectory|GetSystemDirectory 获取操作系统文件夹的路径:<br><a href="https://www.cnblogs.com/callback/p/4248038.html" target="_blank" rel="noopener">https://www.cnblogs.com/callback/p/4248038.html</a> </strong></p>
-</blockquote>
+<h3 id="获取基本信息"><a href="#获取基本信息" class="headerlink" title="获取基本信息"></a><strong>获取基本信息</strong></h3><p>先进行查壳，知道了这个程序是用Delphi编写的，无壳。</p>
+<p><img src="https://i.loli.net/2021/11/07/oygS3GmUZ9IbdwE.jpg" alt="QQ截图20211107155720.jpg"></p>
+<p>而对于使用Delphi编写的程序，可以用Darkde4获取基本信息。下图为获取的结果，结果中可以获取程序所编写的事件，那么这个chkcode的事件就看起来比较可疑，应该是程序处理注册码所用的事件。记下这个事件对应的地址，然后去Ollydbd中下一个断点。</p>
+<p><img src="https://i.loli.net/2021/11/07/ZvHscGAihgRfqWo.jpg" alt="QQ截图20211107160035.jpg"></p>
+<hr>
+<h3 id="注册码生成"><a href="#注册码生成" class="headerlink" title="注册码生成"></a><strong>注册码生成</strong></h3><p>Ollydbg打开，发现有一些字符串。</p>
+<p><img src="https://i.loli.net/2021/11/07/bIw1NQJGov4R93x.jpg" alt="QQ截图20211107165149.jpg"></p>
+<p>把最后一个字符串输入，点击图片位置，可以发现这确实是一个注册码。所以注册码的规则是黑头Sun Brid+len(name+5)+dseloffc-012-OK+name。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = input(<span class="string">"name = "</span>)</span><br><span class="line">print(<span class="string">'黑头Sun Brid'</span>+str(len(name)+<span class="number">5</span>)+<span class="string">'dseloffc-012-OK'</span>+str(name))</span><br></pre></td></tr></table></figure>
+<p><img src="https://s3.bmp.ovh/imgs/2021/11/789aa03471672519.jpg" alt=""></p>
 
       
     </div>
@@ -318,13 +321,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a  href="/2019/10/30/Windows API编程/">Windows API编程</a></p>
+        <p><span>本文标题:</span><a  href="/2021/11/07/Crackme 160-4 ajj.1 分析及注册机编写/">Crackme 160-4 ajj.1 分析及注册机编写</a></p>
         <p><span>文章作者:</span><a  href="/" title="访问 Crustsalt 的个人博客">Crustsalt</a></p>
-        <p><span>发布时间:</span>2019年10月30日 - 12时00分</p>
-        <p><span>最后更新:</span>2019年11月12日 - 11时42分</p>
+        <p><span>发布时间:</span>2021年11月07日 - 17时01分</p>
+        <p><span>最后更新:</span>2021年11月07日 - 17时02分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/10/30/Windows API编程/" title="Windows API编程">/2019/10/30/Windows API编程/</a>
-            <span class="copy-path" data-clipboard-text="原文: /2019/10/30/Windows API编程/　　作者: Crustsalt" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2021/11/07/Crackme 160-4 ajj.1 分析及注册机编写/" title="Crackme 160-4 ajj.1 分析及注册机编写">/2021/11/07/Crackme 160-4 ajj.1 分析及注册机编写/</a>
+            <span class="copy-path" data-clipboard-text="原文: /2021/11/07/Crackme 160-4 ajj.1 分析及注册机编写/　　作者: Crustsalt" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -335,18 +338,9 @@
 
 <nav id="article-nav">
   
-    <a  href="/2019/10/31/PhpStudy_RCE漏洞复现/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          PhpStudy RCE漏洞复现
-        
-      </div>
-    </a>
   
-  
-    <a  href="/2019/10/28/Java-容器学习/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java-容器学习</div>
+    <a  href="/2021/11/04/Crackme 160-3 AfKayAs.2 分析及注册机编写/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Crackme 160-3 AfKayAs.2 分析及注册机编写</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -358,7 +352,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-API编程"><span class="toc-number">1.</span> <span class="toc-text">Windows API编程</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Crackme-160-4-ajj-1-分析及注册机编写"><span class="toc-number">1.</span> <span class="toc-text">Crackme 160-4 ajj.1 分析及注册机编写</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取基本信息"><span class="toc-number">1.1.</span> <span class="toc-text">获取基本信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注册码生成"><span class="toc-number">1.2.</span> <span class="toc-text">注册码生成</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -419,13 +413,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a  href="/2019/10/31/PhpStudy_RCE漏洞复现/" title="上一篇: PhpStudy RCE漏洞复现">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a  href="/2019/10/28/Java-容器学习/" title="下一篇: Java-容器学习">
+            <a  href="/2021/11/04/Crackme 160-3 AfKayAs.2 分析及注册机编写/" title="下一篇: Crackme 160-3 AfKayAs.2 分析及注册机编写">
                 <i class="fa fa-angle-right"></i>
             </a>
         

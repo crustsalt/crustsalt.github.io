@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2021-11-04T10:04:09.923Z</updated>
+  <updated>2021-11-07T09:02:05.746Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Crackme 160-4 ajj.1 分析及注册机编写</title>
+    <link href="/2021/11/07/Crackme%20160-4%20ajj.1%20%E5%88%86%E6%9E%90%E5%8F%8A%E6%B3%A8%E5%86%8C%E6%9C%BA%E7%BC%96%E5%86%99/"/>
+    <id>/2021/11/07/Crackme 160-4 ajj.1 分析及注册机编写/</id>
+    <published>2021-11-07T09:01:52.000Z</published>
+    <updated>2021-11-07T09:02:05.746Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Crackme-160-4-ajj-1-分析及注册机编写"><a href="#Crackme-160-4-ajj-1-分析及注册机编写" class="headerlink" title="Crackme 160-4 ajj.1 分析及注册机编写"></a><strong>Crackme 160-4 ajj.1 分析及注册机编写</strong></h2><p>这次来做crackme160的第四个。</p><a id="more"></a><hr><p>首先看一下软件界面</p><p><img src="https://i.loli.net/2021/11/07/71sP83kxrVpSuiN.jpg" alt="QQ截图20211107155601.jpg"></p><p>界面没有确定键，只能输入用户名和注册码。</p><hr><h3 id="获取基本信息"><a href="#获取基本信息" class="headerlink" title="获取基本信息"></a><strong>获取基本信息</strong></h3><p>先进行查壳，知道了这个程序是用Delphi编写的，无壳。</p><p><img src="https://i.loli.net/2021/11/07/oygS3GmUZ9IbdwE.jpg" alt="QQ截图20211107155720.jpg"></p><p>而对于使用Delphi编写的程序，可以用Darkde4获取基本信息。下图为获取的结果，结果中可以获取程序所编写的事件，那么这个chkcode的事件就看起来比较可疑，应该是程序处理注册码所用的事件。记下这个事件对应的地址，然后去Ollydbd中下一个断点。</p><p><img src="https://i.loli.net/2021/11/07/ZvHscGAihgRfqWo.jpg" alt="QQ截图20211107160035.jpg"></p><hr><h3 id="注册码生成"><a href="#注册码生成" class="headerlink" title="注册码生成"></a><strong>注册码生成</strong></h3><p>Ollydbg打开，发现有一些字符串。</p><p><img src="https://i.loli.net/2021/11/07/bIw1NQJGov4R93x.jpg" alt="QQ截图20211107165149.jpg"></p><p>把最后一个字符串输入，点击图片位置，可以发现这确实是一个注册码。所以注册码的规则是黑头Sun Brid+len(name+5)+dseloffc-012-OK+name。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = input(<span class="string">"name = "</span>)</span><br><span class="line">print(<span class="string">'黑头Sun Brid'</span>+str(len(name)+<span class="number">5</span>)+<span class="string">'dseloffc-012-OK'</span>+str(name))</span><br></pre></td></tr></table></figure><p><img src="https://s3.bmp.ovh/imgs/2021/11/789aa03471672519.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Crackme-160-4-ajj-1-分析及注册机编写&quot;&gt;&lt;a href=&quot;#Crackme-160-4-ajj-1-分析及注册机编写&quot; class=&quot;headerlink&quot; title=&quot;Crackme 160-4 ajj.1 分析及注册机编写&quot;&gt;&lt;/a&gt;&lt;strong&gt;Crackme 160-4 ajj.1 分析及注册机编写&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;这次来做crackme160的第四个。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="逆向工程" scheme="/categories/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"/>
+    
+    
+      <category term="逆向工程" scheme="/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="Crackme160" scheme="/tags/Crackme160/"/>
+    
+  </entry>
   
   <entry>
     <title>Crackme 160-3 AfKayAs.2 分析及注册机编写</title>
@@ -487,34 +512,6 @@
       <category term="Java学习" scheme="/tags/Java%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="容器基础" scheme="/tags/%E5%AE%B9%E5%99%A8%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>非递减数列</title>
-    <link href="/2019/10/23/%E9%9D%9E%E9%80%92%E5%87%8F%E6%95%B0%E5%88%97/"/>
-    <id>/2019/10/23/非递减数列/</id>
-    <published>2019-10-23T15:20:43.000Z</published>
-    <updated>2019-11-12T03:42:54.399Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="LeetCode刷题笔记"><a href="#LeetCode刷题笔记" class="headerlink" title="LeetCode刷题笔记"></a>LeetCode刷题笔记</h2><h3 id="非递减数列"><a href="#非递减数列" class="headerlink" title="非递减数列"></a>非递减数列</h3><p><strong>题目链接：<a href="https://leetcode-cn.com/problems/non-decreasing-array/submissions/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/non-decreasing-array/submissions/</a></strong></p><hr><blockquote><p>给定一个长度为 n 的整数数组，你的任务是判断在最多改变 1 个元素的情况下，该数组能否变成一个非递减数列。</p></blockquote><p>我们是这样定义一个非递减数列的： 对于数组中所有的 i (1 &lt;= i &lt; n)，满足 array[i] &lt;= array[i + 1]。</p><a id="more"></a><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line"><span class="section">输入: [4,2,3]</span></span><br><span class="line"><span class="section">输出: True</span></span><br><span class="line"><span class="section">解释: 你可以通过把第一个4变成1来使得它成为一个非递减数列。</span></span><br><span class="line">示例 2:</span><br><span class="line"><span class="section">输入: [4,2,1]</span></span><br><span class="line"><span class="section">输出: False</span></span><br><span class="line"><span class="section">解释: 你不能在只改变一个元素的情况下将其变为非递减数列。</span></span><br><span class="line"><span class="section">说明:  n 的范围为 [1, 10,000]。</span></span><br></pre></td></tr></table></figure><hr><h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><blockquote><p>写这个题的时候脑子昏昏沉沉的，写了半天总是不对，看了下大佬的思路，然后就思路清晰~<br>此题只能改变一次，所以建立一个flag保存改变次数，如果改变次数大于1，直接return False<br>发现nums[i] &gt; nums[i+1]时有两种选择使它变成非递减数列</p><ol><li>nums[i]   = nums[i+1]</li><li>nums[i+1] = nums[i]<br>第一种情况时需要考虑将nums[i] = nums[i+1]后，因为已经判断过nums[i] &gt;= nums[i-1]成立，而nums[i] = nums[i+1]语句运行后，nums[i]变小了，需要再次判断是否nums[i] &gt;= nums[i-1],如果nums[i] &lt; nums[i-1]，则进入第二种情况。<br>第二种情况将nums[i+1] = nums[i]并没有什么特别之处，因为循环是往后运行的，可以检查出是否会有问题</li></ol></blockquote><table><thead><tr><th>提交结果</th><th>执行用时</th><th>内存消耗</th><th>语言</th></tr></thead><tbody><tr><td>超出时间限制</td><td>240 ms</td><td>15.1 MB</td><td>Python3</td></tr></tbody></table><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">checkPossibility</span><span class="params">(self, nums: List[int])</span> -&gt; bool:</span></span><br><span class="line">        flag = <span class="number">1</span></span><br><span class="line">        tmp  = <span class="number">2</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&gt;nums[i+<span class="number">1</span>]):</span><br><span class="line">                flag -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span>(flag&lt;<span class="number">0</span>):</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">                k = nums[i]</span><br><span class="line">                <span class="comment">#将nums[i]的值改为nums[i+1]的值</span></span><br><span class="line">                nums[i] = nums[i+<span class="number">1</span>]</span><br><span class="line">                <span class="keyword">if</span>(nums[i]&lt;nums[i<span class="number">-1</span>] <span class="keyword">and</span> i&gt;=<span class="number">1</span>):</span><br><span class="line">                    nums[i] = k</span><br><span class="line">                <span class="comment">#将nums[i+1]的值改为nums[i]的值</span></span><br><span class="line">                    nums[i+<span class="number">1</span>] = nums[i]</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure><hr><blockquote><p>这个题题解数目较少，python3解法大同小异，找到另一个题解，思路和我的一样，不过写的更清晰</p></blockquote><table><thead><tr><th>提交结果</th><th>执行用时</th><th>内存消耗</th><th>语言</th></tr></thead><tbody><tr><td>超出时间限制</td><td>236 ms</td><td>15.1 MB</td><td>Python3</td></tr></tbody></table><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">checkPossibility</span><span class="params">(self, nums: List[int])</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[i+<span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">if</span> i==<span class="number">0</span>:</span><br><span class="line">                    nums[<span class="number">0</span>]=nums[<span class="number">1</span>]</span><br><span class="line">                <span class="keyword">elif</span> nums[i<span class="number">-1</span>]&gt;nums[i+<span class="number">1</span>]:</span><br><span class="line">                    nums[i+<span class="number">1</span>]=nums[i]</span><br><span class="line">                <span class="keyword">elif</span> nums[i<span class="number">-1</span>]&lt;nums[i+<span class="number">1</span>]:</span><br><span class="line">                    nums[i]=nums[i<span class="number">-1</span>]</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[i+<span class="number">1</span>]:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;LeetCode刷题笔记&quot;&gt;&lt;a href=&quot;#LeetCode刷题笔记&quot; class=&quot;headerlink&quot; title=&quot;LeetCode刷题笔记&quot;&gt;&lt;/a&gt;LeetCode刷题笔记&lt;/h2&gt;&lt;h3 id=&quot;非递减数列&quot;&gt;&lt;a href=&quot;#非递减数列&quot; class=&quot;headerlink&quot; title=&quot;非递减数列&quot;&gt;&lt;/a&gt;非递减数列&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;题目链接：&lt;a href=&quot;https://leetcode-cn.com/problems/non-decreasing-array/submissions/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://leetcode-cn.com/problems/non-decreasing-array/submissions/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;blockquote&gt;
-&lt;p&gt;给定一个长度为 n 的整数数组，你的任务是判断在最多改变 1 个元素的情况下，该数组能否变成一个非递减数列。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;我们是这样定义一个非递减数列的： 对于数组中所有的 i (1 &amp;lt;= i &amp;lt; n)，满足 array[i] &amp;lt;= array[i + 1]。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="LeetCode刷题笔记" scheme="/categories/LeetCode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="非递减数列" scheme="/tags/%E9%9D%9E%E9%80%92%E5%87%8F%E6%95%B0%E5%88%97/"/>
     
   </entry>
   

